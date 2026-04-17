@@ -418,6 +418,50 @@ body {
 <!-- ──────── RECORDS SCREEN ──────── -->
 <div class="screen" id="screen-records">
   <div class="section-title">ベット記録</div>
+
+  <!-- 税金サマリーカード -->
+  <div class="card" style="margin-bottom:14px;border-color:rgba(245,166,35,0.25)">
+    <div class="label" style="color:var(--amber)">税金計算サマリー（確定分のみ）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+      <div>
+        <div style="font-size:10px;color:var(--text-dim);letter-spacing:0.06em;margin-bottom:4px">購入金額合計</div>
+        <div id="tax-total-bet" style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text)">¥0</div>
+      </div>
+      <div>
+        <div style="font-size:10px;color:var(--text-dim);letter-spacing:0.06em;margin-bottom:4px">回収金額合計</div>
+        <div id="tax-total-return" style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--green)">¥0</div>
+      </div>
+      <div>
+        <div style="font-size:10px;color:var(--text-dim);letter-spacing:0.06em;margin-bottom:4px">的中時払戻合計</div>
+        <div id="tax-win-return" style="font-family:var(--mono);font-size:15px;font-weight:700;color:var(--text)">¥0</div>
+      </div>
+      <div>
+        <div style="font-size:10px;color:var(--text-dim);letter-spacing:0.06em;margin-bottom:4px">収支（利益）</div>
+        <div id="tax-pnl" style="font-family:var(--mono);font-size:15px;font-weight:700">¥0</div>
+      </div>
+    </div>
+    <!-- 税計算ボックス -->
+    <div style="background:var(--surface2);border-radius:10px;padding:12px">
+      <div style="font-size:10px;color:var(--text-dim);letter-spacing:0.06em;margin-bottom:8px">一時所得の概算（参考）</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px">
+        <div>
+          <div style="color:var(--text-muted);margin-bottom:3px">一時所得の計算式</div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--text-dim);line-height:1.6">
+            払戻 − 購入 − 特別控除50万<br>課税対象 = 上記 ÷ 2
+          </div>
+        </div>
+        <div>
+          <div style="color:var(--text-muted);margin-bottom:3px">課税対象額（概算）</div>
+          <div id="tax-taxable" style="font-family:var(--mono);font-size:16px;font-weight:700;color:var(--amber)">¥0</div>
+          <div id="tax-note" style="font-size:10px;color:var(--text-dim);margin-top:2px">控除50万円以内は非課税</div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--text-dim);margin-top:8px;line-height:1.6">
+      ※概算です。正確な税額は税理士または国税庁サイトで確認してください。
+    </div>
+  </div>
+
   <div class="filter-row">
     <div class="pill active" onclick="filterRecords('all', this)">すべて</div>
     <div class="pill" onclick="filterRecords('pending', this)">未確定</div>
@@ -448,16 +492,35 @@ body {
       <div class="stat-lbl">MAX DD</div>
     </div>
   </div>
+
+  <!-- 購入・回収の内訳カード -->
   <div class="card">
-    <div class="label">回収率推移</div>
+    <div class="label">収支内訳</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px">
+      <div style="text-align:center">
+        <div id="stat-total-bet" style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--text)">¥0</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:3px">購入合計</div>
+      </div>
+      <div style="text-align:center">
+        <div id="stat-total-return" style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--green)">¥0</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:3px">回収合計</div>
+      </div>
+      <div style="text-align:center">
+        <div id="stat-win-rate" style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--accent)">0%</div>
+        <div style="font-size:10px;color:var(--text-dim);margin-top:3px">的中率</div>
+      </div>
+    </div>
+    <div class="label" style="margin-bottom:6px">回収率</div>
     <div class="roi-bar-wrap">
       <div class="roi-bar pos" id="roi-bar" style="width:0%"></div>
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:8px">
+    <div style="display:flex;justify-content:space-between;margin-top:6px">
       <span style="font-family:var(--mono);font-size:10px;color:var(--text-dim)">0%</span>
-      <span style="font-family:var(--mono);font-size:10px;color:var(--text-dim)">100%(損益分岐)</span>
+      <span id="stat-roi-label" style="font-family:var(--mono);font-size:10px;color:var(--text-muted)">回収率 0%</span>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--text-dim)">200%</span>
     </div>
   </div>
+
   <div class="card" id="kill-status-card">
     <div class="label">システム状態</div>
     <div id="system-status-text" style="font-family:var(--mono);font-size:13px;color:var(--green)">
@@ -467,7 +530,7 @@ body {
       Kill Switch条件：DD &gt; 20% / 連続エラー3回 / オッズ急変 &gt;20%
     </div>
   </div>
-  <button class="btn-record" onclick="clearAllRecords()" style="color:var(--red);border-color:rgba(242,92,92,0.3)">
+  <button class="btn-record" onclick="clearAllRecords()" style="color:var(--red);border-color:rgba(242,92,92,0.3);margin-bottom:20px">
     記録をすべて削除
   </button>
 </div>
@@ -673,6 +736,7 @@ function recordBet(data) {
     ev: data.ev,
     p: data.p,
     result: 'pending',
+    returnAmt: 0,
     pnl: 0
   };
   records.unshift(rec);
@@ -683,7 +747,9 @@ function updateResult(id, result) {
   const rec = records.find(r => r.id === id);
   if (!rec) return;
   rec.result = result;
-  rec.pnl = result === 'win' ? Math.round(rec.betAmt * rec.odds - rec.betAmt) : -rec.betAmt;
+  // returnAmt = 払戻金額（税計算に使う）、pnl = 純利益
+  rec.returnAmt = result === 'win' ? Math.round(rec.betAmt * rec.odds) : 0;
+  rec.pnl = result === 'win' ? rec.returnAmt - rec.betAmt : -rec.betAmt;
   saveRecords();
   renderRecords('all');
   updateStats();
@@ -725,24 +791,59 @@ function filterRecords(f, el) {
 // ── Stats ──
 function updateStats() {
   const settled = records.filter(r => r.result !== 'pending');
-  const wins = settled.filter(r => r.result === 'win');
-  const totalBet = settled.reduce((s,r) => s + r.betAmt, 0);
-  const totalPnl = settled.reduce((s,r) => s + r.pnl, 0);
-  const roi = totalBet > 0 ? (totalPnl / totalBet * 100) : 0;
-  const dd = calcCurrentDD();
+  const wins    = settled.filter(r => r.result === 'win');
 
-  document.getElementById('stat-bets').textContent = records.length;
-  document.getElementById('stat-roi').textContent = roi.toFixed(1) + '%';
-  document.getElementById('stat-roi').className = 'stat-val ' + (roi>=0?'positive':'negative');
-  document.getElementById('stat-pnl').textContent = (totalPnl>=0?'+':'') + '¥' + totalPnl.toLocaleString();
-  document.getElementById('stat-pnl').className = 'stat-val ' + (totalPnl>=0?'positive':'negative');
-  document.getElementById('stat-dd').textContent = (dd*100).toFixed(1) + '%';
-  document.getElementById('stat-dd').className = 'stat-val ' + (dd>0.15?'negative':'neutral');
+  // 基本集計
+  const totalBet    = settled.reduce((s,r) => s + r.betAmt, 0);
+  const totalReturn = wins.reduce((s,r) => s + (r.returnAmt || 0), 0);
+  const totalPnl    = settled.reduce((s,r) => s + r.pnl, 0);
+  const roi         = totalBet > 0 ? totalReturn / totalBet * 100 : 0;
+  const winRate     = settled.length > 0 ? wins.length / settled.length * 100 : 0;
+  const dd          = calcCurrentDD();
 
-  const barPct = Math.min(Math.max(roi + 100, 0), 200) / 2;
+  // 税金計算（一時所得の概算）
+  // 課税対象 = (払戻合計 - 購入合計 - 特別控除50万) ÷ 2
+  const grossProfit = totalReturn - totalBet;
+  const deduction   = 500000;
+  const taxableBase = Math.max(0, grossProfit - deduction);
+  const taxableIncome = Math.floor(taxableBase / 2);
+
+  // ── 収支記録タブのサマリー更新 ──
+  document.getElementById('tax-total-bet').textContent    = '¥' + totalBet.toLocaleString();
+  document.getElementById('tax-total-return').textContent = '¥' + totalReturn.toLocaleString();
+  document.getElementById('tax-win-return').textContent   = '¥' + totalReturn.toLocaleString();
+  const pnlEl = document.getElementById('tax-pnl');
+  pnlEl.textContent = (totalPnl >= 0 ? '+' : '') + '¥' + totalPnl.toLocaleString();
+  pnlEl.style.color = totalPnl >= 0 ? 'var(--green)' : 'var(--red)';
+  const taxEl  = document.getElementById('tax-taxable');
+  const noteEl = document.getElementById('tax-note');
+  taxEl.textContent = '¥' + taxableIncome.toLocaleString();
+  if (taxableIncome === 0) {
+    noteEl.textContent = '控除50万円以内 — 申告不要の可能性あり';
+    taxEl.style.color = 'var(--text-muted)';
+  } else {
+    noteEl.textContent = '※所得税の課税対象が発生しています';
+    taxEl.style.color = 'var(--amber)';
+  }
+
+  // ── 分析タブ更新 ──
+  document.getElementById('stat-bets').textContent       = records.length;
+  document.getElementById('stat-roi').textContent        = roi.toFixed(1) + '%';
+  document.getElementById('stat-roi').className          = 'stat-val ' + (roi >= 100 ? 'positive' : 'negative');
+  document.getElementById('stat-pnl').textContent        = (totalPnl >= 0 ? '+' : '') + '¥' + totalPnl.toLocaleString();
+  document.getElementById('stat-pnl').className          = 'stat-val ' + (totalPnl >= 0 ? 'positive' : 'negative');
+  document.getElementById('stat-dd').textContent         = (dd * 100).toFixed(1) + '%';
+  document.getElementById('stat-dd').className           = 'stat-val ' + (dd > 0.15 ? 'negative' : 'neutral');
+  document.getElementById('stat-total-bet').textContent    = '¥' + totalBet.toLocaleString();
+  document.getElementById('stat-total-return').textContent = '¥' + totalReturn.toLocaleString();
+  document.getElementById('stat-win-rate').textContent     = winRate.toFixed(0) + '%';
+
+  // 回収率バー（0〜200%を表示幅にマッピング）
+  const barPct = Math.min(Math.max(roi / 2, 0), 100);
   const bar = document.getElementById('roi-bar');
   bar.style.width = barPct + '%';
-  bar.className = 'roi-bar ' + (roi >= 0 ? 'pos' : 'neg');
+  bar.className   = 'roi-bar ' + (roi >= 100 ? 'pos' : 'neg');
+  document.getElementById('stat-roi-label').textContent = '回収率 ' + roi.toFixed(1) + '%';
 
   // Kill switch check
   if (dd > 0.20 && systemRunning) autoKillSwitch('ドローダウン20%超過');
