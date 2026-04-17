@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>KEIBA EV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --surface2: #1a1a24;
+  --border: rgba(255,255,255,0.08);
+  --border-bright: rgba(255,255,255,0.18);
+  --text: #e8e8f0;
+  --text-muted: rgba(232,232,240,0.45);
+  --text-dim: rgba(232,232,240,0.25);
+  --accent: #7c6af7;
+  --accent-glow: rgba(124,106,247,0.25);
+  --green: #3de08e;
+  --green-dim: rgba(61,224,142,0.12);
+  --red: #f25c5c;
+  --red-dim: rgba(242,92,92,0.12);
+  --amber: #f5a623;
+  --amber-dim: rgba(245,166,35,0.12);
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Noto Sans JP', sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  max-width: 430px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+/* ── Header ── */
+.header {
+  position: sticky; top:0; z-index:100;
+  background: rgba(10,10,15,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  display: flex; align-items:center; justify-content:space-between;
+}
+.header-title {
+  font-family: var(--mono);
+  font-size: 17px; font-weight:700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.kill-switch {
+  display: flex; align-items:center; gap:7px;
+  font-family: var(--mono); font-size:11px;
+  color: var(--text-muted); cursor:pointer;
+  border: 1px solid var(--border);
+  border-radius: 20px; padding: 5px 12px;
+  transition: all 0.2s;
+}
+.kill-switch:hover { border-color: var(--border-bright); }
+.ks-dot {
+  width:7px; height:7px; border-radius:50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+  animation: pulse 2s ease-in-out infinite;
+}
+.ks-dot.stopped { background: var(--red); box-shadow: 0 0 6px var(--red); animation:none; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+/* ── Tab bar ── */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.tab {
+  flex:1; padding: 13px 0; text-align:center;
+  font-size:12px; font-weight:500; color: var(--text-muted);
+  cursor:pointer; transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+  letter-spacing: 0.04em;
+}
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── Screens ── */
+.screen { display:none; padding: 20px; }
+.screen.active { display:block; }
+
+/* ── Section label ── */
+.label {
+  font-family: var(--mono); font-size:10px; font-weight:600;
+  letter-spacing: 0.12em; color: var(--text-dim);
+  text-transform: uppercase; margin-bottom:10px;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px; margin-bottom: 14px;
+  transition: border-color 0.2s;
+}
+.card:focus-within { border-color: var(--border-bright); }
+
+/* ── Input ── */
+.input-row {
+  display: flex; align-items:center; gap:10px; margin-bottom:12px;
+}
+.input-row:last-child { margin-bottom:0; }
+.input-label {
+  font-size: 12px; color: var(--text-muted); min-width: 100px;
+  letter-spacing:0.02em;
+}
+.input-field {
+  flex:1; background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 12px;
+  color: var(--text); font-family: var(--mono); font-size:15px;
+  outline:none; transition: border-color 0.2s; width:100%;
+}
+.input-field:focus { border-color: var(--accent); }
+.input-field::placeholder { color: var(--text-dim); }
+.unit {
+  font-family:var(--mono); font-size:13px;
+  color: var(--text-muted); min-width:24px;
+}
+
+/* ── Horse list ── */
+.horse-list { display:flex; flex-direction:column; gap:10px; margin-bottom:16px; }
+.horse-item {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 10px; padding:12px 14px;
+  display:flex; align-items:center; gap:10px;
+}
+.horse-num {
+  font-family:var(--mono); font-size:13px; font-weight:700;
+  color: var(--accent); min-width:22px;
+}
+.horse-inputs { flex:1; display:flex; flex-direction:column; gap:6px; }
+.horse-inputs input {
+  background: transparent; border:none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text); font-family: var(--mono); font-size:13px;
+  padding: 4px 0; outline:none; width:100%;
+}
+.horse-inputs input::placeholder { color:var(--text-dim); font-size:11px; }
+.horse-inputs input:focus { border-bottom-color: var(--accent); }
+.horse-del {
+  width:28px; height:28px; border-radius:50%; border:1px solid var(--border);
+  background:transparent; color:var(--text-muted); font-size:16px;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:all 0.2s;
+}
+.horse-del:hover { border-color: var(--red); color: var(--red); }
+
+/* ── Add horse button ── */
+.btn-add {
+  width:100%; padding:11px; border-radius:10px;
+  border: 1px dashed var(--border); background:transparent;
+  color: var(--text-muted); font-size:13px; cursor:pointer;
+  transition:all 0.2s; font-family:var(--sans);
+}
+.btn-add:hover { border-color: var(--accent); color:var(--accent); }
+
+/* ── Calculate button ── */
+.btn-calc {
+  width:100%; padding:16px; margin-top:16px;
+  border-radius:12px; border:none;
+  background: var(--accent); color:#fff;
+  font-family:var(--mono); font-size:15px; font-weight:700;
+  letter-spacing:0.08em; cursor:pointer;
+  transition: all 0.2s;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+.btn-calc:hover { transform: translateY(-1px); box-shadow: 0 4px 24px var(--accent-glow); }
+.btn-calc:active { transform: translateY(0); }
+
+/* ── Results ── */
+.result-card {
+  border-radius:14px; padding:20px; margin-bottom:12px;
+  border:1px solid var(--border); overflow:hidden; position:relative;
+}
+.result-card.bet {
+  background: var(--green-dim); border-color: rgba(61,224,142,0.3);
+}
+.result-card.skip {
+  background: var(--surface); border-color: var(--border);
+}
+.result-card.watch {
+  background: var(--amber-dim); border-color: rgba(245,166,35,0.3);
+}
+.result-verdict {
+  font-family:var(--mono); font-size:22px; font-weight:700;
+  margin-bottom:6px;
+}
+.result-verdict.bet { color: var(--green); }
+.result-verdict.skip { color: var(--text-muted); }
+.result-verdict.watch { color: var(--amber); }
+.result-horse { font-size:16px; font-weight:500; margin-bottom:14px; }
+
+.result-metrics {
+  display:grid; grid-template-columns:1fr 1fr 1fr;
+  gap:10px; margin-bottom:14px;
+}
+.metric { text-align:center; }
+.metric-val {
+  font-family:var(--mono); font-size:18px; font-weight:700;
+  line-height:1.1;
+}
+.metric-lbl { font-size:10px; color:var(--text-muted); margin-top:3px; letter-spacing:0.06em; }
+
+.result-reasons { margin-bottom:14px; }
+.reason-item {
+  font-size:11px; color:var(--text-muted); padding:4px 0;
+  display:flex; align-items:center; gap:6px;
+  border-bottom: 1px solid var(--border);
+}
+.reason-item:last-child { border:none; }
+.reason-icon { font-size:12px; }
+
+.bet-size-box {
+  background: var(--surface2); border-radius:10px; padding:14px;
+  text-align:center;
+}
+.bet-size-amount {
+  font-family:var(--mono); font-size:26px; font-weight:700;
+  color: var(--green); margin-bottom:3px;
+}
+.bet-size-sub { font-size:11px; color:var(--text-muted); }
+
+/* ── Record button ── */
+.btn-record {
+  width:100%; padding:12px; margin-top:10px;
+  border-radius:10px; border: 1px solid var(--border);
+  background:transparent; color:var(--text-muted);
+  font-family:var(--mono); font-size:12px; cursor:pointer;
+  transition:all 0.2s;
+}
+.btn-record:hover { border-color: var(--accent); color:var(--accent); }
+
+/* ── Records screen ── */
+.record-row {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; padding:14px; margin-bottom:10px;
+}
+.record-top {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:8px;
+}
+.record-date { font-family:var(--mono); font-size:11px; color:var(--text-muted); }
+.record-result {
+  font-family:var(--mono); font-size:12px; font-weight:700; padding:3px 10px;
+  border-radius:20px;
+}
+.record-result.win { background: var(--green-dim); color: var(--green); }
+.record-result.lose { background: var(--red-dim); color: var(--red); }
+.record-result.pending { background: var(--amber-dim); color: var(--amber); }
+.record-horse { font-size:14px; font-weight:500; margin-bottom:6px; }
+.record-nums {
+  display:flex; gap:16px; font-family:var(--mono); font-size:12px;
+  color:var(--text-muted);
+}
+
+/* ── Stats screen ── */
+.stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px; }
+.stat-box {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; padding:16px; text-align:center;
+}
+.stat-val {
+  font-family:var(--mono); font-size:28px; font-weight:700;
+  line-height:1; margin-bottom:5px;
+}
+.stat-lbl { font-size:11px; color:var(--text-muted); letter-spacing:0.06em; }
+.stat-val.positive { color: var(--green); }
+.stat-val.negative { color: var(--red); }
+.stat-val.neutral { color: var(--accent); }
+
+/* ── Kill switch modal ── */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background: rgba(0,0,0,0.7); z-index:200;
+  align-items:center; justify-content:center;
+}
+.modal-overlay.show { display:flex; }
+.modal {
+  background:var(--surface); border:1px solid var(--border-bright);
+  border-radius:16px; padding:24px; width:calc(100% - 48px); max-width:340px;
+}
+.modal-title {
+  font-family:var(--mono); font-size:15px; font-weight:700;
+  margin-bottom:12px; color: var(--red);
+}
+.modal-body { font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:20px; }
+.modal-btns { display:flex; gap:10px; }
+.modal-btn {
+  flex:1; padding:12px; border-radius:10px; border:1px solid var(--border);
+  background:transparent; color:var(--text-muted); font-family:var(--mono);
+  font-size:13px; cursor:pointer; transition:all 0.2s;
+}
+.modal-btn.danger {
+  background:var(--red-dim); border-color:rgba(242,92,92,0.4);
+  color:var(--red);
+}
+
+/* ── Empty state ── */
+.empty {
+  text-align:center; padding:40px 20px;
+  color: var(--text-dim); font-size:14px; line-height:2;
+}
+.empty-icon { font-size:32px; margin-bottom:8px; }
+
+/* ── Toast ── */
+.toast {
+  position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
+  background:var(--surface2); border:1px solid var(--border-bright);
+  border-radius:10px; padding:10px 20px;
+  font-family:var(--mono); font-size:12px; color:var(--text);
+  opacity:0; transition: opacity 0.3s; pointer-events:none; white-space:nowrap;
+  z-index:300;
+}
+.toast.show { opacity:1; }
+
+/* ── Filter pills ── */
+.filter-row { display:flex; gap:8px; margin-bottom:14px; overflow-x:auto; padding-bottom:4px; }
+.filter-row::-webkit-scrollbar { display:none; }
+.pill {
+  flex-shrink:0; padding:6px 14px; border-radius:20px;
+  border:1px solid var(--border); background:transparent;
+  font-size:11px; color:var(--text-muted); cursor:pointer; transition:all 0.2s;
+  font-family:var(--mono);
+}
+.pill.active { background:var(--accent-glow); border-color:var(--accent); color:var(--accent); }
+
+/* ── Progress bar ── */
+.roi-bar-wrap { background:var(--surface2); border-radius:6px; height:6px; overflow:hidden; margin-top:8px; }
+.roi-bar { height:100%; border-radius:6px; transition:width 0.6s ease; }
+.roi-bar.pos { background:var(--green); }
+.roi-bar.neg { background:var(--red); }
+
+.section-title {
+  font-family:var(--mono); font-size:12px; font-weight:700;
+  color:var(--accent); margin-bottom:14px; letter-spacing:0.08em;
+}
+
+/* ── Race info inputs ── */
+.race-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+.field-wrap { display:flex; flex-direction:column; gap:5px; }
+.field-wrap .field-lbl { font-size:11px; color:var(--text-dim); letter-spacing:0.06em; }
+.field-wrap .input-field { margin:0; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">KEIBA·EV</div>
+  <div class="kill-switch" onclick="toggleKillSwitch()">
+    <div class="ks-dot" id="ks-dot"></div>
+    <span id="ks-label">RUNNING</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('calc')">EV計算</div>
+  <div class="tab" onclick="switchTab('records')">収支記録</div>
+  <div class="tab" onclick="switchTab('stats')">分析</div>
+</div>
+
+<!-- ──────── CALC SCREEN ──────── -->
+<div class="screen active" id="screen-calc">
+
+  <div class="section-title">レース情報</div>
+  <div class="card">
+    <div class="race-grid">
+      <div class="field-wrap">
+        <span class="field-lbl">レース名</span>
+        <input type="text" class="input-field" id="race-name" placeholder="例：東京11R">
+      </div>
+      <div class="field-wrap">
+        <span class="field-lbl">自己資金(円)</span>
+        <input type="number" class="input-field" id="bankroll" placeholder="10000" value="10000">
+      </div>
+    </div>
+    <div class="race-grid">
+      <div class="field-wrap">
+        <span class="field-lbl">馬場状態</span>
+        <select class="input-field" id="track-cond" style="cursor:pointer">
+          <option value="良">良</option>
+          <option value="稍重">稍重</option>
+          <option value="重">重</option>
+          <option value="不良">不良</option>
+        </select>
+      </div>
+      <div class="field-wrap">
+        <span class="field-lbl">出走頭数</span>
+        <input type="number" class="input-field" id="horse-count" placeholder="16" min="1" max="18">
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">対象馬の入力</div>
+  <div class="horse-list" id="horse-list"></div>
+  <button class="btn-add" onclick="addHorse()">＋ 馬を追加</button>
+
+  <button class="btn-calc" onclick="calculate()" id="calc-btn">EV を計算する</button>
+
+  <div id="results-area" style="margin-top:20px;"></div>
+</div>
+
+<!-- ──────── RECORDS SCREEN ──────── -->
+<div class="screen" id="screen-records">
+  <div class="section-title">ベット記録</div>
+  <div class="filter-row">
+    <div class="pill active" onclick="filterRecords('all', this)">すべて</div>
+    <div class="pill" onclick="filterRecords('pending', this)">未確定</div>
+    <div class="pill" onclick="filterRecords('win', this)">的中</div>
+    <div class="pill" onclick="filterRecords('lose', this)">不的中</div>
+  </div>
+  <div id="records-list"></div>
+</div>
+
+<!-- ──────── STATS SCREEN ──────── -->
+<div class="screen" id="screen-stats">
+  <div class="section-title">パフォーマンス</div>
+  <div class="stat-grid">
+    <div class="stat-box">
+      <div class="stat-val neutral" id="stat-bets">0</div>
+      <div class="stat-lbl">TOTAL BETS</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-val neutral" id="stat-roi">0%</div>
+      <div class="stat-lbl">ROI</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-val neutral" id="stat-pnl">¥0</div>
+      <div class="stat-lbl">PNL</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-val neutral" id="stat-dd">0%</div>
+      <div class="stat-lbl">MAX DD</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="label">回収率推移</div>
+    <div class="roi-bar-wrap">
+      <div class="roi-bar pos" id="roi-bar" style="width:0%"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:8px">
+      <span style="font-family:var(--mono);font-size:10px;color:var(--text-dim)">0%</span>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--text-dim)">100%(損益分岐)</span>
+    </div>
+  </div>
+  <div class="card" id="kill-status-card">
+    <div class="label">システム状態</div>
+    <div id="system-status-text" style="font-family:var(--mono);font-size:13px;color:var(--green)">
+      ● RUNNING — 正常動作中
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:8px;line-height:1.6">
+      Kill Switch条件：DD &gt; 20% / 連続エラー3回 / オッズ急変 &gt;20%
+    </div>
+  </div>
+  <button class="btn-record" onclick="clearAllRecords()" style="color:var(--red);border-color:rgba(242,92,92,0.3)">
+    記録をすべて削除
+  </button>
+</div>
+
+<!-- Kill Switch Modal -->
+<div class="modal-overlay" id="ks-modal">
+  <div class="modal">
+    <div class="modal-title" id="ks-modal-title">⚠ KILL SWITCH</div>
+    <div class="modal-body" id="ks-modal-body">システムを停止しますか？<br>停止中はすべての判定がSKIPになります。</div>
+    <div class="modal-btns">
+      <button class="modal-btn" onclick="closeModal()">キャンセル</button>
+      <button class="modal-btn danger" id="ks-confirm-btn" onclick="confirmKillSwitch()">停止する</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── State ──
+let horses = [];
+let records = [];
+let systemRunning = true;
+let horseCounter = 0;
+const DB_KEY = 'keiba_ev_records';
+const KS_KEY = 'keiba_ev_ks';
+
+// ── Init ──
+function init() {
+  loadRecords();
+  loadKillSwitch();
+  addHorse();
+  addHorse();
+  renderRecords('all');
+  updateStats();
+}
+
+// ── Tabs ──
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach((t,i) => {
+    const ids = ['calc','records','stats'];
+    t.classList.toggle('active', ids[i] === id);
+  });
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  if (id === 'records') renderRecords('all');
+  if (id === 'stats') updateStats();
+}
+
+// ── Horse management ──
+function addHorse() {
+  horseCounter++;
+  const h = { id: horseCounter, name:'', odds:'', estProb:'' };
+  horses.push(h);
+  renderHorses();
+}
+function removeHorse(id) {
+  if (horses.length <= 1) { showToast('最低1頭必要です'); return; }
+  horses = horses.filter(h => h.id !== id);
+  renderHorses();
+}
+function renderHorses() {
+  const list = document.getElementById('horse-list');
+  list.innerHTML = horses.map((h, i) => `
+    <div class="horse-item">
+      <div class="horse-num">${i+1}</div>
+      <div class="horse-inputs">
+        <input type="text" placeholder="馬名（省略可）" value="${h.name}"
+          oninput="horses[${i}].name=this.value">
+        <input type="number" placeholder="単勝オッズ（例：5.6）" value="${h.odds}" step="0.1" min="1"
+          oninput="horses[${i}].odds=this.value">
+        <input type="number" placeholder="推定勝率 % （例：18）" value="${h.estProb}" step="1" min="1" max="99"
+          oninput="horses[${i}].estProb=this.value">
+      </div>
+      <button class="horse-del" onclick="removeHorse(${h.id})">×</button>
+    </div>
+  `).join('');
+}
+
+// ── EV Engine ──
+function calcEV(p, odds) {
+  return p * odds - 1;
+}
+function calcRRR(p, odds) {
+  return p * odds; // expected return per unit risked
+}
+function calcKelly(p, odds) {
+  const k = (p * (odds - 1) - (1 - p)) / (odds - 1);
+  return Math.max(0, k);
+}
+function calcBetSize(p, odds, bankroll, lambda) {
+  const k = calcKelly(p, odds);
+  const quarter = k * 0.25 * lambda;
+  const capped = Math.min(quarter, 0.02);
+  return Math.floor(bankroll * capped / 100) * 100;
+}
+
+// ── Filters ──
+function checkFilters(h, headCount, trackCond) {
+  const reasons = [];
+  const passed = [];
+  // Odds minimum
+  if (parseFloat(h.odds) < 2.5) reasons.push({ icon:'✗', text:'オッズ2.5倍未満（1番人気圏）' });
+  else passed.push({ icon:'✓', text:`オッズ ${h.odds}倍（除外圏外）` });
+  // Head count
+  if (parseInt(headCount) < 8) reasons.push({ icon:'✗', text:'出走頭数8頭未満' });
+  else passed.push({ icon:'✓', text:`${headCount}頭立て（適正頭数）` });
+  // Heavy track bonus
+  if (['重','不良'].includes(trackCond)) {
+    passed.push({ icon:'◎', text:`${trackCond}馬場（歪み発生条件）` });
+  }
+  return { reasons, passed, ok: reasons.length === 0 };
+}
+
+function calculate() {
+  if (!systemRunning) {
+    showToast('⚠ Kill Switch 発動中 — すべてSKIP');
+    return;
+  }
+  const bankroll = parseFloat(document.getElementById('bankroll').value) || 10000;
+  const trackCond = document.getElementById('track-cond').value;
+  const headCount = document.getElementById('horse-count').value || 16;
+  const area = document.getElementById('results-area');
+  area.innerHTML = '';
+
+  let valid = false;
+  horses.forEach((h, i) => {
+    if (!h.odds || !h.estProb) return;
+    valid = true;
+    const odds = parseFloat(h.odds);
+    const p = parseFloat(h.estProb) / 100;
+    const ev = calcEV(p, odds);
+    const rrr = calcRRR(p, odds);
+    const { reasons, passed, ok } = checkFilters(h, headCount, trackCond);
+
+    // Regime lambda based on drawdown (simplified)
+    const ddRatio = calcCurrentDD();
+    const lambda = ddRatio > 0.2 ? 0.3 : ddRatio > 0.15 ? 0.6 : 1.0;
+
+    const isBet = ok && ev >= 0.20 && rrr >= 2.0;
+    const isWatch = ok && ev >= 0.10 && ev < 0.20;
+    const verdict = !ok ? 'skip' : isBet ? 'bet' : isWatch ? 'watch' : 'skip';
+    const verdictLabel = { bet:'◎ BET', watch:'△ 様子見', skip:'✗ SKIP' }[verdict];
+
+    const betAmt = isBet ? calcBetSize(p, odds, bankroll, lambda) : 0;
+    const horseName = h.name || `${i+1}番`;
+
+    const html = `
+      <div class="result-card ${verdict}">
+        <div class="result-verdict ${verdict}">${verdictLabel}</div>
+        <div class="result-horse">${horseName} — ${odds}倍</div>
+        <div class="result-metrics">
+          <div class="metric">
+            <div class="metric-val" style="color:${ev>=0.2?'var(--green)':ev>=0?'var(--amber)':'var(--red)'}">
+              ${(ev*100).toFixed(1)}%
+            </div>
+            <div class="metric-lbl">EV</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val" style="color:${rrr>=2?'var(--green)':'var(--amber)'}">
+              ${rrr.toFixed(2)}
+            </div>
+            <div class="metric-lbl">RRR</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val" style="color:var(--text-muted)">
+              ${(p*100).toFixed(0)}%
+            </div>
+            <div class="metric-lbl">推定勝率</div>
+          </div>
+        </div>
+        <div class="result-reasons">
+          ${passed.map(r=>`<div class="reason-item"><span class="reason-icon" style="color:var(--green)">${r.icon}</span>${r.text}</div>`).join('')}
+          ${reasons.map(r=>`<div class="reason-item"><span class="reason-icon" style="color:var(--red)">${r.icon}</span>${r.text}</div>`).join('')}
+          ${!ok?'':ev<0.20?`<div class="reason-item"><span class="reason-icon" style="color:var(--red)">✗</span>EV ${(ev*100).toFixed(1)}% — 閾値20%未達</div>`:''}
+          ${!ok?'':rrr<2.0?`<div class="reason-item"><span class="reason-icon" style="color:var(--red)">✗</span>RRR ${rrr.toFixed(2)} — 閾値2.0未達</div>`:''}
+        </div>
+        ${isBet ? `
+          <div class="bet-size-box">
+            <div class="bet-size-amount">¥${betAmt.toLocaleString()}</div>
+            <div class="bet-size-sub">推奨ベット額 (1/4ケリー × λ${lambda.toFixed(1)} × 上限2%)</div>
+          </div>
+          <button class="btn-record" onclick='recordBet(${JSON.stringify({horseName, odds, betAmt, ev:parseFloat((ev*100).toFixed(1)), p:parseFloat((p*100).toFixed(0)), raceName: document.getElementById("race-name").value || "不明"})})'>
+            📝 ベットを記録する
+          </button>
+        ` : ''}
+      </div>
+    `;
+    area.innerHTML += html;
+  });
+  if (!valid) { showToast('オッズと推定勝率を入力してください'); }
+}
+
+// ── Records ──
+function recordBet(data) {
+  const rec = {
+    id: Date.now(),
+    date: new Date().toLocaleDateString('ja-JP', {month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}),
+    raceName: data.raceName,
+    horseName: data.horseName,
+    odds: data.odds,
+    betAmt: data.betAmt,
+    ev: data.ev,
+    p: data.p,
+    result: 'pending',
+    pnl: 0
+  };
+  records.unshift(rec);
+  saveRecords();
+  showToast('ベットを記録しました');
+}
+function updateResult(id, result) {
+  const rec = records.find(r => r.id === id);
+  if (!rec) return;
+  rec.result = result;
+  rec.pnl = result === 'win' ? Math.round(rec.betAmt * rec.odds - rec.betAmt) : -rec.betAmt;
+  saveRecords();
+  renderRecords('all');
+  updateStats();
+}
+function renderRecords(filter) {
+  const list = document.getElementById('records-list');
+  const filtered = filter === 'all' ? records : records.filter(r => r.result === filter);
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty"><div class="empty-icon">📋</div>記録なし</div>';
+    return;
+  }
+  list.innerHTML = filtered.map(rec => `
+    <div class="record-row">
+      <div class="record-top">
+        <span class="record-date">${rec.date} ${rec.raceName}</span>
+        <span class="record-result ${rec.result}">${{win:'的中',lose:'不的中',pending:'未確定'}[rec.result]}</span>
+      </div>
+      <div class="record-horse">${rec.horseName} — ${rec.odds}倍</div>
+      <div class="record-nums">
+        <span>¥${rec.betAmt.toLocaleString()}</span>
+        <span>EV: ${rec.ev}%</span>
+        ${rec.result !== 'pending' ? `<span style="color:${rec.pnl>=0?'var(--green)':'var(--red)'}">
+          ${rec.pnl>=0?'+':''}¥${rec.pnl.toLocaleString()}</span>` : ''}
+      </div>
+      ${rec.result === 'pending' ? `
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button onclick="updateResult(${rec.id},'win')" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(61,224,142,0.3);background:var(--green-dim);color:var(--green);font-size:12px;cursor:pointer;font-family:var(--mono)">的中</button>
+          <button onclick="updateResult(${rec.id},'lose')" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(242,92,92,0.3);background:var(--red-dim);color:var(--red);font-size:12px;cursor:pointer;font-family:var(--mono)">不的中</button>
+        </div>` : ''}
+    </div>
+  `).join('');
+}
+function filterRecords(f, el) {
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  renderRecords(f);
+}
+
+// ── Stats ──
+function updateStats() {
+  const settled = records.filter(r => r.result !== 'pending');
+  const wins = settled.filter(r => r.result === 'win');
+  const totalBet = settled.reduce((s,r) => s + r.betAmt, 0);
+  const totalPnl = settled.reduce((s,r) => s + r.pnl, 0);
+  const roi = totalBet > 0 ? (totalPnl / totalBet * 100) : 0;
+  const dd = calcCurrentDD();
+
+  document.getElementById('stat-bets').textContent = records.length;
+  document.getElementById('stat-roi').textContent = roi.toFixed(1) + '%';
+  document.getElementById('stat-roi').className = 'stat-val ' + (roi>=0?'positive':'negative');
+  document.getElementById('stat-pnl').textContent = (totalPnl>=0?'+':'') + '¥' + totalPnl.toLocaleString();
+  document.getElementById('stat-pnl').className = 'stat-val ' + (totalPnl>=0?'positive':'negative');
+  document.getElementById('stat-dd').textContent = (dd*100).toFixed(1) + '%';
+  document.getElementById('stat-dd').className = 'stat-val ' + (dd>0.15?'negative':'neutral');
+
+  const barPct = Math.min(Math.max(roi + 100, 0), 200) / 2;
+  const bar = document.getElementById('roi-bar');
+  bar.style.width = barPct + '%';
+  bar.className = 'roi-bar ' + (roi >= 0 ? 'pos' : 'neg');
+
+  // Kill switch check
+  if (dd > 0.20 && systemRunning) autoKillSwitch('ドローダウン20%超過');
+}
+function calcCurrentDD() {
+  if (!records.length) return 0;
+  let peak = 0, cur = 0, maxDD = 0;
+  [...records].reverse().forEach(r => {
+    if (r.result !== 'pending') {
+      cur += r.pnl;
+      if (cur > peak) peak = cur;
+      const dd = peak > 0 ? (peak - cur) / peak : 0;
+      if (dd > maxDD) maxDD = dd;
+    }
+  });
+  return maxDD;
+}
+
+// ── Kill Switch ──
+function toggleKillSwitch() {
+  const modal = document.getElementById('ks-modal');
+  const title = document.getElementById('ks-modal-title');
+  const body = document.getElementById('ks-modal-body');
+  const btn = document.getElementById('ks-confirm-btn');
+  if (systemRunning) {
+    title.textContent = '⚠ システム停止';
+    body.textContent = 'Kill Switchを発動します。\n停止中はすべての判定がSKIPになります。';
+    btn.textContent = '停止する';
+  } else {
+    title.textContent = '✓ システム再起動';
+    title.style.color = 'var(--green)';
+    body.textContent = 'システムを再起動します。\n運用を再開します。';
+    btn.textContent = '再起動する';
+    btn.style.background = 'var(--green-dim)';
+    btn.style.borderColor = 'rgba(61,224,142,0.4)';
+    btn.style.color = 'var(--green)';
+  }
+  modal.classList.add('show');
+}
+function closeModal() {
+  document.getElementById('ks-modal').classList.remove('show');
+  const btn = document.getElementById('ks-confirm-btn');
+  btn.style.background = '';  btn.style.borderColor = '';  btn.style.color = '';
+  document.getElementById('ks-modal-title').style.color = '';
+}
+function confirmKillSwitch() {
+  systemRunning = !systemRunning;
+  updateKillSwitchUI();
+  saveKillSwitch();
+  closeModal();
+  showToast(systemRunning ? '✓ システム再起動' : '⚠ Kill Switch 発動');
+}
+function autoKillSwitch(reason) {
+  systemRunning = false;
+  updateKillSwitchUI();
+  saveKillSwitch();
+  showToast('⚠ 自動停止: ' + reason);
+}
+function updateKillSwitchUI() {
+  const dot = document.getElementById('ks-dot');
+  const lbl = document.getElementById('ks-label');
+  const txt = document.getElementById('system-status-text');
+  if (systemRunning) {
+    dot.classList.remove('stopped');
+    lbl.textContent = 'RUNNING';
+    txt.style.color = 'var(--green)';
+    txt.textContent = '● RUNNING — 正常動作中';
+  } else {
+    dot.classList.add('stopped');
+    lbl.textContent = 'STOPPED';
+    txt.style.color = 'var(--red)';
+    txt.textContent = '● STOPPED — Kill Switch 発動中';
+  }
+}
+
+// ── Persist ──
+function saveRecords() { try { localStorage.setItem(DB_KEY, JSON.stringify(records)); } catch(e){} }
+function loadRecords() { try { const d = localStorage.getItem(DB_KEY); if(d) records = JSON.parse(d); } catch(e){} }
+function saveKillSwitch() { try { localStorage.setItem(KS_KEY, systemRunning?'1':'0'); } catch(e){} }
+function loadKillSwitch() { try { const v = localStorage.getItem(KS_KEY); if(v==='0'){systemRunning=false;updateKillSwitchUI();} } catch(e){} }
+function clearAllRecords() {
+  if (!confirm('すべての記録を削除しますか？')) return;
+  records = [];
+  saveRecords();
+  renderRecords('all');
+  updateStats();
+  showToast('記録を削除しました');
+}
+
+// ── Toast ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+init();
+</script>
+</body>
+</html>
