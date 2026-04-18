@@ -28,4 +28,4 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "データ更新"
-          file_pattern: data/ra
+          file_pattern: data/races.json
