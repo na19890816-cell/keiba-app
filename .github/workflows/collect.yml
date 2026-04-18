@@ -1,0 +1,33 @@
+name: 競馬データ収集
+
+on:
+  schedule:
+    # 毎日日本時間 午前2時に実行
+    - cron: '0 17 * * *'
+  workflow_dispatch:  # 手動実行ボタンも使えるようにする
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Node.js セットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: 依存関係インストール
+        run: npm install node-fetch cheerio
+        working-directory: scripts
+        
+      - name: データ収集実行
+        run: node scripts/collect.js
+        
+      - name: データをコミット
+        run: |
+          git config user.name "keiba-bot"
+          git config user.email "bot@keiba"
+          git add data/
+          git diff --staged --quiet || git commit -m "データ更新 $(date '+%Y-%m-%d')"
+          git push
