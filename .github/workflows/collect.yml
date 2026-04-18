@@ -1,10 +1,8 @@
 name: 競馬データ収集
-
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 17 * * *'
-  workflow_dispatch:
-
 jobs:
   collect:
     runs-on: ubuntu-latest
@@ -12,22 +10,25 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: 依存関係インストール
-        run: cd scripts && npm init -y && npm install node-fetch cheerio
+      - run: |
+          cd scripts
+          echo '{"type":"module","dependencies":{"node-fetch":"^3.0.0","cheerio":"^1.0.0"}}' > package.json
+          npm install
 
-      - name: データ収集実行
-        run: node scripts/collect.js
+      - run: node scripts/collect.js
 
-      - name: データをコミット
-        run: |
+      - run: |
           git config user.name "keiba-bot"
           git config user.email "bot@keiba.local"
-          git pull --rebase origin main
           git add data/
-          git diff --staged --quiet || git commit -m "データ更新 $(date '+%Y-%m-%d')"
+          git diff --staged --quiet && echo "変更なし" && exit 0
+          git commit -m "データ更新 $(date '+%Y-%m-%d')"
+          git pull --rebase origin main
           git push
