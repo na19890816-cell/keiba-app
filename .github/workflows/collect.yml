@@ -30,5 +30,4 @@ jobs:
           git add data/
           git diff --staged --quiet && echo "変更なし" && exit 0
           git commit -m "データ更新 $(date '+%Y-%m-%d')"
-          git pull --rebase origin main
-          git push --force
+          git push origin HEAD:main --force
