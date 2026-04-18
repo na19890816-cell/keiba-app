@@ -25,7 +25,9 @@ jobs:
 
       - run: node scripts/collect.js
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "データ更新"
-          file_pattern: data/races.json
+      - run: |
+          git config user.name "keiba-bot"
+          git config user.email "bot@keiba.local"
+          git add -f data/races.json
+          git diff --staged --quiet || git commit -m "データ更新"
+          git push origin HEAD:refs/heads/main
