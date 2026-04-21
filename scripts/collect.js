@@ -138,7 +138,7 @@ async function fetchRaceResult(raceId) {
         }
 
         // 人気（1〜18の整数のみ）
-        if (!popular && /^\d{1,2}$/.test(txt)) {
+        if (odds && !popular && /^\d{1,2}$/.test(txt)) {
           const n = parseInt(txt);
           if (n >= 1 && n <= 18) {
             popular = n;
