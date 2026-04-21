@@ -48,6 +48,11 @@ async function fetchRaceResult(raceId) {
     const $ = cheerio.load(decoded);
 
     const table = $('table.race_table_01');
+    // デバッグ：タイトルと最初のdata2要素を出力（次回削除）
+    console.log('DEBUG title:', $('title').text().trim().slice(0, 50));
+    console.log('DEBUG h1:', $('h1').first().text().trim().slice(0, 50));
+    console.log('DEBUG RaceData02:', $('div.RaceData02').text().trim().slice(0, 80));
+    console.log('DEBUG SmallTitle:', $('div.SmallTitle').text().trim().slice(0, 80));
     if (!table.length) return null;
 
     // ── レース基本情報 ──
@@ -138,9 +143,11 @@ async function fetchRaceResult(raceId) {
         }
 
         // 人気（1〜18の整数のみ）
-        if (odds && !popular && /^\d{1,2}$/.test(txt)) {
+       if (odds && !popular && /^\d{1,2}$/.test(txt)) {
           const n = parseInt(txt);
-          if (n >= 1 && n <= 18) {
+          // 馬番・枠番・着順と重複しないよう
+          // すでに取得済みの値と異なることを確認
+          if (n >= 1 && n <= 18 && n !== gate && n !== number) {
             popular = n;
             return;
           }
