@@ -47,20 +47,15 @@ async function fetchRaceResult(raceId) {
     const decoded = new TextDecoder('euc-jp').decode(buf);
     const $ = cheerio.load(decoded);
 
-    // レーステーブルの存在確認
     const table = $('table.race_table_01');
     if (!table.length) return null;
 
     // ── レース基本情報 ──
-    // レース名
     const raceName = $('h1.RaceName').text().trim()
                   || $('div.RaceList_Item02 h1').text().trim()
                   || '';
 
-    // RaceData01：発走時刻・天気など
     const data1 = $('div.RaceData01').text().replace(/\s+/g, ' ').trim();
-
-    // RaceData02：距離・馬場・コース情報
     const data2 = $('div.RaceData02').text().replace(/\s+/g, ' ').trim();
 
     const distMatch  = data2.match(/(\d{3,4})m/);
@@ -68,10 +63,6 @@ async function fetchRaceResult(raceId) {
     const condMatch  = data2.match(/(良|稍重|重|不良)/);
     const dirMatch   = data2.match(/(右|左|直線)/);
 
-    // 日付：race_idから直接生成（最も確実）
-    const y   = raceId.slice(0, 4);
-    const mon = raceId.slice(4, 6);
-    // 開催場コードから場名を変換
     const venueCode = raceId.slice(4, 6);
     const venueMap = {
       '01':'札幌','02':'函館','03':'福島','04':'新潟',
@@ -83,7 +74,7 @@ async function fetchRaceResult(raceId) {
       id:       raceId,
       name:     raceName,
       venue:    venueMap[venueCode] || venueCode,
-      year:     y,
+      year:     raceId.slice(0, 4),
       distance: distMatch  ? distMatch[1]  : '',
       track:    trackMatch ? trackMatch[1] : '',
       cond:     condMatch  ? condMatch[1]  : '',
@@ -95,40 +86,90 @@ async function fetchRaceResult(raceId) {
     // ── 出走馬データ ──
     const horses = [];
     table.find('tr').each((i, row) => {
-      if (i === 0) return; // ヘッダースキップ
+      if (i === 0) return;
       const cols = $(row).find('td');
-      if (cols.length < 11) return;
+      if (cols.length < 8) return;
 
-      const finishText = $(cols[0]).text().trim();
-      const finish = parseInt(finishText) || 99;
-
-      // 馬名・騎手はリンクテキストから取得
+      // ── 固定列（位置が変わらない項目）──
+      const finish = parseInt($(cols[0]).text().trim()) || 99;
+      const gate   = parseInt($(cols[1]).text().trim()) || 0;
+      const number = parseInt($(cols[2]).text().trim()) || 0;
       const name   = $(cols[3]).find('a').text().trim()
                   || $(cols[3]).text().trim();
-      const jockey = $(cols[6]).find('a').text().trim()
-                  || $(cols[6]).text().trim();
       if (!name) return;
 
-      // 馬体重と増減を分離（例："482(-4)"）
-      const weightRaw = $(cols[13]).text().trim();
-      const weightMatch = weightRaw.match(/(\d+)\(([+-]?\d+)\)/);
-      const bodyWeight  = weightMatch ? parseInt(weightMatch[1]) : 0;
-      const weightDiff  = weightMatch ? parseInt(weightMatch[2]) : 0;
+      const ageGender = $(cols[4]).text().trim();
+      const weight    = $(cols[5]).text().trim();
+      const jockey    = $(cols[6]).find('a').text().trim()
+                     || $(cols[6]).text().trim();
+      const time      = $(cols[7]).text().trim();
+
+      // ── 可変列（列番号に依存しない方法で取得）──
+      let timeDiff = '', passing = '', last3F = '';
+      let odds = 0, popular = 0;
+      let bodyWeight = 0, weightDiff = 0;
+
+      cols.each((ci, col) => {
+        if (ci <= 7) return; // 固定列はスキップ
+        const txt = $(col).text().trim();
+
+        // 着差（クビ・ハナ・アタマ・数字.数字形式）
+        if (!timeDiff && /^(クビ|ハナ|アタマ|\d+\.\d+\/\d+|\d+)$/.test(txt)) {
+          timeDiff = txt;
+          return;
+        }
+
+        // 通過順（数字-数字形式、例：3-3-4-5）
+        if (!passing && /^\d+[-－]\d+/.test(txt)) {
+          passing = txt;
+          return;
+        }
+
+        // 上がり3F（秒数、例：34.5）
+        if (!last3F && /^\d{2}\.\d$/.test(txt)) {
+          last3F = txt;
+          return;
+        }
+
+        // 単勝オッズ（小数点1桁、例：3.5 / 12.8）
+        if (!odds && /^\d+\.\d$/.test(txt)) {
+          odds = parseFloat(txt);
+          return;
+        }
+
+        // 人気（1〜18の整数のみ）
+        if (!popular && /^\d{1,2}$/.test(txt)) {
+          const n = parseInt(txt);
+          if (n >= 1 && n <= 18) {
+            popular = n;
+            return;
+          }
+        }
+
+        // 馬体重（例：482(-4) または 482(+2)）
+        if (!bodyWeight && /^\d{3}\([+-]?\d+\)$/.test(txt)) {
+          const m = txt.match(/(\d+)\(([+-]?\d+)\)/);
+          if (m) {
+            bodyWeight = parseInt(m[1]);
+            weightDiff = parseInt(m[2]);
+          }
+        }
+      });
 
       horses.push({
         finish,
-        gate:       parseInt($(cols[1]).text().trim()) || 0,
-        number:     parseInt($(cols[2]).text().trim()) || 0,
+        gate,
+        number,
         name:       name.trim(),
-        ageGender:  $(cols[4]).text().trim(),   // 性齢（牡5等）
-        weight:     $(cols[5]).text().trim(),   // 斤量
+        ageGender,
+        weight,
         jockey:     jockey.trim(),
-        time:       $(cols[7]).text().trim(),
-        timeDiff:   $(cols[8]).text().trim(),   // 着差
-        passing:    $(cols[9]).text().trim(),   // 通過順
-        last3F:     $(cols[10]).text().trim(),  // 上がり3F
-        odds:       parseFloat($(cols[11]).text().trim()) || 0,  // 単勝オッズ
-        popular:    parseInt($(cols[12]).text().trim())   || 0,  // 人気
+        time,
+        timeDiff,
+        passing,
+        last3F,
+        odds,
+        popular,
         bodyWeight,
         weightDiff,
       });
@@ -172,13 +213,12 @@ async function main() {
     const result = await fetchRaceResult(id);
     if (result) {
       newRaces.push(result);
-      // 取得確認ログ（最初の馬のオッズを表示）
-      const sample = result.horses[0];
+      const s = result.horses[0];
       console.log(
-        `✓ ${result.name || id} ` +
-        `${result.horses.length}頭 ` +
-        `[${result.track}${result.distance}m ${result.cond}] ` +
-        `先頭馬オッズ:${sample?.odds} 人気:${sample?.popular}`
+        `✓ ${result.name||id} ${result.horses.length}頭` +
+        ` [${result.track}${result.distance}m ${result.cond}]` +
+        ` オッズ:${s?.odds} 人気:${s?.popular}` +
+        ` 体重:${s?.bodyWeight} 上がり:${s?.last3F}`
       );
     } else {
       console.log(`- データなし: ${id}`);
