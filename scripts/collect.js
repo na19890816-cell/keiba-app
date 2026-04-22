@@ -48,35 +48,36 @@ async function fetchRaceResult(raceId) {
     const table = $db('table.race_table_01');
     if (!table.length) return null;
 
-    // ── Step2: race.netkeiba でレース情報を取得 ──
-    const spHtml = await fetchPage(`https://race.netkeiba.com/race/result.html?race_id=${raceId}`);
+  
+    // ── Step2: race情報はdb.netkeibaのtitleとmetaから取得 ──
     let name = '', distance = '', track = '', cond = '', dir = '';
 
-    if (spHtml) {
-      const $sp = cheerio.load(spHtml);
+    // titleタグから取得（例：「東京11R 安田記念(G1) 芝1600m 良」）
+    const titleTxt = $db('title').text().replace(/\s+/g,' ').trim();
+    const h1Txt    = $db('h1').first().text().replace(/\s+/g,' ').trim();
+    const spanTxt  = $db('div.RaceData01, div.RaceData02, .race_conditions')
+                       .text().replace(/\s+/g,' ').trim();
 
-      // レース名
-      name = $sp('h1.RaceName').text().trim()
-          || $sp('.RaceList_Item02 h1').text().trim()
-          || $sp('.race_name').text().trim()
-          || '';
+    // 全テキストを結合して情報を抽出
+    const allTxt = titleTxt + ' ' + h1Txt + ' ' + spanTxt;
 
-      // レース条件テキスト（例：芝1600m（左）良）
-      const condTxt = $sp('.RaceData01').text().replace(/\s+/g,' ').trim()
-                   + ' ' + $sp('.RaceData02').text().replace(/\s+/g,' ').trim();
+    const dm  = allTxt.match(/(\d{3,4})m/);
+    const tm  = allTxt.match(/(芝|ダート|障害)/);
+    const cm  = allTxt.match(/(良|稍重|重|不良)/);
+    const dm2 = allTxt.match(/(右|左|直線)/);
 
-      const dm = condTxt.match(/(\d{3,4})m/);
-      const tm = condTxt.match(/(芝|ダート|障害)/);
-      const cm = condTxt.match(/(良|稍重|重|不良)/);
-      const dm2 = condTxt.match(/(右|左|直線)/);
+    distance = dm  ? dm[1]  : '';
+    track    = tm  ? tm[1]  : '';
+    cond     = cm  ? cm[1]  : '';
+    dir      = dm2 ? dm2[1] : '';
 
-      distance = dm  ? dm[1]  : '';
-      track    = tm  ? tm[1]  : '';
-      cond     = cm  ? cm[1]  : '';
-      dir      = dm2 ? dm2[1] : '';
+    // レース名：h1またはtitleから
+    name = h1Txt.replace(/[\s\d]+R\s*/, '').trim()
+        || titleTxt.split('|')[0].trim()
+        || '';
 
-      console.log(`  レース情報: ${name} ${track}${distance}m ${cond}`);
-    }
+    console.log(`  INFO title="${titleTxt.slice(0,60)}"`);
+    console.log(`  INFO 抽出: ${track}${distance}m ${cond} "${name}"`);
 
     // ── Step3: 馬ごとのデータ解析 ──
     const horses = [];
@@ -114,10 +115,13 @@ async function fetchRaceResult(raceId) {
         if (!last3F && /^\d{2}\.\d$/.test(txt)) {
           last3F = txt; return;
         }
-        if (!odds && /^\d+\.\d$/.test(txt)) {
-          odds = parseFloat(txt);
-          oddsColIndex = ci;
-          return;
+        if (!odds && /^\d+(\.\d)?$/.test(txt)) {
+          const v = parseFloat(txt);
+          if (v >= 1.0 && v <= 999) {
+            odds = v;
+            oddsColIndex = ci;
+            return;
+          }
         }
         // popular: oddsの直後の列
         if (odds && !popular && ci === oddsColIndex + 1) {
