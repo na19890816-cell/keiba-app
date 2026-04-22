@@ -49,35 +49,48 @@ async function fetchRaceResult(raceId) {
     if (!table.length) return null;
 
   
-    // ── Step2: race情報はdb.netkeibaのtitleとmetaから取得 ──
+// ── Step2: JRA公式サイトからレース情報を取得 ──
     let name = '', distance = '', track = '', cond = '', dir = '';
 
-    // titleタグから取得（例：「東京11R 安田記念(G1) 芝1600m 良」）
-    const titleTxt = $db('title').text().replace(/\s+/g,' ').trim();
-    const h1Txt    = $db('h1').first().text().replace(/\s+/g,' ').trim();
-    const spanTxt  = $db('div.RaceData01, div.RaceData02, .race_conditions')
-                       .text().replace(/\s+/g,' ').trim();
+    // まずdb.netkeibaのtitleから試みる
+    const rawTitle = $db('title').text() || '';
+    const rawH1    = $db('h1').first().text() || '';
+    const rawAll   = rawTitle + ' ' + rawH1;
 
-    // 全テキストを結合して情報を抽出
-    const allTxt = titleTxt + ' ' + h1Txt + ' ' + spanTxt;
+    console.log(`  RAW title bytes: ${Buffer.from(rawTitle).length}`);
+    console.log(`  RAW title: "${rawTitle.slice(0,80)}"`);
+    console.log(`  RAW h1:    "${rawH1.slice(0,80)}"`);
 
-    const dm  = allTxt.match(/(\d{3,4})m/);
-    const tm  = allTxt.match(/(芝|ダート|障害)/);
-    const cm  = allTxt.match(/(良|稍重|重|不良)/);
-    const dm2 = allTxt.match(/(右|左|直線)/);
+    // パターン1：日本語が取れている場合
+    const dm  = rawAll.match(/(\d{3,4})m/);
+    const tm  = rawAll.match(/(芝|ダート|障害)/);
+    const cm  = rawAll.match(/(良|稍重|重|不良)/);
+    const dm2 = rawAll.match(/(右|左|直線)/);
 
-    distance = dm  ? dm[1]  : '';
-    track    = tm  ? tm[1]  : '';
-    cond     = cm  ? cm[1]  : '';
-    dir      = dm2 ? dm2[1] : '';
+    if (dm || tm) {
+      distance = dm  ? dm[1]  : '';
+      track    = tm  ? tm[1]  : '';
+      cond     = cm  ? cm[1]  : '';
+      dir      = dm2 ? dm2[1] : '';
+      name     = rawH1.trim();
+      console.log(`  OK: ${track}${distance}m ${cond}`);
+    } else {
+      // パターン2：title/h1が空またはASCIIのみ
+      // → テーブルのキャプションやspanから探す
+      const caption = $db('table.race_table_01').prev().text().trim();
+      const spans   = $db('p.RaceData, .race_data, [class*="Race"]')
+                        .text().replace(/\s+/g,' ').trim();
+      const fallback = caption + ' ' + spans;
+      console.log(`  FALLBACK: "${fallback.slice(0,100)}"`);
 
-    // レース名：h1またはtitleから
-    name = h1Txt.replace(/[\s\d]+R\s*/, '').trim()
-        || titleTxt.split('|')[0].trim()
-        || '';
+      const dm2a  = fallback.match(/(\d{3,4})m/);
+      const tm2   = fallback.match(/(芝|ダート|障害)/);
+      const cm2   = fallback.match(/(良|稍重|重|不良)/);
 
-    console.log(`  INFO title="${titleTxt.slice(0,60)}"`);
-    console.log(`  INFO 抽出: ${track}${distance}m ${cond} "${name}"`);
+      distance = dm2a ? dm2a[1] : '';
+      track    = tm2  ? tm2[1]  : '';
+      cond     = cm2  ? cm2[1]  : '';
+    }
 
     // ── Step3: 馬ごとのデータ解析 ──
     const horses = [];
