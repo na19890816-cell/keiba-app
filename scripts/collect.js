@@ -15,51 +15,78 @@ function generateNextIds(existing) {
   const existingIds = new Set(existing.map(r => r.id));
   const year = new Date().getFullYear();
   const candidates = [];
+
+  // 既存データから「場コード+回次」のセットを抽出
+  const activeKeys = new Set(
+    existing.map(r => r.id.slice(4, 8)) // 場コード2桁+回次2桁
+  );
+  console.log('現在開催中の場+回次:', [...activeKeys]);
+
   const venues = ['03','04','05','06','07','08','09','10'];
 
+  // まず「既存データと同じ場+回次」の次の日次を優先
+  for (const key of activeKeys) {
+    const venue = key.slice(0, 2);
+    const kai   = key.slice(2, 4);
+    // この場+回次の既存データの最大日次を取得
+    const maxNichi = Math.max(
+      ...existing
+        .filter(r => r.id.slice(4, 8) === key)
+        .map(r => parseInt(r.id.slice(8, 10)))
+    );
+    console.log(`  ${venue}回${kai}: 最大${maxNichi}日目 → ${maxNichi+1}日目以降を候補化`);
+
+    // 次の日次から最大12日目まで
+    for (let nichi = maxNichi + 1; nichi <= 12; nichi++) {
+      for (let r = 1; r <= 12; r++) {
+        const id = `${year}${venue}${kai}${String(nichi).padStart(2,'0')}${String(r).padStart(2,'0')}`;
+        if (!existingIds.has(id)) candidates.push(id);
+      }
+    }
+    // 同じ場の次の回次も候補に
+    const nextKai = String(parseInt(kai) + 1).padStart(2,'0');
+    for (let nichi = 1; nichi <= 8; nichi++) {
+      for (let r = 1; r <= 12; r++) {
+        const id = `${year}${venue}${nextKai}${String(nichi).padStart(2,'0')}${String(r).padStart(2,'0')}`;
+        if (!existingIds.has(id)) candidates.push(id);
+      }
+    }
+  }
+
+  // 既存データにない場も網羅（後半に追加）
   for (const v of venues) {
     for (let kai = 1; kai <= 6; kai++) {
-      for (let nichi = 1; nichi <= 12; nichi++) {
+      for (let nichi = 1; nichi <= 8; nichi++) {
         for (let r = 1; r <= 12; r++) {
-          const id =
-            `${year}${v}` +
-            `${String(kai).padStart(2,'0')}` +
-            `${String(nichi).padStart(2,'0')}` +
-            `${String(r).padStart(2,'0')}`;
-          if (!existingIds.has(id)) candidates.push(id);
+          const id = `${year}${v}${String(kai).padStart(2,'0')}${String(nichi).padStart(2,'0')}${String(r).padStart(2,'0')}`;
+          if (!existingIds.has(id) && !candidates.includes(id)) {
+            candidates.push(id);
+          }
         }
       }
     }
   }
 
-  // 既存データと同じ場・回次を優先（現在開催中の可能性が高い）
-  const hot = candidates.filter(id =>
-    existing.some(r =>
-      r.id.slice(4,8) === id.slice(4,8) // 場+回次が一致
-    )
-  );
-  const cold = candidates.filter(id => !hot.includes(id));
-  return [...hot, ...cold];
+  return candidates;
 }
 
 async function fetchRaceResult(raceId) {
   const url = `https://db.netkeiba.com/race/${raceId}/`;
   try {
     const res = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-      }
+      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
     });
     if (!res.ok) return null;
 
     const buf = await res.arrayBuffer();
+    if (!buf || buf.byteLength === 0) return null;
+
     const decoded = new TextDecoder('euc-jp').decode(buf);
     const $ = cheerio.load(decoded);
 
     const table = $('table.race_table_01');
     if (!table.length) return null;
 
-    // レース情報
     const h1Txt    = $('h1').first().text().replace(/\s+/g,' ').trim();
     const titleTxt = $('title').text().replace(/\s+/g,' ').trim();
     const allTxt   = h1Txt + ' ' + titleTxt;
@@ -69,51 +96,47 @@ async function fetchRaceResult(raceId) {
     const cm  = allTxt.match(/(良|稍重|重|不良)/);
     const dm2 = allTxt.match(/(右|左|直線)/);
 
-    // 列数を確認して列インデックスを決定
-    // netkeibaの標準列構成（15列）：
-    // [0]着順 [1]枠 [2]馬番 [3]馬名 [4]性齢 [5]斤量 [6]騎手
-    // [7]タイム [8]着差 [9]タイム指数 [10]通過順 [11]上がり
-    // [12]単勝 [13]人気 [14]馬体重
-    const COL = { // 標準的な列インデックス
-      finish: 0, gate: 1, number: 2, name: 3,
-      ageGender: 4, weight: 5, jockey: 6,
-      time: 7, timeDiff: 8, passing: 10, last3F: 11,
-      odds: 12, popular: 13, bodyWeight: 14
-    };
+    // 実際の列数を確認してCOLを動的に決定
+    const firstDataRow = table.find('tr').eq(1);
+    const colCount = firstDataRow.find('td').length;
+
+    // netkeibaの列構成（15列が標準、少ない場合は調整）
+    // [0]着 [1]枠 [2]馬番 [3]馬名 [4]性齢 [5]斤量 [6]騎手
+    // [7]タイム [8]着差 [9]ﾀｲﾑ指数 [10]通過 [11]上り [12]単勝 [13]人気 [14]馬体重
+    const oddsCol   = colCount >= 15 ? 12 : colCount >= 13 ? colCount - 3 : -1;
+    const popCol    = oddsCol >= 0 ? oddsCol + 1 : -1;
+    const bweightCol = popCol >= 0 ? popCol + 1 : -1;
+
+    console.log(`  列数:${colCount} odsCol:${oddsCol}`);
 
     const horses = [];
     table.find('tr').each((i, row) => {
-      if (i === 0) return; // ヘッダー行スキップ
+      if (i === 0) return;
       const cols = $(row).find('td');
-      if (cols.length < 10) return;
+      if (cols.length < 8) return;
 
-      const finish = parseInt($(cols[COL.finish]).text().trim()) || 99;
-      const name   = $(cols[COL.name]).find('a').text().trim()
-                  || $(cols[COL.name]).text().trim();
-      if (!name) return;
+      const finish    = parseInt($(cols[0]).text().trim()) || 99;
+      const gate      = parseInt($(cols[1]).text().trim()) || 0;
+      const number    = parseInt($(cols[2]).text().trim()) || 0;
+      const horseName = $(cols[3]).find('a').text().trim() || $(cols[3]).text().trim();
+      if (!horseName) return;
 
-      // 馬体重（列数が15未満の場合は正規表現フォールバック）
-      let bodyWeight = 0, weightDiff = 0;
-      if (cols.length > COL.bodyWeight) {
-        const wTxt = $(cols[COL.bodyWeight]).text().trim();
-        const wm   = wTxt.match(/(\d+)\(([+-]?\d+)\)/);
-        if (wm) { bodyWeight = parseInt(wm[1]); weightDiff = parseInt(wm[2]); }
-      } else {
-        // フォールバック：全列から馬体重パターンを探す
-        cols.each((_, col) => {
-          if (bodyWeight) return;
-          const wm = $(col).text().trim().match(/^(\d{3})\(([+-]?\d+)\)$/);
-          if (wm) { bodyWeight = parseInt(wm[1]); weightDiff = parseInt(wm[2]); }
-        });
-      }
+      const ageGender = $(cols[4]).text().trim();
+      const weight    = $(cols[5]).text().trim();
+      const jockey    = $(cols[6]).find('a').text().trim() || $(cols[6]).text().trim();
+      const time      = $(cols[7]).text().trim();
+      const timeDiff  = cols.length > 8  ? $(cols[8]).text().trim()  : '';
+      const passing   = cols.length > 10 ? $(cols[10]).text().trim() : '';
+      const last3F    = cols.length > 11 ? $(cols[11]).text().trim() : '';
 
-      // オッズ・人気（列数が足りない場合は正規表現フォールバック）
+      // オッズ・人気（列インデックス優先、フォールバックあり）
       let odds = 0, popular = 0;
-      if (cols.length > COL.popular) {
-        odds    = parseFloat($(cols[COL.odds]).text().trim())   || 0;
-        popular = parseInt($(cols[COL.popular]).text().trim())  || 0;
-      } else {
-        // フォールバック：パターンマッチで取得
+      if (oddsCol >= 0 && cols.length > popCol) {
+        odds    = parseFloat($(cols[oddsCol]).text().trim()) || 0;
+        popular = parseInt($(cols[popCol]).text().trim())    || 0;
+      }
+      // フォールバック：パターンマッチ
+      if (!odds) {
         let oddsIdx = -1;
         cols.each((ci, col) => {
           if (ci <= 7) return;
@@ -129,45 +152,40 @@ async function fetchRaceResult(raceId) {
         });
       }
 
+      // 馬体重
+      let bodyWeight = 0, weightDiff = 0;
+      const bwTxt = bweightCol >= 0 && cols.length > bweightCol
+        ? $(cols[bweightCol]).text().trim() : '';
+      const wm = bwTxt.match(/(\d+)\(([+-]?\d+)\)/) ||
+        // フォールバック：計不・発表なし対応
+        (() => {
+          let found = null;
+          cols.each((_, col) => {
+            if (found) return;
+            const m = $(col).text().trim().match(/^(\d{3})\(([+-]?\d+)\)$/);
+            if (m) found = m;
+          });
+          return found;
+        })();
+      if (wm) { bodyWeight = parseInt(wm[1]); weightDiff = parseInt(wm[2]); }
+
       horses.push({
-        finish,
-        gate:       parseInt($(cols[COL.gate]).text().trim())   || 0,
-        number:     parseInt($(cols[COL.number]).text().trim()) || 0,
-        name:       name.trim(),
-        ageGender:  $(cols[COL.ageGender]).text().trim(),
-        weight:     $(cols[COL.weight]).text().trim(),
-        jockey:     $(cols[COL.jockey]).find('a').text().trim()
-                 || $(cols[COL.jockey]).text().trim(),
-        time:       $(cols[COL.time]).text().trim(),
-        timeDiff:   cols.length > COL.timeDiff
-                    ? $(cols[COL.timeDiff]).text().trim() : '',
-        passing:    cols.length > COL.passing
-                    ? $(cols[COL.passing]).text().trim()  : '',
-        last3F:     cols.length > COL.last3F
-                    ? $(cols[COL.last3F]).text().trim()   : '',
-        odds, popular, bodyWeight, weightDiff,
+        finish, gate, number,
+        name: horseName.trim(), ageGender, weight,
+        jockey: jockey.trim(), time, timeDiff,
+        passing, last3F, odds, popular, bodyWeight, weightDiff,
       });
     });
 
     if (horses.length === 0) return null;
-
-    // デバッグ：列数と先頭馬のオッズを出力
-    const firstRow = table.find('tr').eq(1);
-    const colCount = firstRow.find('td').length;
-    console.log(`  列数:${colCount} オッズ:${horses[0]?.odds} 人気:${horses[0]?.popular}`);
-
     return {
-      id:       raceId,
-      name:     h1Txt.trim(),
-      venue:    VENUE_MAP[raceId.slice(4,6)] || raceId.slice(4,6),
-      year:     raceId.slice(0,4),
-      distance: dm  ? dm[1]  : '',
-      track:    tm  ? tm[1]  : '',
-      cond:     cm  ? cm[1]  : '',
-      dir:      dm2 ? dm2[1] : '',
+      id: raceId, name: h1Txt.trim(),
+      venue: VENUE_MAP[raceId.slice(4,6)] || raceId.slice(4,6),
+      year: raceId.slice(0,4),
+      distance: dm ? dm[1] : '', track: tm ? tm[1] : '',
+      cond: cm ? cm[1] : '', dir: dm2 ? dm2[1] : '',
       horses,
     };
-
   } catch (e) {
     console.error(`失敗 ${raceId}: ${e.message}`);
     return null;
@@ -189,24 +207,24 @@ async function main() {
 
   const candidates = generateNextIds(existing);
   const targetIds  = candidates.slice(0, 20);
-  console.log(`候補: ${candidates.length}件 → 取得対象: ${targetIds.length}件`);
+  console.log(`候補: ${candidates.length}件 → 先頭20件:`, targetIds.slice(0, 5), '...');
 
-  const newRaces = [];
+  let savedCount = 0;
   for (const id of targetIds) {
     console.log(`取得中: ${id}`);
     const result = await fetchRaceResult(id);
     if (result) {
-      newRaces.push(result);
-      console.log(`✓ ${result.name||id} ${result.horses.length}頭 [${result.track}${result.distance}m ${result.cond}]`);
+      existing.push(result); // 直接追加
+      // 1件取得成功のたびに即座に保存（途中終了しても損失なし）
+      fs.writeFileSync(dataPath, JSON.stringify(existing, null, 2), 'utf8');
+      savedCount++;
+      console.log(`✓ 保存(${savedCount}件目): ${result.name||id} ${result.horses.length}頭 [${result.track}${result.distance}m ${result.cond}] オッズ:${result.horses[0]?.odds}`);
     } else {
       console.log(`- なし: ${id}`);
     }
     await sleep(5000);
   }
-
-  const all = [...existing, ...newRaces];
-  fs.writeFileSync(dataPath, JSON.stringify(all, null, 2), 'utf8');
-  console.log(`完了: 新規${newRaces.length}件 / 合計${all.length}件`);
+  console.log(`完了: 新規${savedCount}件 / 合計${existing.length}件`);
 }
 
 main();
