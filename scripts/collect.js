@@ -11,58 +11,65 @@ const VENUE_MAP = {
   '09':'阪神','10':'小倉'
 };
 
-// 開催日程ページから実際のrace_idリストを取得
-async function fetchRaceIdsByDate(dateStr) {
-  // db.netkeibaの開催日レース一覧（静的HTML）
-  const url = `https://db.netkeiba.com/?pid=race_list&word=&start_year=${dateStr.slice(0,4)}&start_mon=${parseInt(dateStr.slice(4,6))}&end_year=${dateStr.slice(0,4)}&end_mon=${parseInt(dateStr.slice(4,6))}&jyo[]=05&jyo[]=06&jyo[]=07&jyo[]=08&jyo[]=09&sort=date&list=100`;
+// 既存IDから「現在開催中の場・回次・日次」を把握して次のIDを生成
+function generateNextIds(existing) {
+  const existingIds = new Set(existing.map(r => r.id));
 
-  try {
-    const res = await fetch(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
-    });
-    if (!res.ok) return [];
-    const buf = await res.arrayBuffer();
-    const html = new TextDecoder('euc-jp').decode(buf);
-    const $ = cheerio.load(html);
-
-    const ids = [];
-    $('a[href*="/race/"]').each((_, el) => {
-      const href = $(el).attr('href') || '';
-      const m = href.match(/\/race\/(\d{12})\//);
-      if (m && !ids.includes(m[1])) ids.push(m[1]);
-    });
-
-    // 日付でフィルタ（dateStrの月に限定）
-    const filtered = ids.filter(id => id.startsWith(dateStr.slice(0,6)));
-    console.log(`  ${dateStr}: ${filtered.length}件`);
-    return filtered;
-  } catch (e) {
-    console.error(`失敗 ${dateStr}: ${e.message}`);
-    return [];
+  // 既存IDから最新の開催パターンを抽出
+  const patterns = new Map(); // key: "年+場+回次" → 最大日次
+  for (const id of existingIds) {
+    const y     = id.slice(0, 4);
+    const venue = id.slice(4, 6);
+    const kai   = id.slice(6, 8);
+    const nichi = parseInt(id.slice(8, 10));
+    const key   = `${y}${venue}${kai}`;
+    if (!patterns.has(key) || patterns.get(key) < nichi) {
+      patterns.set(key, nichi);
+    }
   }
-}
 
-// 過去N週分の土日の日付を生成
-function getPastWeekends(weeks = 8) {
-  const dates = [];
-  for (let d = 1; d <= weeks * 7; d++) {
-    const date = new Date();
-    date.setDate(date.getDate() - d);
-    const dow = date.getDay();
-    if (dow !== 0 && dow !== 6) continue;
-    const y = date.getFullYear();
-    const m = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    dates.push(`${y}${m}${day}`);
+  console.log('既存開催パターン:');
+  patterns.forEach((maxNichi, key) => {
+    console.log(`  ${key} → 最大${maxNichi}日目`);
+  });
+
+  // 各パターンの「次の日」以降のIDを生成
+  const candidates = [];
+  patterns.forEach((maxNichi, key) => {
+    // 次の日次から最大+4日分を追加
+    for (let nichi = maxNichi + 1; nichi <= maxNichi + 4; nichi++) {
+      for (let r = 1; r <= 12; r++) {
+        candidates.push(
+          `${key}${String(nichi).padStart(2,'0')}${String(r).padStart(2,'0')}`
+        );
+      }
+    }
+  });
+
+  // 今年の全場・全パターンも網羅（新規開催対応）
+  const year = new Date().getFullYear();
+  const venues = ['05','06','07','08','09'];
+  for (const v of venues) {
+    for (let kai = 1; kai <= 6; kai++) {
+      for (let nichi = 1; nichi <= 12; nichi++) {
+        for (let r = 1; r <= 12; r++) {
+          const id = `${year}${v}${String(kai).padStart(2,'0')}${String(nichi).padStart(2,'0')}${String(r).padStart(2,'0')}`;
+          if (!existingIds.has(id)) candidates.push(id);
+        }
+      }
+    }
   }
-  return dates;
+
+  return [...new Set(candidates)];
 }
 
 async function fetchRaceResult(raceId) {
   const url = `https://db.netkeiba.com/race/${raceId}/`;
   try {
     const res = await fetch(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+      }
     });
     if (!res.ok) return null;
     const buf = await res.arrayBuffer();
@@ -72,25 +79,15 @@ async function fetchRaceResult(raceId) {
     const table = $('table.race_table_01');
     if (!table.length) return null;
 
-    // レース情報をtitleタグから抽出
-    const titleTxt = $('title').text().replace(/\s+/g, ' ').trim();
-    const h1Txt    = $('h1').first().text().replace(/\s+/g, ' ').trim();
+    const titleTxt = $('title').text().replace(/\s+/g,' ').trim();
+    const h1Txt    = $('h1').first().text().replace(/\s+/g,' ').trim();
     const allTxt   = titleTxt + ' ' + h1Txt;
-
-    console.log(`  title: "${titleTxt.slice(0, 60)}"`);
 
     const dm  = allTxt.match(/(\d{3,4})m/);
     const tm  = allTxt.match(/(芝|ダート|障害)/);
     const cm  = allTxt.match(/(良|稍重|重|不良)/);
     const dm2 = allTxt.match(/(右|左|直線)/);
 
-    const distance = dm  ? dm[1]  : '';
-    const track    = tm  ? tm[1]  : '';
-    const cond     = cm  ? cm[1]  : '';
-    const dir      = dm2 ? dm2[1] : '';
-    const name     = h1Txt.trim();
-
-    // 馬ごとのデータ
     const horses = [];
     table.find('tr').each((i, row) => {
       if (i === 0) return;
@@ -100,23 +97,24 @@ async function fetchRaceResult(raceId) {
       const finish = parseInt($(cols[0]).text().trim()) || 99;
       const gate   = parseInt($(cols[1]).text().trim()) || 0;
       const number = parseInt($(cols[2]).text().trim()) || 0;
-      const horseName = $(cols[3]).find('a').text().trim() || $(cols[3]).text().trim();
+      const horseName = $(cols[3]).find('a').text().trim()
+                     || $(cols[3]).text().trim();
       if (!horseName) return;
 
       const ageGender = $(cols[4]).text().trim();
       const weight    = $(cols[5]).text().trim();
-      const jockey    = $(cols[6]).find('a').text().trim() || $(cols[6]).text().trim();
+      const jockey    = $(cols[6]).find('a').text().trim()
+                     || $(cols[6]).text().trim();
       const time      = $(cols[7]).text().trim();
 
-      let timeDiff = '', passing = '', last3F = '';
-      let odds = 0, popular = 0, bodyWeight = 0, weightDiff = 0;
+      let timeDiff='', passing='', last3F='';
+      let odds=0, popular=0, bodyWeight=0, weightDiff=0;
       let oddsColIndex = -1;
 
       cols.each((ci, col) => {
         if (ci <= 7) return;
         const txt = $(col).text().trim();
-
-        if (!timeDiff && /^(クビ|ハナ|アタマ|\d+(\.\d+)?(\/\d+)?)$/.test(txt) && txt !== '') {
+        if (!timeDiff && /^(クビ|ハナ|アタマ|\d+(\.\d+)?(\/\d+)?)$/.test(txt) && txt) {
           timeDiff = txt; return;
         }
         if (!passing && /^\d+[-－]\d+/.test(txt)) {
@@ -128,9 +126,7 @@ async function fetchRaceResult(raceId) {
         if (!odds && /^\d+(\.\d)?$/.test(txt)) {
           const v = parseFloat(txt);
           if (v >= 1.0 && v <= 999) {
-            odds = v;
-            oddsColIndex = ci;
-            return;
+            odds = v; oddsColIndex = ci; return;
           }
         }
         if (odds && !popular && ci === oddsColIndex + 1) {
@@ -141,7 +137,7 @@ async function fetchRaceResult(raceId) {
         }
         if (!bodyWeight && /^\d{3}\([+-]?\d+\)$/.test(txt)) {
           const m = txt.match(/(\d+)\(([+-]?\d+)\)/);
-          if (m) { bodyWeight = parseInt(m[1]); weightDiff = parseInt(m[2]); }
+          if (m) { bodyWeight=parseInt(m[1]); weightDiff=parseInt(m[2]); }
         }
       });
 
@@ -149,19 +145,23 @@ async function fetchRaceResult(raceId) {
         finish, gate, number,
         name: horseName.trim(), ageGender, weight,
         jockey: jockey.trim(), time, timeDiff,
-        passing, last3F, odds, popular,
-        bodyWeight, weightDiff,
+        passing, last3F, odds, popular, bodyWeight, weightDiff,
       });
     });
 
     if (horses.length === 0) return null;
 
-    const venueCode = raceId.slice(4, 6);
     return {
-      id: raceId, name, venue: VENUE_MAP[venueCode] || venueCode,
-      year: raceId.slice(0, 4), distance, track, cond, dir, horses
+      id: raceId,
+      name: h1Txt.trim(),
+      venue: VENUE_MAP[raceId.slice(4,6)] || raceId.slice(4,6),
+      year: raceId.slice(0,4),
+      distance: dm  ? dm[1]  : '',
+      track:    tm  ? tm[1]  : '',
+      cond:     cm  ? cm[1]  : '',
+      dir:      dm2 ? dm2[1] : '',
+      horses,
     };
-
   } catch (e) {
     console.error(`失敗 ${raceId}: ${e.message}`);
     return null;
@@ -181,24 +181,11 @@ async function main() {
     } catch (_) { console.log('既存データ読み込み失敗'); }
   }
 
-  const existingIds = new Set(existing.map(r => r.id));
-
-  // 過去8週分の土日から実際のrace_idを収集
-  const weekends = getPastWeekends(8);
-  console.log(`対象日数: ${weekends.length}日`);
-
-  const allIds = [];
-  for (const dateStr of weekends) {
-    const ids = await fetchRaceIdsByDate(dateStr);
-    allIds.push(...ids);
-    await sleep(3000);
-  }
-
-  const targetIds = [...new Set(allIds)]
-    .filter(id => !existingIds.has(id))
-    .slice(0, 15);
-
-  console.log(`取得対象: ${targetIds.length}件`);
+  const existingIds  = new Set(existing.map(r => r.id));
+  const candidates   = generateNextIds(existing);
+  // 候補をシャッフルして取得対象を選ぶ（偏りを防ぐ）
+  const targetIds    = candidates.slice(0, 20);
+  console.log(`候補: ${candidates.length}件 → 取得対象: ${targetIds.length}件`);
 
   const newRaces = [];
   for (const id of targetIds) {
@@ -208,12 +195,12 @@ async function main() {
       newRaces.push(result);
       const s = result.horses[0];
       console.log(
-        `✓ ${result.name || id} ${result.horses.length}頭` +
+        `✓ ${result.name||id} ${result.horses.length}頭` +
         ` [${result.track}${result.distance}m ${result.cond}]` +
         ` オッズ:${s?.odds} 人気:${s?.popular}`
       );
     } else {
-      console.log(`- データなし: ${id}`);
+      console.log(`- なし: ${id}`);
     }
     await sleep(5000);
   }
