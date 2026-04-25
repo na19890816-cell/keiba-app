@@ -13,7 +13,9 @@ const VENUE_MAP = {
 
 // 開催日程ページから実際のrace_idリストを取得
 async function fetchRaceIdsByDate(dateStr) {
-  const url = `https://race.netkeiba.com/top/race_list.html?kaisai_date=${dateStr}`;
+  // db.netkeibaの開催日レース一覧（静的HTML）
+  const url = `https://db.netkeiba.com/?pid=race_list&word=&start_year=${dateStr.slice(0,4)}&start_mon=${parseInt(dateStr.slice(4,6))}&end_year=${dateStr.slice(0,4)}&end_mon=${parseInt(dateStr.slice(4,6))}&jyo[]=05&jyo[]=06&jyo[]=07&jyo[]=08&jyo[]=09&sort=date&list=100`;
+
   try {
     const res = await fetch(url, {
       headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
@@ -24,16 +26,18 @@ async function fetchRaceIdsByDate(dateStr) {
     const $ = cheerio.load(html);
 
     const ids = [];
-    // race_idはリンクのhrefに含まれる
-    $('a[href*="race_id="]').each((_, el) => {
+    $('a[href*="/race/"]').each((_, el) => {
       const href = $(el).attr('href') || '';
-      const m = href.match(/race_id=(\d{12})/);
+      const m = href.match(/\/race\/(\d{12})\//);
       if (m && !ids.includes(m[1])) ids.push(m[1]);
     });
-    console.log(`  ${dateStr}: ${ids.length}件のレースID取得`);
-    return ids;
+
+    // 日付でフィルタ（dateStrの月に限定）
+    const filtered = ids.filter(id => id.startsWith(dateStr.slice(0,6)));
+    console.log(`  ${dateStr}: ${filtered.length}件`);
+    return filtered;
   } catch (e) {
-    console.error(`日程取得失敗 ${dateStr}: ${e.message}`);
+    console.error(`失敗 ${dateStr}: ${e.message}`);
     return [];
   }
 }
