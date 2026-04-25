@@ -13,54 +13,40 @@ const VENUE_MAP = {
 
 // 既存IDから「現在開催中の場・回次・日次」を把握して次のIDを生成
 function generateNextIds(existing) {
+function generateNextIds(existing) {
   const existingIds = new Set(existing.map(r => r.id));
-
-  // 既存IDから最新の開催パターンを抽出
-  const patterns = new Map(); // key: "年+場+回次" → 最大日次
-  for (const id of existingIds) {
-    const y     = id.slice(0, 4);
-    const venue = id.slice(4, 6);
-    const kai   = id.slice(6, 8);
-    const nichi = parseInt(id.slice(8, 10));
-    const key   = `${y}${venue}${kai}`;
-    if (!patterns.has(key) || patterns.get(key) < nichi) {
-      patterns.set(key, nichi);
-    }
-  }
-
-  console.log('既存開催パターン:');
-  patterns.forEach((maxNichi, key) => {
-    console.log(`  ${key} → 最大${maxNichi}日目`);
-  });
-
-  // 各パターンの「次の日」以降のIDを生成
-  const candidates = [];
-  patterns.forEach((maxNichi, key) => {
-    // 次の日次から最大+4日分を追加
-    for (let nichi = maxNichi + 1; nichi <= maxNichi + 4; nichi++) {
-      for (let r = 1; r <= 12; r++) {
-        candidates.push(
-          `${key}${String(nichi).padStart(2,'0')}${String(r).padStart(2,'0')}`
-        );
-      }
-    }
-  });
-
-  // 今年の全場・全パターンも網羅（新規開催対応）
   const year = new Date().getFullYear();
-  const venues = ['05','06','07','08','09'];
+  const candidates = [];
+
+  // 全場 × 全回次 × 全日次を網羅（重複排除）
+  const venues = ['03','04','05','06','07','08','09','10'];
   for (const v of venues) {
     for (let kai = 1; kai <= 6; kai++) {
       for (let nichi = 1; nichi <= 12; nichi++) {
         for (let r = 1; r <= 12; r++) {
-          const id = `${year}${v}${String(kai).padStart(2,'0')}${String(nichi).padStart(2,'0')}${String(r).padStart(2,'0')}`;
+          const id = `${year}${v}` +
+            `${String(kai).padStart(2,'0')}` +
+            `${String(nichi).padStart(2,'0')}` +
+            `${String(r).padStart(2,'0')}`;
           if (!existingIds.has(id)) candidates.push(id);
         }
       }
     }
   }
 
-  return [...new Set(candidates)];
+  // 既存データがある回次・日次の「近く」を優先（先頭に持ってくる）
+  const hotIds = candidates.filter(id => {
+    const venue = id.slice(4,6);
+    const kai   = id.slice(6,8);
+    // 既存データに同じ場・同じ回次があれば優先
+    return existing.some(r =>
+      r.id.slice(4,6) === venue &&
+      r.id.slice(6,8) === kai
+    );
+  });
+  const coldIds = candidates.filter(id => !hotIds.includes(id));
+
+  return [...hotIds, ...coldIds];
 }
 
 async function fetchRaceResult(raceId) {
