@@ -205,20 +205,29 @@ async function main() {
     } catch (_) { console.log('既存データ読み込み失敗'); }
   }
 
-  const candidates = generateNextIds(existing);
-  const targetIds  = candidates.slice(0, 20);
-  console.log(`候補: ${candidates.length}件 → 先頭20件:`, targetIds.slice(0, 5), '...');
+  // ── 動作確認用：今週の実在IDを直接指定 ──
+  // 東京2回1日目（4/26土曜）
+  const targetIds = [
+    '202605020101','202605020102','202605020103',
+    '202605020104','202605020105','202605020106',
+    '202605020107','202605020108','202605020109',
+    '202605020110','202605020111','202605020112',
+  ];
+  console.log(`固定IDテスト: ${targetIds.length}件`);
 
   let savedCount = 0;
   for (const id of targetIds) {
+    if (existing.some(r => r.id === id)) {
+      console.log(`スキップ(既存): ${id}`);
+      continue;
+    }
     console.log(`取得中: ${id}`);
     const result = await fetchRaceResult(id);
     if (result) {
-      existing.push(result); // 直接追加
-      // 1件取得成功のたびに即座に保存（途中終了しても損失なし）
+      existing.push(result);
       fs.writeFileSync(dataPath, JSON.stringify(existing, null, 2), 'utf8');
       savedCount++;
-      console.log(`✓ 保存(${savedCount}件目): ${result.name||id} ${result.horses.length}頭 [${result.track}${result.distance}m ${result.cond}] オッズ:${result.horses[0]?.odds}`);
+      console.log(`✓ 保存(${savedCount}件目): ${result.name||id} ${result.horses.length}頭 [${result.track}${result.distance}m] オッズ:${result.horses[0]?.odds}`);
     } else {
       console.log(`- なし: ${id}`);
     }
