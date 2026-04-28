@@ -15,10 +15,10 @@ function generateNextIds(existing) {
   const existingIds = new Set(existing.map(r => r.id));
   const year = new Date().getFullYear();
 
-  // 既存データから「場+回次」ごとの最大日次を把握
+  // 既存データから場+回次ごとの最大日次を把握
   const maxNichiMap = new Map();
   for (const r of existing) {
-    const key   = r.id.slice(4, 8); // 場コード+回次
+    const key   = r.id.slice(4, 8);
     const nichi = parseInt(r.id.slice(8, 10));
     if (!maxNichiMap.has(key) || maxNichiMap.get(key) < nichi) {
       maxNichiMap.set(key, nichi);
@@ -32,8 +32,9 @@ function generateNextIds(existing) {
 
   const candidates = [];
 
-  // ① 既存と同じ場+回次の「次の日次」を最優先
+  // ① 既存の場+回次の「次の日次」（最優先・ただし最大8日まで）
   maxNichiMap.forEach((maxNichi, key) => {
+    if (maxNichi >= 8) return; // 8日目が最大なのでスキップ
     const venue = key.slice(0, 2);
     const kai   = key.slice(2, 4);
     for (let nichi = maxNichi + 1; nichi <= maxNichi + 2; nichi++) {
@@ -44,9 +45,10 @@ function generateNextIds(existing) {
     }
   });
 
-  // ② 既存と同じ場の「次の回次」
-  maxNichiMap.forEach((_, key) => {
-    const venue  = key.slice(0, 2);
+  // ② 既存の場の「次の回次」の1〜3日目（第2優先）
+  maxNichiMap.forEach((maxNichi, key) => {
+    if (maxNichi < 8) return; // まだ8日目未満はスキップ（①で対応済み）
+    const venue   = key.slice(0, 2);
     const nextKai = String(parseInt(key.slice(2, 4)) + 1).padStart(2, '0');
     for (let nichi = 1; nichi <= 3; nichi++) {
       for (let r = 1; r <= 12; r++) {
@@ -61,7 +63,7 @@ function generateNextIds(existing) {
   const allVenues   = ['03','04','05','06','07','08','09','10'];
   for (const v of allVenues) {
     if (knownVenues.has(v)) continue;
-    for (let kai = 1; kai <= 3; kai++) {
+    for (let kai = 1; kai <= 2; kai++) {
       for (let nichi = 1; nichi <= 3; nichi++) {
         for (let r = 1; r <= 12; r++) {
           const id = `${year}${v}${String(kai).padStart(2,'0')}${String(nichi).padStart(2,'0')}${String(r).padStart(2,'0')}`;
