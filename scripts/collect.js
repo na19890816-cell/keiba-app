@@ -125,11 +125,7 @@ async function fetchRaceResult(raceId) {
       || $('div.RaceList_Item02 h1').text().trim()
       || '';
 
-    // デバッグ（次回削除）
-    console.log(`  h1:"${h1Txt.slice(0,30)}" title:"${titleTxt.slice(0,40)}"`);
-    console.log(`  raceData:"${raceDataTxt.slice(0,60)}"`);
-    console.log(`  → ${tm?tm[1]:'?'}${dm?dm[1]:'?'}m ${cm?cm[1]:'?'}`);
-    
+   
     // 列数確認
     const firstDataRow = table.find('tr').eq(1);
     const colCount     = firstDataRow.find('td').length;
