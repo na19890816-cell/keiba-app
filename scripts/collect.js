@@ -95,16 +95,41 @@ async function fetchRaceResult(raceId) {
     const table = $('table.race_table_01');
     if (!table.length) return null;
 
-    // レース情報
+    // レース情報（複数セレクタから取得）
     const h1Txt    = $('h1').first().text().replace(/\s+/g,' ').trim();
     const titleTxt = $('title').text().replace(/\s+/g,' ').trim();
-    const allTxt   = h1Txt + ' ' + titleTxt;
 
+    // RaceData系のセレクタを幅広く試す
+    const raceDataTxt = [
+      $('div.RaceData01').text(),
+      $('div.RaceData02').text(),
+      $('p.RaceData').text(),
+      $('div.race_data').text(),
+      $('dl.racedata').text(),
+      // キャプション（例：「芝1600m（左）良」が入っていることがある）
+      $('table.race_table_01').closest('div').prev().text(),
+      $('div.RaceList_Item02').text(),
+    ].join(' ').replace(/\s+/g,' ').trim();
+
+    const allTxt = h1Txt + ' ' + titleTxt + ' ' + raceDataTxt;
+
+    // 距離・コース・馬場・回り
     const dm  = allTxt.match(/(\d{3,4})m/);
     const tm  = allTxt.match(/(芝|ダート|障害)/);
     const cm  = allTxt.match(/(良|稍重|重|不良)/);
     const dm2 = allTxt.match(/(右|左|直線)/);
 
+    // レース名：h1が空なら別セレクタを試す
+    const raceName = h1Txt
+      || $('title').text().split('|')[0].trim()
+      || $('div.RaceList_Item02 h1').text().trim()
+      || '';
+
+    // デバッグ（次回削除）
+    console.log(`  h1:"${h1Txt.slice(0,30)}" title:"${titleTxt.slice(0,40)}"`);
+    console.log(`  raceData:"${raceDataTxt.slice(0,60)}"`);
+    console.log(`  → ${tm?tm[1]:'?'}${dm?dm[1]:'?'}m ${cm?cm[1]:'?'}`);
+    
     // 列数確認
     const firstDataRow = table.find('tr').eq(1);
     const colCount     = firstDataRow.find('td').length;
@@ -182,7 +207,7 @@ async function fetchRaceResult(raceId) {
 
     return {
       id:       raceId,
-      name:     h1Txt.trim(),
+      name:     raceName,  // ← h1Txt.trim() から変更
       venue:    VENUE_MAP[raceId.slice(4,6)] || raceId.slice(4,6),
       year:     raceId.slice(0,4),
       distance: dm  ? dm[1]  : '',
