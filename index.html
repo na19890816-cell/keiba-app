@@ -715,8 +715,18 @@ function renderHorses() {
     <div class="horse-item">
       <div class="horse-num">${i+1}</div>
       <div class="horse-inputs">
-        <input type="text" placeholder="馬名（省略可）" value="${h.name}"
-          oninput="horses[${i}].name=this.value">
+        <div style="display:flex;gap:6px;align-items:center">
+          <input type="text" placeholder="馬名" value="${h.name}"
+            oninput="horses[${i}].name=this.value"
+            style="flex:1">
+          <button onclick="autoFillSpeedRating(${i})"
+            style="flex-shrink:0;padding:4px 8px;border-radius:6px;
+            border:1px solid var(--accent);background:transparent;
+            color:var(--accent);font-size:10px;cursor:pointer;
+            font-family:var(--mono);white-space:nowrap">
+            📊指数
+          </button>
+        </div>
         <input type="number" placeholder="単勝オッズ（例：5.6）" value="${h.odds}" step="0.1" min="1"
           oninput="horses[${i}].odds=this.value">
         <input type="number" placeholder="推定勝率 % （例：18）" value="${h.estProb}" step="1" min="1" max="99"
