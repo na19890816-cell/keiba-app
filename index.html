@@ -558,9 +558,126 @@ let horseCounter = 0;
 const DB_KEY = 'keiba_ev_records';
 const KS_KEY = 'keiba_ev_ks';
 
+// ── Step3: races.jsonからデータ読み込み・スピード指数計算 ──
+
+const RACES_JSON_URL =
+  'https://raw.githubusercontent.com/na19890816-cell/keiba-app/main/data/races.json';
+
+let racesData = [];   // 全レースデータ
+let courseStats = {}; // コース別平均タイム・標準偏差
+
+async function loadRacesData() {
+  try {
+    showToast('データ読み込み中...');
+    const res = await fetch(RACES_JSON_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error('fetch failed');
+    racesData = await res.json();
+
+    // コース別統計を計算
+    buildCourseStats();
+    showToast(`✓ ${racesData.length}件のレースデータを読み込みました`);
+    console.log(`races.json: ${racesData.length}件`);
+  } catch (e) {
+    showToast('データ読み込み失敗（手動入力モードで継続）');
+    console.warn('races.json load error:', e);
+  }
+}
+
+function buildCourseStats() {
+  // コースキー = "venue_track_distance"（例："京都_芝_1800"）
+  const groups = {};
+  for (const race of racesData) {
+    if (!race.track || !race.distance) continue;
+    const key = `${race.venue}_${race.track}_${race.distance}`;
+    if (!groups[key]) groups[key] = [];
+    for (const h of race.horses) {
+      if (!h.time || h.finish > 18) continue;
+      const sec = timeToSeconds(h.time);
+      if (sec > 0) groups[key].push(sec);
+    }
+  }
+  // 平均・標準偏差を計算
+  for (const [key, times] of Object.entries(groups)) {
+    if (times.length < 5) continue;
+    const avg = times.reduce((s, v) => s + v, 0) / times.length;
+    const std = Math.sqrt(
+      times.map(v => (v - avg) ** 2).reduce((s, v) => s + v, 0) / times.length
+    );
+    courseStats[key] = { avg, std, n: times.length };
+  }
+  console.log(`コース統計: ${Object.keys(courseStats).length}種類`);
+}
+
+function timeToSeconds(t) {
+  if (!t) return 0;
+  const m = t.match(/^(\d+):(\d+\.\d+)$|^(\d+\.\d+)$/);
+  if (!m) return 0;
+  if (m[1] !== undefined) return parseFloat(m[1]) * 60 + parseFloat(m[2]);
+  return parseFloat(m[3]);
+}
+
+// 馬の補正スピード指数を計算
+function calcSpeedRating(horseName) {
+  const weights = [0.35, 0.25, 0.20, 0.12, 0.08];
+  const pastRaces = [];
+
+  // races.jsonから該当馬の過去走を収集
+  for (const race of racesData) {
+    const h = race.horses.find(
+      x => x.name && horseName && x.name.includes(horseName.slice(0, 3))
+    );
+    if (!h || !h.time || !race.track || !race.distance) continue;
+    const key = `${race.venue}_${race.track}_${race.distance}`;
+    const stat = courseStats[key];
+    if (!stat || stat.std === 0) continue;
+
+    const sec = timeToSeconds(h.time);
+    if (sec <= 0) continue;
+
+    // 偏差値換算（遅いほど低い）
+    const deviation = (stat.avg - sec) / stat.std * 10 + 50;
+    const trackAdj  = { '良': 0, '稍重': -1, '重': -3, '不良': -5 }[race.cond] || 0;
+
+    pastRaces.push({
+      rating: deviation + trackAdj,
+      date: race.id,
+    });
+  }
+
+  if (pastRaces.length === 0) return null;
+
+  // 新しい順にソートして加重平均
+  pastRaces.sort((a, b) => b.date.localeCompare(a.date));
+  const recent = pastRaces.slice(0, 5);
+  const rating = recent.reduce((sum, r, i) => {
+    return sum + r.rating * (weights[i] || 0.05);
+  }, 0);
+
+  return { rating: Math.round(rating * 10) / 10, n: recent.length };
+}
+
+// 馬名からスピード指数を自動入力
+function autoFillSpeedRating(idx) {
+  const horse = horses[idx];
+  if (!horse || !horse.name || racesData.length === 0) return;
+
+  const result = calcSpeedRating(horse.name);
+  if (!result) {
+    showToast(`${horse.name}：過去データなし`);
+    return;
+  }
+
+  // スピード指数から簡易的な推定勝率を計算
+  // （全馬の指数がないため単独では不正確・参考値として表示）
+  showToast(`${horse.name} 指数:${result.rating}（過去${result.n}走）`);
+  console.log(`指数 ${horse.name}: ${result.rating} (n=${result.n})`);
+}
+  
 // ── Init ──
 function init() {
+  loadRacesData(); // ← この1行を追加
   loadRecords();
+  // ...以下既存コード
   loadKillSwitch();
   addHorse();
   addHorse();
