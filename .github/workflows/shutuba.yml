@@ -1,0 +1,35 @@
+name: 出馬表収集
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 木曜・金曜の日本時間 06:00（UTC 21:00）
+    - cron: '0 21 * * 3'
+    - cron: '0 21 * * 4'
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: |
+          cd scripts
+          echo '{"type":"module","dependencies":{"node-fetch":"^3.0.0","cheerio":"^1.0.0"}}' > package.json
+          npm install
+
+      - run: node scripts/shutuba.js
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "出馬表更新"
+          file_pattern: data/shutuba.json
