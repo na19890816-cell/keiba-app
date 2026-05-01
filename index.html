@@ -369,10 +369,43 @@ body {
 </div>
 
 <div class="tabs">
-  <div class="tab active" onclick="switchTab('calc')">EV計算</div>
+  <div class="tab active" onclick="switchTab('week')">今週</div>
+  <div class="tab" onclick="switchTab('calc')">EV計算</div>
   <div class="tab" onclick="switchTab('records')">収支記録</div>
   <div class="tab" onclick="switchTab('stats')">分析</div>
 </div>
+
+<!-- ──────── DETAIL SCREEN ──────── -->
+<div class="screen" id="screen-detail">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+    <button onclick="switchTab('week')"
+      style="background:transparent;border:1px solid var(--border);
+      border-radius:8px;padding:8px 12px;color:var(--text-muted);
+      font-family:var(--mono);font-size:12px;cursor:pointer">
+      ← 一覧へ
+    </button>
+    <div class="section-title" style="margin:0">レース詳細</div>
+  </div>
+  <div id="detail-content"></div>
+</div>
+  
+<!-- ──────── WEEK SCREEN ──────── -->
+<div class="screen active" id="screen-week">
+  <div class="section-title">今週のピックアップ</div>
+
+  <div class="filter-row">
+    <div class="pill active" onclick="filterPicks('all',this)">全て</div>
+    <div class="pill" onclick="filterPicks('bet',this)">◎BET</div>
+    <div class="pill" onclick="filterPicks('watch',this)">△様子見</div>
+    <div class="pill" onclick="filterPicks('g1',this)">重賞</div>
+  </div>
+
+  <div id="picks-loading" style="text-align:center;padding:40px;
+    color:var(--text-dim);font-family:var(--mono);font-size:13px">
+    読み込み中...
+  </div>
+  <div id="picks-list"></div>
+</div> 
 
 <!-- ──────── CALC SCREEN ──────── -->
 <div class="screen active" id="screen-calc">
@@ -672,13 +705,338 @@ function autoFillSpeedRating(idx) {
   showToast(`${horse.name} 指数:${result.rating}（過去${result.n}走）`);
   console.log(`指数 ${horse.name}: ${result.rating} (n=${result.n})`);
 }
+
+// ── Step4: 今週のレース・ピックアップ機能 ──
+
+const SHUTUBA_URL =
+  'https://raw.githubusercontent.com/na19890816-cell/keiba-app/main/data/shutuba.json';
+
+let shuTubaData  = [];
+let allPicks     = [];
+let currentFilter = 'all';
+
+async function loadShutuba() {
+  try {
+    const res = await fetch(SHUTUBA_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error('fetch failed');
+    shuTubaData = await res.json();
+    console.log(`shutuba.json: ${shuTubaData.length}件`);
+    buildPicks();
+    renderPicks(currentFilter);
+    document.getElementById('picks-loading').style.display = 'none';
+  } catch (e) {
+    document.getElementById('picks-loading').textContent =
+      '出馬表データなし（木〜金曜に自動更新）';
+    console.warn('shutuba load error:', e);
+  }
+}
+
+function buildPicks() {
+  allPicks = [];
+  for (const race of shuTubaData) {
+    const racePicks = [];
+    for (const horse of race.horses) {
+      if (!horse.odds || horse.odds <= 0) continue;
+
+      // 簡易スピード指数（races.jsonに過去データがある場合）
+      const ratingResult = calcSpeedRating(horse.name);
+      const rating = ratingResult ? ratingResult.rating : null;
+
+      // 全馬の指数からプール推定（指数がない馬は市場確率を使用）
+      const marketProb = 1 / horse.odds;
+      const estProb = rating !== null
+        ? estimateProbFromRating(horse, race.horses)
+        : marketProb * 0.85; // 指数なし → 市場確率×0.85で保守的に
+
+      const ev  = estProb * horse.odds - 1;
+      const rrr = estProb * horse.odds;
+
+      if (ev >= 0.10) { // 様子見以上を全てピック候補に
+        racePicks.push({
+          horse,
+          race,
+          ev,
+          rrr,
+          estProb,
+          rating,
+          verdict: ev >= 0.20 && rrr >= 2.0 ? 'bet'
+                 : ev >= 0.10 ? 'watch' : 'skip'
+        });
+      }
+    }
+    if (racePicks.length > 0) {
+      allPicks.push({ race, picks: racePicks });
+    }
+  }
+  console.log(`ピックアップ: ${allPicks.length}レース`);
+}
+
+function estimateProbFromRating(targetHorse, allHorses) {
+  const ratings = allHorses.map(h => {
+    const r = calcSpeedRating(h.name);
+    return r ? Math.max(r.rating, 1) : 40; // デフォルト偏差値40
+  });
+  const total = ratings.reduce((s, v) => s + v, 0);
+  const idx   = allHorses.findIndex(h => h.name === targetHorse.name);
+  return idx >= 0 ? ratings[idx] / total : 1 / allHorses.length;
+}
+
+function filterPicks(f, el) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-row .pill').forEach(p =>
+    p.classList.remove('active')
+  );
+  if (el) el.classList.add('active');
+  renderPicks(f);
+}
+
+function renderPicks(filter) {
+  const list = document.getElementById('picks-list');
+  if (!list) return;
+
+  let filtered = allPicks;
+  if (filter === 'bet') {
+    filtered = allPicks.map(r => ({
+      ...r, picks: r.picks.filter(p => p.verdict === 'bet')
+    })).filter(r => r.picks.length > 0);
+  } else if (filter === 'watch') {
+    filtered = allPicks.map(r => ({
+      ...r, picks: r.picks.filter(p => p.verdict === 'watch')
+    })).filter(r => r.picks.length > 0);
+  } else if (filter === 'g1') {
+    filtered = allPicks.filter(r =>
+      r.race.grade && ['G1','G2','G3','L'].includes(r.race.grade)
+    );
+  }
+
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="empty">
+      <div class="empty-icon">🔍</div>
+      ピックアップなし<br>
+      <span style="font-size:11px;color:var(--text-dim)">
+        データ蓄積中（500件超で精度向上）
+      </span>
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map(({ race, picks }) => `
+    <div class="card" style="margin-bottom:14px;cursor:pointer"
+      onclick="showRaceDetail('${race.id}')">
+
+      <!-- レースヘッダー -->
+      <div style="display:flex;justify-content:space-between;
+        align-items:flex-start;margin-bottom:10px">
+        <div>
+          <div style="font-size:14px;font-weight:500">${race.name||race.id}</div>
+          <div style="font-family:var(--mono);font-size:11px;
+            color:var(--text-muted);margin-top:3px">
+            ${race.venue} ${race.track||''}${race.distance||''}m
+            ${race.grade ? `<span style="color:var(--amber)"> ${race.grade}</span>` : ''}
+            ${race.startTime ? ` ${race.startTime}発走` : ''}
+          </div>
+        </div>
+        <div style="font-family:var(--mono);font-size:11px;
+          color:var(--text-dim)">${race.id.slice(8,10)}R</div>
+      </div>
+
+      <!-- ピック馬 -->
+      ${picks.map(p => `
+        <div style="display:flex;justify-content:space-between;
+          align-items:center;padding:8px 0;
+          border-top:1px solid var(--border)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-family:var(--mono);font-size:11px;
+              color:${p.verdict==='bet'?'var(--green)':'var(--amber)'};
+              min-width:52px;font-weight:700">
+              ${p.verdict==='bet'?'◎ BET':'△ 様子見'}
+            </span>
+            <div>
+              <div style="font-size:13px;font-weight:500">
+                ${p.horse.number}番 ${p.horse.name}
+              </div>
+              <div style="font-family:var(--mono);font-size:10px;
+                color:var(--text-dim)">
+                ${p.horse.jockey||''}
+                ${p.rating !== null
+                  ? ` 指数:${p.rating}`
+                  : ' 指数:計算中'}
+              </div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:var(--mono);font-size:13px;
+              font-weight:700;color:${p.ev>=0.2?'var(--green)':'var(--amber)'}">
+              EV+${(p.ev*100).toFixed(0)}%
+            </div>
+            <div style="font-family:var(--mono);font-size:10px;
+              color:var(--text-muted)">
+              ${p.horse.odds}倍
+            </div>
+          </div>
+        </div>
+      `).join('')}
+
+      <div style="font-family:var(--mono);font-size:10px;
+        color:var(--text-dim);text-align:right;margin-top:6px">
+        タップ→詳細 ▶
+      </div>
+    </div>
+  `).join('');
+}
+
+function showRaceDetail(raceId) {
+  const raceData = shuTubaData.find(r => r.id === raceId);
+  if (!raceData) return;
+  renderRaceDetail(raceData);
+  switchTab('detail');
+}
+
+function renderRaceDetail(race) {
+  const bankroll = parseFloat(localStorage.getItem('keiba_bankroll') || '10000');
+  const el = document.getElementById('detail-content');
+  if (!el) return;
+
+  // 全馬のEV計算
+  const horses = race.horses.map(h => {
+    if (!h.odds || h.odds <= 0) return { ...h, ev: null, verdict: 'skip' };
+    const estProb = estimateProbFromRating(h, race.horses);
+    const ev      = estProb * h.odds - 1;
+    const rrr     = estProb * h.odds;
+    const kelly   = Math.max(0, (estProb*(h.odds-1)-(1-estProb))/(h.odds-1));
+    const betAmt  = ev >= 0.20 && rrr >= 2.0
+      ? Math.floor(bankroll * Math.min(kelly * 0.25, 0.02) / 100) * 100 : 0;
+    const rating  = calcSpeedRating(h.name);
+    return {
+      ...h, ev, rrr, estProb, betAmt,
+      rating: rating ? rating.rating : null,
+      ratingN: rating ? rating.n : 0,
+      verdict: ev >= 0.20 && rrr >= 2.0 ? 'bet'
+             : ev >= 0.10 ? 'watch' : 'skip'
+    };
+  }).sort((a, b) => (b.ev||0) - (a.ev||0));
+
+  el.innerHTML = `
+    <!-- レース情報 -->
+    <div class="card" style="margin-bottom:14px">
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">
+        ${race.name||race.id}
+      </div>
+      <div style="font-family:var(--mono);font-size:11px;
+        color:var(--text-muted);line-height:1.8">
+        ${race.venue} / ${race.track||''}${race.distance||''}m
+        ${race.dir ? `（${race.dir}）` : ''}
+        ${race.grade ? `<span style="color:var(--amber)">${race.grade}</span>` : ''}
+        <br>${race.startTime ? `発走 ${race.startTime}` : ''}
+        / ${race.horses.length}頭立て
+        <br><span style="color:var(--text-dim)">${race.raceData1||''}</span>
+      </div>
+    </div>
+
+    <!-- 推奨馬券サマリー -->
+    ${horses.some(h => h.verdict === 'bet') ? `
+    <div class="card" style="margin-bottom:14px;
+      border-color:rgba(61,224,142,0.3);background:var(--green-dim)">
+      <div class="label" style="color:var(--green);margin-bottom:8px">
+        推奨馬券
+      </div>
+      ${horses.filter(h => h.verdict === 'bet').map(h => `
+        <div style="display:flex;justify-content:space-between;
+          align-items:center;padding:6px 0;
+          border-bottom:1px solid rgba(61,224,142,0.15)">
+          <div>
+            <span style="font-family:var(--mono);font-weight:700;
+              color:var(--green)">◎ ${h.number}番</span>
+            <span style="margin-left:8px;font-size:13px">${h.name}</span>
+            <span style="font-family:var(--mono);font-size:10px;
+              color:var(--text-muted);margin-left:6px">${h.odds}倍</span>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:var(--mono);font-size:13px;
+              font-weight:700;color:var(--green)">
+              単勝 ¥${h.betAmt.toLocaleString()}
+            </div>
+            <div style="font-family:var(--mono);font-size:10px;
+              color:var(--text-muted)">EV+${(h.ev*100).toFixed(0)}%</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>` : ''}
+
+    <!-- 全馬一覧 -->
+    <div class="section-title">全出走馬</div>
+    ${horses.map(h => `
+      <div class="card" style="margin-bottom:10px;
+        ${h.verdict==='bet'?'border-color:rgba(61,224,142,0.25)':
+          h.verdict==='watch'?'border-color:rgba(245,166,35,0.25)':''}">
+        <div style="display:flex;justify-content:space-between;
+          align-items:flex-start">
+          <div>
+            <span style="font-family:var(--mono);font-size:11px;
+              color:${h.verdict==='bet'?'var(--green)':
+                     h.verdict==='watch'?'var(--amber)':'var(--text-dim)'};
+              margin-right:8px;font-weight:700">
+              ${h.verdict==='bet'?'◎':h.verdict==='watch'?'△':'　'}
+            </span>
+            <span style="font-size:14px;font-weight:500">
+              ${h.number}番 ${h.name}
+            </span>
+          </div>
+          ${h.ev !== null ? `
+          <div style="font-family:var(--mono);font-size:12px;
+            font-weight:700;color:${h.ev>=0.2?'var(--green)':
+              h.ev>=0?'var(--amber)':'var(--text-muted)'}">
+            EV${h.ev>=0?'+':''}${(h.ev*100).toFixed(0)}%
+          </div>` : ''}
+        </div>
+
+        <!-- 根拠データ -->
+        <div style="margin-top:8px;display:grid;
+          grid-template-columns:1fr 1fr 1fr;gap:6px">
+          <div style="text-align:center;background:var(--surface2);
+            border-radius:6px;padding:6px">
+            <div style="font-family:var(--mono);font-size:14px;
+              font-weight:700;color:var(--text)">
+              ${h.odds > 0 ? h.odds+'倍' : '-'}
+            </div>
+            <div style="font-size:9px;color:var(--text-dim)">単勝オッズ</div>
+          </div>
+          <div style="text-align:center;background:var(--surface2);
+            border-radius:6px;padding:6px">
+            <div style="font-family:var(--mono);font-size:14px;
+              font-weight:700;color:${h.rating!==null?'var(--accent)':'var(--text-dim)'}">
+              ${h.rating !== null ? h.rating : '?'}
+            </div>
+            <div style="font-size:9px;color:var(--text-dim)">
+              速度指数${h.ratingN>0?`(${h.ratingN}走)`:''}
+            </div>
+          </div>
+          <div style="text-align:center;background:var(--surface2);
+            border-radius:6px;padding:6px">
+            <div style="font-family:var(--mono);font-size:14px;
+              font-weight:700;color:var(--text)">
+              ${(h.estProb*100).toFixed(0)}%
+            </div>
+            <div style="font-size:9px;color:var(--text-dim)">推定勝率</div>
+          </div>
+        </div>
+
+        <div style="margin-top:6px;font-family:var(--mono);font-size:10px;
+          color:var(--text-dim)">
+          ${h.jockey ? `騎手: ${h.jockey}` : ''}
+          ${h.weight ? ` / ${h.weight}kg` : ''}
+          ${h.bodyWeight ? ` / 馬体重: ${h.bodyWeight}` : ''}
+        </div>
+      </div>
+    `).join('')}
+  `;
+}
   
 // ── Init ──
 function init() {
-  loadRacesData(); // ← この1行を追加
+  loadRacesData();
+  loadShutuba();    // ← 追加
   loadRecords();
-  // ...以下既存コード
-  loadKillSwitch();
   addHorse();
   addHorse();
   renderRecords('all');
@@ -687,14 +1045,14 @@ function init() {
 
 // ── Tabs ──
 function switchTab(id) {
-  document.querySelectorAll('.tab').forEach((t,i) => {
-    const ids = ['calc','records','stats'];
-    t.classList.toggle('active', ids[i] === id);
+  const ids = ['week','calc','records','stats','detail'];
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    t.classList.toggle('active', ['week','calc','records','stats'][i] === id);
   });
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-' + id).classList.add('active');
   if (id === 'records') renderRecords('all');
-  if (id === 'stats') updateStats();
+  if (id === 'stats')   updateStats();
 }
 
 // ── Horse management ──
