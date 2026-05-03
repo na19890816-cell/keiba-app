@@ -3415,5 +3415,246 @@
       }
     ],
     "fetchedAt": "2026-04-30T13:37:47.385Z"
+  },
+  {
+    "id": "202605020611",
+    "name": "NHKマイルC",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1600",
+    "track": "芝",
+    "dir": "左",
+    "grade": "",
+    "startTime": "15:40",
+    "raceData1": "15:40発走 / 芝1600m (左 A)",
+    "raceData2": "2回 東京 6日目 サラ系３歳 オープン (国際) 牡・牝(指) 馬齢 25頭 本賞金:13000,5200,3300,2000,1300万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アスクイキゴミ",
+        "jockey": "戸崎圭",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アドマイヤクワッズ",
+        "jockey": "坂井",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アルデトップガン",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アンドゥーリル",
+        "jockey": "岩田望",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エコロアルバ",
+        "jockey": "横山和",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "オルネーロ",
+        "jockey": "津村",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "カヴァレリッツォ",
+        "jockey": "西村淳",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ギリーズボール",
+        "jockey": "西塚",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "クールデイトナ",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "サンダーストラック",
+        "jockey": "ルメール",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジーネキング",
+        "jockey": "斎藤新",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ストームサンダー",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "スペルーチェ",
+        "jockey": "大野",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ダイヤモンドノット",
+        "jockey": "川田",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "タガノアラリア",
+        "jockey": "菅原明",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ディールメーカー",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "トラスコンガーデン",
+        "jockey": "○○",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ハッピーエンジェル",
+        "jockey": "三浦",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "バルセシート",
+        "jockey": "北村友",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "フクチャンショウ",
+        "jockey": "横山武",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ユウファラオ",
+        "jockey": "松若",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "リゾートアイランド",
+        "jockey": "佐々木",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "レザベーション",
+        "jockey": "原",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ロデオドライブ",
+        "jockey": "レーン",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ローベルクランツ",
+        "jockey": "松山",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-03T04:20:02.186Z"
   }
 ]
