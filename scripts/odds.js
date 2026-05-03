@@ -25,6 +25,8 @@ async function fetchOdds(raceId) {
       if (!res.ok) continue;
 
       const txt = await res.text();
+      // ← この行の直後に追加
+      console.log(`  APIレスポンス(先頭100文字): ${txt.slice(0,100)}`);
 
       // JSONレスポンスの処理
       if (txt.includes('"status":"ok"') || txt.includes('"WIN_SHOW"')) {
