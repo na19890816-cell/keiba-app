@@ -145,6 +145,45 @@ async function fetchShutuba(raceId) {
 
     if (horses.length === 0) return null;
 
+// 予想オッズをAPIから取得
+    try {
+      await sleep(2000);
+      const oddsUrl = `https://race.netkeiba.com/api/api_get_jra_odds.html?race_id=${raceId}&type=1&format=json`;
+      const oddsRes = await fetch(oddsUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          'Referer': `https://race.netkeiba.com/race/shutuba.html?race_id=${raceId}`
+        }
+      });
+      if (oddsRes.ok) {
+        const txt = await oddsRes.text();
+        // レスポンスの形式を確認してパース
+        const clean = txt.trim();
+        if (clean.startsWith('{') || clean.startsWith('[')) {
+          const json = JSON.parse(clean);
+          // WIN_SHOWまたはWinOddsの形式に対応
+          const winData = json?.data?.odds?.WIN_SHOW
+                       || json?.data?.WIN_SHOW
+                       || json?.odds?.WIN
+                       || null;
+          if (winData) {
+            for (const h of horses) {
+              const key = String(h.number).padStart(2, '0');
+              if (winData[key]) {
+                h.odds = parseFloat(winData[key][0] || winData[key]) || 0;
+              }
+            }
+            const sample = horses.find(h => h.odds > 0);
+            console.log(`  オッズ取得: ${sample?.name} ${sample?.odds}倍`);
+          } else {
+            console.log(`  オッズ形式未対応: ${clean.slice(0,80)}`);
+          }
+        }
+      }
+    } catch (e) {
+      console.log(`  オッズ取得失敗: ${e.message}`);
+    }
+    
     return {
       id:        raceId,
       name:      raceName,
