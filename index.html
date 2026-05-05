@@ -733,44 +733,44 @@ async function loadShutuba() {
 
 function buildPicks() {
   allPicks = [];
+
   for (const race of shuTubaData) {
     const racePicks = [];
-    for (const horse of race.horses) {
-      if (!horse.odds || horse.odds <= 0) continue;
 
-      // 簡易スピード指数（races.jsonに過去データがある場合）
-      const ratingResult = calcSpeedRating(horse.name);
-      const rating = ratingResult ? ratingResult.rating : null;
+    for (let i = 0; i < race.horses.length; i++) {
+      const horse = race.horses[i];
 
-      // 全馬の指数からプール推定（指数がない馬は市場確率を使用）
-      const marketProb = 1 / horse.odds;
-      const estProb = rating !== null
-        ? estimateProbFromRating(horse, race.horses)
-        : marketProb * 0.85; // 指数なし → 市場確率×0.85で保守的に
+      // オッズが0なら暫定値を使用（馬番順に3倍〜20倍）
+      const effectiveOdds = (horse.odds && horse.odds > 0)
+        ? horse.odds
+        : 3 + (i / Math.max(race.horses.length - 1, 1)) * 17;
 
-      const ev  = estProb * horse.odds - 1;
-      const rrr = estProb * horse.odds;
+      const isOddsReal = horse.odds > 0;
+      const estProb    = estimateProbFromRating(horse, race.horses);
+      const ev         = estProb * effectiveOdds - 1;
+      const rrr        = estProb * effectiveOdds;
 
-      if (ev >= 0.10) { // 様子見以上を全てピック候補に
+      if (ev >= 0.10) {
         racePicks.push({
-          horse,
-          race,
-          ev,
-          rrr,
-          estProb,
-          rating,
+          horse: { ...horse, odds: effectiveOdds, isOddsReal },
+          race, ev, rrr, estProb,
+          rating: calcSpeedRating(horse.name),
           verdict: ev >= 0.20 && rrr >= 2.0 ? 'bet'
                  : ev >= 0.10 ? 'watch' : 'skip'
         });
       }
     }
+
     if (racePicks.length > 0) {
-      allPicks.push({ race, picks: racePicks });
+      // EV降順でソート
+      racePicks.sort((a, b) => b.ev - a.ev);
+      allPicks.push({ race, picks: racePicks.slice(0, 3) }); // 上位3頭まで
     }
   }
+
   console.log(`ピックアップ: ${allPicks.length}レース`);
 }
-
+  
 function estimateProbFromRating(targetHorse, allHorses) {
   const ratings = allHorses.map(h => {
     const r = calcSpeedRating(h.name);
