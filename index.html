@@ -408,7 +408,7 @@ body {
 </div> 
 
 <!-- ──────── CALC SCREEN ──────── -->
-<div class="screen active" id="screen-calc">
+<div class="screen" id="screen-calc">
 
   <div class="section-title">レース情報</div>
   <div class="card">
@@ -859,8 +859,8 @@ function renderPicks(filter) {
                 color:var(--text-dim)">
                 ${p.horse.jockey||''}
                 ${p.rating !== null
-                  ? ` 指数:${p.rating}`
-                  : ' 指数:計算中'}
+                ? ` 指数:${p.rating.rating}`
+                : ' 指数:計算中'}
               </div>
             </div>
           </div>
@@ -869,10 +869,13 @@ function renderPicks(filter) {
               font-weight:700;color:${p.ev>=0.2?'var(--green)':'var(--amber)'}">
               EV+${(p.ev*100).toFixed(0)}%
             </div>
-            <div style="font-family:var(--mono);font-size:10px;
-              color:var(--text-muted)">
-              ${p.horse.odds}倍
-            </div>
+            // 修正後
+<div style="font-family:var(--mono);font-size:10px;
+  color:var(--text-muted)">
+  ${p.horse.isOddsReal
+    ? p.horse.odds + '倍'
+    : '<span style="color:var(--amber)">オッズ未確定</span>'}
+</div>
           </div>
         </div>
       `).join('')}
