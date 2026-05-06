@@ -996,39 +996,122 @@ function renderRaceDetail(race) {
         <!-- 根拠データ -->
         <div style="margin-top:8px;display:grid;
           grid-template-columns:1fr 1fr 1fr;gap:6px">
-          <div style="text-align:center;background:var(--surface2);
-            border-radius:6px;padding:6px">
-            <div style="font-family:var(--mono);font-size:14px;
-              font-weight:700;color:var(--text)">
-              ${h.odds > 0 ? h.odds+'倍' : '-'}
+function renderRaceDetail(race) {
+  const bankroll = parseFloat(localStorage.getItem('keiba_bankroll') || '10000');
+  const el = document.getElementById('detail-content');
+  if (!el) return;
+
+  // 全馬のEV計算（グローバルのhorsesと衝突しないようraceHorsesを使用）
+  const raceHorses = race.horses.map(h => {
+    const effectiveOdds = (h.odds && h.odds > 0)
+      ? h.odds
+      : 3 + (race.horses.indexOf(h) / Math.max(race.horses.length-1,1)) * 17;
+    const isOddsReal = h.odds > 0;
+    const estProb = estimateProbFromRating(h, race.horses);
+    const ev  = estProb * effectiveOdds - 1;
+    const rrr = estProb * effectiveOdds;
+    const kelly = Math.max(0, (estProb*(effectiveOdds-1)-(1-estProb))/(effectiveOdds-1));
+    const betAmt = ev >= 0.20 && rrr >= 2.0
+      ? Math.floor(bankroll * Math.min(kelly*0.25, 0.02) / 100) * 100 : 0;
+    const ratingResult = calcSpeedRating(h.name);
+    const ratingVal  = ratingResult ? ratingResult.rating : null;
+    const ratingN    = ratingResult ? ratingResult.n : 0;
+    return {
+      ...h,
+      effectiveOdds, isOddsReal,
+      ev, rrr, estProb, betAmt,
+      ratingVal, ratingN,
+      verdict: ev >= 0.20 && rrr >= 2.0 ? 'bet'
+             : ev >= 0.10 ? 'watch' : 'skip'
+    };
+  }).sort((a,b) => (b.ev||0) - (a.ev||0));
+
+  el.innerHTML = `
+    <div class="card" style="margin-bottom:14px">
+      <div style="font-size:16px;font-weight:700;margin-bottom:6px">
+        ${race.name||race.id}
+      </div>
+      <div style="font-family:var(--mono);font-size:11px;color:var(--text-muted);line-height:1.8">
+        ${race.venue} / ${race.track||''}${race.distance||''}m
+        ${race.dir?`（${race.dir}）`:''}
+        ${race.grade?`<span style="color:var(--amber)">${race.grade}</span>`:''}
+        <br>${race.startTime?`発走 ${race.startTime}`:''}
+        / ${race.horses.length}頭立て
+        <br><span style="color:var(--text-dim)">${race.raceData1||''}</span>
+      </div>
+    </div>
+
+    ${raceHorses.some(h=>h.verdict==='bet')?`
+    <div class="card" style="margin-bottom:14px;border-color:rgba(61,224,142,0.3);background:var(--green-dim)">
+      <div class="label" style="color:var(--green);margin-bottom:8px">推奨馬券</div>
+      ${raceHorses.filter(h=>h.verdict==='bet').map(h=>`
+        <div style="display:flex;justify-content:space-between;align-items:center;
+          padding:6px 0;border-bottom:1px solid rgba(61,224,142,0.15)">
+          <div>
+            <span style="font-family:var(--mono);font-weight:700;color:var(--green)">
+              ◎ ${h.number||'?'}番</span>
+            <span style="margin-left:8px;font-size:13px">${h.name}</span>
+            <span style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-left:6px">
+              ${h.isOddsReal?h.effectiveOdds+'倍':'オッズ未確定'}</span>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:var(--mono);font-size:13px;font-weight:700;color:var(--green)">
+              単勝 ¥${h.betAmt.toLocaleString()}</div>
+            <div style="font-family:var(--mono);font-size:10px;color:var(--text-muted)">
+              EV+${(h.ev*100).toFixed(0)}%</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>`:''}
+
+    <div class="section-title">全出走馬</div>
+    ${raceHorses.map(h=>`
+      <div class="card" style="margin-bottom:10px;
+        ${h.verdict==='bet'?'border-color:rgba(61,224,142,0.25)':
+          h.verdict==='watch'?'border-color:rgba(245,166,35,0.25)':''}">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <div>
+            <span style="font-family:var(--mono);font-size:11px;font-weight:700;
+              color:${h.verdict==='bet'?'var(--green)':h.verdict==='watch'?'var(--amber)':'var(--text-dim)'};
+              margin-right:8px">
+              ${h.verdict==='bet'?'◎':h.verdict==='watch'?'△':'　'}
+            </span>
+            <span style="font-size:14px;font-weight:500">
+              ${h.number||'?'}番 ${h.name}
+            </span>
+          </div>
+          <div style="font-family:var(--mono);font-size:12px;font-weight:700;
+            color:${h.ev>=0.2?'var(--green)':h.ev>=0?'var(--amber)':'var(--text-muted)'}">
+            EV${h.ev>=0?'+':''}${(h.ev*100).toFixed(0)}%
+          </div>
+        </div>
+        <div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+          <div style="text-align:center;background:var(--surface2);border-radius:6px;padding:6px">
+            <div style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--text)">
+              ${h.isOddsReal?h.effectiveOdds+'倍':'-'}
             </div>
             <div style="font-size:9px;color:var(--text-dim)">単勝オッズ</div>
           </div>
-          <div style="text-align:center;background:var(--surface2);
-            border-radius:6px;padding:6px">
-            <div style="font-family:var(--mono);font-size:14px;
-              font-weight:700;color:${h.rating!==null?'var(--accent)':'var(--text-dim)'}">
-              ${h.rating !== null ? h.rating : '?'}
+          <div style="text-align:center;background:var(--surface2);border-radius:6px;padding:6px">
+            <div style="font-family:var(--mono);font-size:14px;font-weight:700;
+              color:${h.ratingVal!==null?'var(--accent)':'var(--text-dim)'}">
+              ${h.ratingVal!==null?h.ratingVal:'?'}
             </div>
             <div style="font-size:9px;color:var(--text-dim)">
               速度指数${h.ratingN>0?`(${h.ratingN}走)`:''}
             </div>
           </div>
-          <div style="text-align:center;background:var(--surface2);
-            border-radius:6px;padding:6px">
-            <div style="font-family:var(--mono);font-size:14px;
-              font-weight:700;color:var(--text)">
-              ${(h.estProb*100).toFixed(0)}%
+          <div style="text-align:center;background:var(--surface2);border-radius:6px;padding:6px">
+            <div style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--text)">
+              ${isNaN(h.estProb)?'?':(h.estProb*100).toFixed(0)+'%'}
             </div>
             <div style="font-size:9px;color:var(--text-dim)">推定勝率</div>
           </div>
         </div>
-
-        <div style="margin-top:6px;font-family:var(--mono);font-size:10px;
-          color:var(--text-dim)">
-          ${h.jockey ? `騎手: ${h.jockey}` : ''}
-          ${h.weight ? ` / ${h.weight}kg` : ''}
-          ${h.bodyWeight ? ` / 馬体重: ${h.bodyWeight}` : ''}
+        <div style="margin-top:6px;font-family:var(--mono);font-size:10px;color:var(--text-dim)">
+          ${h.jockey?`騎手: ${h.jockey}`:''}
+          ${h.weight?` / ${h.weight}kg`:''}
+          ${h.bodyWeight?` / 馬体重: ${h.bodyWeight}`:''}
         </div>
       </div>
     `).join('')}
