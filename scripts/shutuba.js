@@ -115,9 +115,15 @@ async function fetchShutuba(raceId) {
       const name   = nameEl.text().trim() || $(cols[3]).text().trim();
       if (!name || name.length < 2) return;
 
-      // 馬番・枠番
-      const gate   = parseInt($(cols[0]).text().trim()) || 0;
-      const number = parseInt($(cols[1]).text().trim()) || 0;
+      // 馬番・枠番をより確実に取得
+      let gate = 0, number = 0;
+      // テキストが数字のみの列を枠番・馬番として取得
+      for (let ci = 0; ci < Math.min(cols.length, 5); ci++) {
+        const txt = $(cols[ci]).text().trim();
+        const n = parseInt(txt);
+        if (!isNaN(n) && n >= 1 && n <= 8 && gate === 0) gate = n;
+        else if (!isNaN(n) && n >= 1 && n <= 18 && number === 0) number = n;
+      }
 
       // 騎手
       const jockeyEl = $(cols[6]).find('a').first();
