@@ -901,7 +901,7 @@ function renderRaceDetail(race) {
   if (!el) return;
 
   // 全馬のEV計算
-  const horses = race.horses.map(h => {
+  const raceHorseList = race.horses.map(h => {
     if (!h.odds || h.odds <= 0) return { ...h, ev: null, verdict: 'skip' };
     const estProb = estimateProbFromRating(h, race.horses);
     const ev      = estProb * h.odds - 1;
