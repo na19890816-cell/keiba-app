@@ -162,7 +162,7 @@ input:focus,select:focus{outline:none;border-color:var(--green)}
   <div id="header">
     <div id="header-top">
       <div id="logo">KEIBA<span>·</span>EV</div>
-      <div id="kill-badge" class="running">● RUNNING</div>
+      <div id="kill-badge" class="running" onclick="resetKillSwitch()" title="クリックで手動リセット">● RUNNING</div>
     </div>
     <!-- RMRF 2.1: 動的λ表示バー -->
     <div id="lambda-bar">
@@ -282,19 +282,30 @@ let rmrfState = {
   ddThreshold: 0.20,    // Kill Switch DD閾値
   gamma: 2.0,           // 不確実性ペナルティ強度
   currentLambda: null,  // 最後に計算されたλ
-  calibData: []         // 較正データ [{myP, mktP, won}]
+  calibData: [],        // 較正データ [{myP, mktP, won}]
+  lambdaHistory: [],
+  initialBankroll: 100000, // [FIX] 設定可能な初期資金
+  peakDD: 0,
+  logReturns: [],
+  lastTStat: null
 };
 
 // ══════════════════════════════════════════════════════════
 // localStorage
 // ══════════════════════════════════════════════════════════
 function saveLocal(){
-  localStorage.setItem('keibaev_records', JSON.stringify(records));
-  localStorage.setItem('keibaev_rmrf', JSON.stringify(rmrfState));
+  try{
+    localStorage.setItem('keibaev_records', JSON.stringify(records));
+    localStorage.setItem('keibaev_rmrf', JSON.stringify(rmrfState));
+  }catch(e){console.warn('localStorage save failed:',e);}
 }
 function loadLocal(){
-  try{records=JSON.parse(localStorage.getItem('keibaev_records')||'[]');}catch{records=[];}
-  try{rmrfState={...rmrfState,...JSON.parse(localStorage.getItem('keibaev_rmrf')||'{}')};}catch{}
+  try{
+    const r=localStorage.getItem('keibaev_records');
+    if(r) records=JSON.parse(r);
+    const s=localStorage.getItem('keibaev_rmrf');
+    if(s) rmrfState={...rmrfState,...JSON.parse(s)};
+  }catch(e){console.warn('localStorage load failed:',e);}
 }
 
 // ══════════════════════════════════════════════════════════
@@ -314,6 +325,9 @@ function showScreen(id){
 // ══════════════════════════════════════════════════════════
 // データ取得
 // ══════════════════════════════════════════════════════════
+// [OPT] スピード指数メモ化キャッシュ（loadData時にクリア）
+const speedCache = {};
+
 async function loadData(){
   try{
     const [s,r]=await Promise.all([
@@ -323,6 +337,8 @@ async function loadData(){
     if(s&&s.ok) shuTubaData=await s.json();
     if(r&&r.ok) racesData=await r.json();
   }catch(e){console.warn('data load:',e);}
+  // [FIX] データ更新時にキャッシュを無効化
+  Object.keys(speedCache).forEach(k=>delete speedCache[k]);
   buildCourseStats();
   buildPicks();
   renderLambdaBar();
@@ -363,6 +379,10 @@ function parseTime(s){
 // スピード指数
 // ══════════════════════════════════════════════════════════
 function calcSpeedRating(horseName){
+  if(!horseName) return 40;
+  // [OPT] キャッシュヒット
+  if(speedCache[horseName]!==undefined) return speedCache[horseName];
+
   const key3=horseName.slice(0,3);
   const weights=[0.35,0.25,0.20,0.12,0.08];
   const condPenalty={良:0,稍重:-1,重:-3,不良:-5};
@@ -372,7 +392,9 @@ function calcSpeedRating(horseName){
     if(!courseStats[ck]) return;
     const {mu,sigma}=courseStats[ck];
     if(sigma===0) return;
-    const h=race.horses?.find(h=>h.name?.startsWith(key3));
+    // [FIX] 完全一致優先 → 前方3文字フォールバック
+    const h=race.horses?.find(h=>h.name===horseName)
+          ||race.horses?.find(h=>h.name?.startsWith(key3));
     if(!h?.time) return;
     const secs=parseTime(h.time);
     if(!secs) return;
@@ -380,11 +402,15 @@ function calcSpeedRating(horseName){
     rating+=(condPenalty[race.cond]||0);
     results.push(rating);
   });
-  if(results.length===0) return 40;
-  const recent=results.slice(-5);
-  let w=0,wsum=0;
-  recent.forEach((r,i)=>{const wi=weights[recent.length-1-i]||0.08;w+=r*wi;wsum+=wi;});
-  return wsum>0?w/wsum:40;
+  let result=40;
+  if(results.length>0){
+    const recent=results.slice(-5);
+    let w=0,wsum=0;
+    recent.forEach((r,i)=>{const wi=weights[recent.length-1-i]||0.08;w+=r*wi;wsum+=wi;});
+    result=wsum>0?w/wsum:40;
+  }
+  speedCache[horseName]=result; // [OPT] キャッシュ書き込み
+  return result;
 }
 
 function estimateWinProb(horse,allHorses){
@@ -392,23 +418,42 @@ function estimateWinProb(horse,allHorses){
   const softmax=ratings.map(r=>Math.exp(r/10));
   const total=softmax.reduce((a,b)=>a+b,0);
   const idx=allHorses.indexOf(horse);
-  return softmax[idx]/total;
+  // [FIX] 0除算ガード
+  return total>0?softmax[idx]/total:1/Math.max(allHorses.length,1);
 }
 
 // ══════════════════════════════════════════════════════════
-// BUG FIX A: 今週フィルター
+// [FIX] 今週フィルター（日付ベース・クロスブラウザ安全版）
+// race_idの先頭8桁(YYYYMMDD)をISO形式に変換してから解釈する
+// Date.parse("20260508")はSafariでNaNになるため要注意
 // ══════════════════════════════════════════════════════════
-function getThisWeekPrefix(){
-  const d=new Date();
-  // 土日をまたいでも正しく「この週末」を返す
-  // → 直近の土曜を基準に年月を取る
-  const day=d.getDay(); // 0=日,6=土
-  const diff=day===0?-1:day===6?0:6-day; // 直近または今週土曜までの日数
-  const sat=new Date(d);
-  sat.setDate(d.getDate()+diff);
-  const y=sat.getFullYear();
-  const m=String(sat.getMonth()+1).padStart(2,'0');
-  return `${y}${m}`;
+function getThisWeekRange(){
+  const now=new Date();
+  const day=now.getDay();
+  const diffToMon=day===0?-6:1-day;
+  const monday=new Date(now);
+  monday.setDate(now.getDate()+diffToMon);
+  monday.setHours(0,0,0,0);
+  const sunday=new Date(monday);
+  sunday.setDate(monday.getDate()+6);
+  sunday.setHours(23,59,59,999);
+  return{start:monday,end:sunday};
+}
+
+function isRaceThisWeek(raceId){
+  if(!raceId||raceId.length<8) return false;
+  const ds=raceId.slice(0,8); // "20260510"
+  // [FIX] "20260510" → "2026-05-10" に変換してISO解釈（Safari安全）
+  const isoStr=`${ds.slice(0,4)}-${ds.slice(4,6)}-${ds.slice(6,8)}`;
+  const raceDate=new Date(isoStr);
+  if(isNaN(raceDate.getTime())){
+    // フォールバック: 年月prefix照合
+    const now=new Date();
+    const prefix=`${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}`;
+    return raceId.startsWith(prefix);
+  }
+  const{start,end}=getThisWeekRange();
+  return raceDate>=start&&raceDate<=end;
 }
 
 // ══════════════════════════════════════════════════════════
@@ -419,11 +464,11 @@ function getThisWeekPrefix(){
 // ══════════════════════════════════════════════════════════
 function buildPicks(){
   allPicks=[];
-  const prefix=getThisWeekPrefix();
+  const bankroll=getBankroll();
 
   for(const race of shuTubaData){
-    // [FIX A] 今週フィルター
-    if(!race.id?.startsWith(prefix)) continue;
+    // [FIX A] 今週フィルター（日付ベース、月跨ぎ対応）
+    if(!isRaceThisWeek(race.id)) continue;
 
     // [FIX B] オッズ未確定はスキップ（EV異常値の根本原因）
     const hasOdds=race.horses?.some(h=>h.odds>0);
@@ -490,8 +535,8 @@ function buildPicks(){
 }
 
 function getBankroll(){
-  // 収支記録から現在の銀行ロールを計算
-  const initial=100000;
+  // [FIX] 初期資金をrmrfState.initialBankrollから取得（設定可能）
+  const initial=rmrfState.initialBankroll||100000;
   const pnl=records.reduce((s,r)=>{
     const b=Number(r.betAmt)||0;
     return r.result==='win'?s+(Number(r.odds||0)-1)*b:s-b;
@@ -504,8 +549,6 @@ function getBankroll(){
 // ══════════════════════════════════════════════════════════
 function renderWeek(){
   const el=document.getElementById('week-list');
-
-  // ピックを含むレースを先頭に
   const raceMap={};
   allPicks.forEach(p=>{
     if(!raceMap[p.race.id]) raceMap[p.race.id]={race:p.race,picks:[]};
@@ -513,9 +556,8 @@ function renderWeek(){
   });
 
   // ピックのないレースも表示（EV計算用）
-  const prefix=getThisWeekPrefix();
   shuTubaData
-    .filter(r=>r.id?.startsWith(prefix))
+    .filter(r=>isRaceThisWeek(r.id))
     .filter(r=>r.horses?.some(h=>h.odds>0))
     .forEach(r=>{if(!raceMap[r.id]) raceMap[r.id]={race:r,picks:[]};});
 
@@ -716,7 +758,7 @@ function dynamicLambda(histReturns, peakDD, uncertainty=0){
 function updateLambda(){
   if(records.length===0){
     rmrfState.currentLambda=rmrfState.lambdaMax*0.15;
-    rmrfState.lambdaHistory=[];
+    rmrfState.lambdaHistory=rmrfState.lambdaHistory||[];
     saveLocal();
     return;
   }
@@ -724,22 +766,21 @@ function updateLambda(){
   let wealth=1.0, peak=1.0;
   let peakDD=0;
   const logReturns=[];
+  // [FIX] initialBankrollを使用（ハードコード除去）
+  const initBR=rmrfState.initialBankroll||100000;
 
-  // 1/4Kelly調整前の「バンクロール比リターン」を計算
   records.forEach(r=>{
-    const betFrac=(Number(r.betAmt)||0)/100000; // 初期BRに対する比率
+    const betFrac=(Number(r.betAmt)||0)/initBR;
     if(betFrac<=0) return;
     const logR=r.result==='win'
       ? Math.log(1+betFrac*(Number(r.odds||1)-1))
-      : Math.log(1-betFrac);
+      : Math.log(Math.max(1-betFrac,1e-10)); // [FIX] 0以下ガード
     logReturns.push(logR);
     wealth*=Math.exp(logR);
     peak=Math.max(peak,wealth);
     peakDD=Math.max(peakDD,1-wealth/peak);
   });
 
-  // RMRF 2.1: 予測不確実性（データ量から推定）
-  // データ200件未満: 不確実性高, 1000件超: 不確実性低
   const n=racesData.length;
   const uncertainty=n<200?0.8:n<500?0.5:n<1000?0.2:0.05;
 
@@ -751,12 +792,23 @@ function updateLambda(){
     ? (mean(logReturns)/(std(logReturns)/Math.sqrt(effectiveSampleSize(logReturns))))||0
     : null;
 
-  // λ履歴に追記
   if(!rmrfState.lambdaHistory) rmrfState.lambdaHistory=[];
   rmrfState.lambdaHistory.push(lam);
   if(rmrfState.lambdaHistory.length>50) rmrfState.lambdaHistory.shift();
 
   saveLocal();
+}
+
+// [FIX] Kill Switch手動リセット
+function resetKillSwitch(){
+  const badge=document.getElementById('kill-badge');
+  if(!systemRunning){
+    systemRunning=true;
+    badge.textContent='● RUNNING';
+    badge.className='running';
+    badge.style.cursor='default';
+    toast('Kill Switch をリセットしました');
+  }
 }
 
 /**
@@ -1046,7 +1098,7 @@ function renderCalib(){
     {label:'20〜40%',min:0.2,max:0.4,records:[]},
     {label:'40〜60%',min:0.4,max:0.6,records:[]},
     {label:'60〜80%',min:0.6,max:0.8,records:[]},
-    {label:'80〜100%',min:0.8,max:1.0,records:[]},
+    {label:'80〜100%',min:0.8,max:1.01,records:[]}, // [FIX] 1.0を含む
   ];
   data.forEach(d=>{
     const b=buckets.find(b=>d.myP>=b.min&&d.myP<b.max);
