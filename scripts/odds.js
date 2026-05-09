@@ -14,7 +14,8 @@ const CONFIG = {
   DATA_DIR: 'data',
   SHUTUBA_FILE: 'shutuba.json',
   ODDS_BACKUP_FILE: 'odds_backup.json',
-  MAX_CONCURRENT_REQUESTS: 5
+  MAX_CONCURRENT_REQUESTS: 5,
+  TIMEOUT: 10000
 };
 
 // ===== ユーティリティ =====
@@ -76,26 +77,33 @@ class OddsFetcher {
 
     for (const url of urls) {
       try {
-        const res = await fetch(url, { 
-          headers: this.baseHeaders,
-          timeout: 10000
-        });
-        
-        if (!res.ok) continue;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), CONFIG.TIMEOUT);
 
-        const txt = await res.text();
-        
-        // JSONレスポンスの処理
-        if (txt.includes('"status":"ok"') || txt.includes('"WIN_SHOW"')) {
-          try {
-            const json = JSON.parse(txt);
-            const winData = json?.data?.odds?.WIN_SHOW || json?.data?.WIN_SHOW;
-            if (winData && Object.keys(winData).length > 0) {
-              return { data: winData, source: 'api' };
+        try {
+          const res = await fetch(url, { 
+            headers: this.baseHeaders,
+            signal: controller.signal
+          });
+          
+          if (!res.ok) continue;
+
+          const txt = await res.text();
+          
+          // JSONレスポンスの処理
+          if (txt.includes('"status":"ok"') || txt.includes('"WIN_SHOW"')) {
+            try {
+              const json = JSON.parse(txt);
+              const winData = json?.data?.odds?.WIN_SHOW || json?.data?.WIN_SHOW;
+              if (winData && Object.keys(winData).length > 0) {
+                return { data: winData, source: 'api' };
+              }
+            } catch (e) {
+              console.debug(`JSON解析失敗: ${e.message}`);
             }
-          } catch (e) {
-            console.debug(`JSON解析失敗: ${e.message}`);
           }
+        } finally {
+          clearTimeout(timeoutId);
         }
       } catch (e) {
         console.debug(`API取得失敗: ${e.message}`);
@@ -109,41 +117,49 @@ class OddsFetcher {
     const url = `https://race.netkeiba.com/odds/index.html?type=b1&race_id=${this.raceId}&housiki=ct`;
     
     try {
-      const res = await fetch(url, { 
-        headers: this.baseHeaders,
-        timeout: 10000
-      });
-      
-      if (!res.ok) return null;
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), CONFIG.TIMEOUT);
 
-      const html = await res.text();
-      
-      if (!html.includes('Odds') && !html.includes('単勝')) {
-        return null;
-      }
-
-      const odds = {};
-      const regex = /umaban['"]\s*:\s*['"](\d+)['"]\s*.*?odds['"]\s*:\s*['"]([0-9.]+)['"]/gs;
-      const matches = [...html.matchAll(regex)];
-
-      if (matches.length === 0) {
-        // 代替パターンを試行
-        const altRegex = /data-umaban="(\d+)".*?data-odds="([0-9.]+)"/gs;
-        const altMatches = [...html.matchAll(altRegex)];
+      try {
+        const res = await fetch(url, { 
+          headers: this.baseHeaders,
+          signal: controller.signal
+        });
         
-        for (const m of altMatches) {
-          const num = m[1].padStart(2, '0');
-          odds[num] = [parseFloat(m[2])];
-        }
-      } else {
-        for (const m of matches) {
-          const num = m[1].padStart(2, '0');
-          odds[num] = [parseFloat(m[2])];
-        }
-      }
+        if (!res.ok) return null;
 
-      if (Object.keys(odds).length > 0) {
-        return { data: odds, source: 'html' };
+        const html = await res.text();
+        
+        if (!html.includes('Odds') && !html.includes('単勝')) {
+          return null;
+        }
+
+        const odds = {};
+        // 修正: マルチラインマッチングを改善
+        const regex = /umaban['"]\s*:\s*['"](\d+)['"]\s*[\s\S]*?odds['"]\s*:\s*['"]([0-9.]+)['"]/g;
+        const matches = [...html.matchAll(regex)];
+
+        if (matches.length === 0) {
+          // 代替パターンを試行
+          const altRegex = /data-umaban="(\d+)".*?data-odds="([0-9.]+)"/gs;
+          const altMatches = [...html.matchAll(altRegex)];
+          
+          for (const m of altMatches) {
+            const num = m[1].padStart(2, '0');
+            odds[num] = [parseFloat(m[2])];
+          }
+        } else {
+          for (const m of matches) {
+            const num = m[1].padStart(2, '0');
+            odds[num] = [parseFloat(m[2])];
+          }
+        }
+
+        if (Object.keys(odds).length > 0) {
+          return { data: odds, source: 'html' };
+        }
+      } finally {
+        clearTimeout(timeoutId);
       }
     } catch (e) {
       console.debug(`HTML取得失敗: ${e.message}`);
@@ -183,10 +199,15 @@ class RaceFilter {
   }
 
   shouldFetch(race) {
-    // 発走時間チェック
-    if (!race.startTime) return false;
+    // 修正: null/undefined チェック + 形式検証を強化
+    if (!race?.startTime || typeof race.startTime !== 'string') {
+      return false;
+    }
 
-    const [h, min] = race.startTime.split(':').map(Number);
+    const timeParts = race.startTime.split(':');
+    if (timeParts.length !== 2) return false;
+
+    const [h, min] = timeParts.map(Number);
     if (isNaN(h) || isNaN(min)) return false;
 
     const raceTotal = h * 60 + min;
@@ -202,7 +223,17 @@ class RaceFilter {
   }
 
   getPriority(race) {
-    const [h, min] = race.startTime.split(':').map(Number);
+    // 修正: 同じエラーハンドリングを適用
+    if (!race?.startTime || typeof race.startTime !== 'string') {
+      return 999; // 不正なレースは優先度最低
+    }
+
+    const timeParts = race.startTime.split(':');
+    if (timeParts.length !== 2) return 999;
+
+    const [h, min] = timeParts.map(Number);
+    if (isNaN(h) || isNaN(min)) return 999;
+
     const raceTotal = h * 60 + min;
     const diff = raceTotal - this.nowTotal;
     
