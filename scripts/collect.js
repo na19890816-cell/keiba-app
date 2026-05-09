@@ -12,7 +12,8 @@ const CONFIG = {
   MAX_RACES_PER_DAY: 8,
   DATA_DIR: 'data',
   DATA_FILE: 'races.json',
-  USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+  USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+  TIMEOUT: 10000
 };
 
 const VENUE_MAP = {
@@ -235,38 +236,46 @@ async function fetchRaceResult(raceId) {
   const url = `https://db.netkeiba.com/race/${raceId}/`;
   
   return withRetry(async () => {
-    const res = await fetch(url, {
-      headers: { 'User-Agent': CONFIG.USER_AGENT },
-      timeout: 10000
-    });
-    
-    if (!res.ok) return null;
+    // 修正: タイムアウト制御を AbortController で実装
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), CONFIG.TIMEOUT);
 
-    const buf = await res.arrayBuffer();
-    if (!buf || buf.byteLength === 0) return null;
+    try {
+      const res = await fetch(url, {
+        headers: { 'User-Agent': CONFIG.USER_AGENT },
+        signal: controller.signal
+      });
+      
+      if (!res.ok) return null;
 
-    const decoded = new TextDecoder('euc-jp').decode(buf);
-    const $ = cheerio.load(decoded);
+      const buf = await res.arrayBuffer();
+      if (!buf || buf.byteLength === 0) return null;
 
-    const table = $('table.race_table_01');
-    if (!table.length) return null;
+      const decoded = new TextDecoder('euc-jp').decode(buf);
+      const $ = cheerio.load(decoded);
 
-    const { raceName, dm, tm, cm, dm2 } = parseRaceData($);
-    const horses = parseHorseData($, table);
-    
-    if (horses.length === 0) return null;
+      const table = $('table.race_table_01');
+      if (!table.length) return null;
 
-    return {
-      id: raceId,
-      name: raceName,
-      venue: VENUE_MAP[raceId.slice(4, 6)] || raceId.slice(4, 6),
-      year: raceId.slice(0, 4),
-      distance: dm ? dm[1] : '',
-      track: tm ? tm[1] : '',
-      cond: cm ? cm[1] : '',
-      dir: dm2 ? dm2[1] : '',
-      horses,
-    };
+      const { raceName, dm, tm, cm, dm2 } = parseRaceData($);
+      const horses = parseHorseData($, table);
+      
+      if (horses.length === 0) return null;
+
+      return {
+        id: raceId,
+        name: raceName,
+        venue: VENUE_MAP[raceId.slice(4, 6)] || raceId.slice(4, 6),
+        year: raceId.slice(0, 4),
+        distance: dm ? dm[1] : '',
+        track: tm ? tm[1] : '',
+        cond: cm ? cm[1] : '',
+        dir: dm2 ? dm2[1] : '',
+        horses,
+      };
+    } finally {
+      clearTimeout(timeoutId);
+    }
   });
 }
 
