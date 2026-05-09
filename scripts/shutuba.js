@@ -190,39 +190,47 @@ class RaceScraper {
     return withRetry(async () => {
       const url = `https://race.netkeiba.com/top/race_list_sub.html?kaisai_date=${dateStr}`;
       
-      const res = await fetch(url, {
-        headers: { 'User-Agent': CONFIG.USER_AGENT },
-        timeout: CONFIG.TIMEOUT
-      });
-      
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), CONFIG.TIMEOUT);
 
-      const buf = await res.arrayBuffer();
-      const html = new TextDecoder('euc-jp').decode(buf);
-      const $ = cheerio.load(html);
-
-      const ids = new Set();
-
-      // 複数のパターンでrace_idを抽出
-      const patterns = [
-        'a[href*="race_id="]',
-        'a[href*="/race/"]',
-        'a[href*="shutuba.html"]'
-      ];
-
-      for (const pattern of patterns) {
-        $(pattern).each((_, el) => {
-          const href = $(el).attr('href') || '';
-          const match = href.match(/(?:race_id=|\/race\/|race_id=)(\d{12})/);
-          if (match) ids.add(match[1]);
+      try {
+        const res = await fetch(url, {
+          headers: { 'User-Agent': CONFIG.USER_AGENT },
+          signal: controller.signal
         });
-      }
+        
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
 
-      const result = [...ids];
-      console.log(`  ${dateStr}: ${result.length}件のレースID`);
-      return result;
+        const buf = await res.arrayBuffer();
+        const html = new TextDecoder('euc-jp').decode(buf);
+        const $ = cheerio.load(html);
+
+        const ids = new Set();
+
+        // 複数のパターンでrace_idを抽出
+        const patterns = [
+          'a[href*="race_id="]',
+          'a[href*="/race/"]',
+          'a[href*="shutuba.html"]'
+        ];
+
+        for (const pattern of patterns) {
+          $(pattern).each((_, el) => {
+            const href = $(el).attr('href') || '';
+            // 修正: 正規表現の重複を削除
+            const match = href.match(/(?:race_id=|\/race\/)(\d{12})/);
+            if (match) ids.add(match[1]);
+          });
+        }
+
+        const result = [...ids];
+        console.log(`  ${dateStr}: ${result.length}件のレースID`);
+        return result;
+      } finally {
+        clearTimeout(timeoutId);
+      }
     }, CONFIG.MAX_RETRIES, `日程取得:${dateStr}`);
   }
 
@@ -242,33 +250,40 @@ class RaceScraper {
 
     for (const url of urls) {
       try {
-        const res = await fetch(url, {
-          headers: {
-            'User-Agent': CONFIG.USER_AGENT,
-            'Referer': `https://race.netkeiba.com/race/shutuba.html?race_id=${raceId}`
-          },
-          timeout: CONFIG.TIMEOUT
-        });
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), CONFIG.TIMEOUT);
 
-        if (!res.ok) continue;
+        try {
+          const res = await fetch(url, {
+            headers: {
+              'User-Agent': CONFIG.USER_AGENT,
+              'Referer': `https://race.netkeiba.com/race/shutuba.html?race_id=${raceId}`
+            },
+            signal: controller.signal
+          });
 
-        const txt = await res.text();
-        const clean = txt.trim();
+          if (!res.ok) continue;
 
-        if (!clean.startsWith('{') && !clean.startsWith('[')) continue;
+          const txt = await res.text();
+          const clean = txt.trim();
 
-        const json = JSON.parse(clean);
-        const winData = json?.data?.odds?.WIN_SHOW
-                     || json?.data?.WIN_SHOW
-                     || json?.odds?.WIN;
+          if (!clean.startsWith('{') && !clean.startsWith('[')) continue;
 
-        if (winData && Object.keys(winData).length > 0) {
-          // キャッシュに保存
-          oddsCache[raceId] = {
-            data: winData,
-            timestamp: Date.now()
-          };
-          return winData;
+          const json = JSON.parse(clean);
+          const winData = json?.data?.odds?.WIN_SHOW
+                       || json?.data?.WIN_SHOW
+                       || json?.odds?.WIN;
+
+          if (winData && Object.keys(winData).length > 0) {
+            // キャッシュに保存
+            oddsCache[raceId] = {
+              data: winData,
+              timestamp: Date.now()
+            };
+            return winData;
+          }
+        } finally {
+          clearTimeout(timeoutId);
         }
       } catch (e) {
         console.debug(`  オッズAPI試行失敗: ${e.message}`);
@@ -283,40 +298,47 @@ class RaceScraper {
     return withRetry(async () => {
       const url = `https://race.netkeiba.com/race/shutuba.html?race_id=${raceId}`;
       
-      const res = await fetch(url, {
-        headers: { 'User-Agent': CONFIG.USER_AGENT },
-        timeout: CONFIG.TIMEOUT
-      });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), CONFIG.TIMEOUT);
 
-      if (!res.ok) return null;
+      try {
+        const res = await fetch(url, {
+          headers: { 'User-Agent': CONFIG.USER_AGENT },
+          signal: controller.signal
+        });
 
-      const buf = await res.arrayBuffer();
-      const decoded = new TextDecoder('euc-jp').decode(buf);
-      const $ = cheerio.load(decoded);
+        if (!res.ok) return null;
 
-      // レース基本情報の抽出
-      const raceInfo = this.extractRaceInfo($, raceId);
-      if (!raceInfo) return null;
+        const buf = await res.arrayBuffer();
+        const decoded = new TextDecoder('euc-jp').decode(buf);
+        const $ = cheerio.load(decoded);
 
-      // 出走馬情報の抽出
-      const horses = this.extractHorses($);
-      if (horses.length === 0) return null;
+        // レース基本情報の抽出
+        const raceInfo = this.extractRaceInfo($, raceId);
+        if (!raceInfo) return null;
 
-      // オッズ情報の取得
-      const winData = await this.fetchOddsFromAPI(raceId, oddsCache);
-      if (winData) {
-        this.applyOdds(horses, winData);
-        const sample = horses.find(h => h.odds > 0);
-        if (sample) {
-          console.log(`  オッズ取得成功: ${sample.name} ${sample.odds}倍`);
+        // 出走馬情報の抽出
+        const horses = this.extractHorses($);
+        if (horses.length === 0) return null;
+
+        // オッズ情報の取得
+        const winData = await this.fetchOddsFromAPI(raceId, oddsCache);
+        if (winData) {
+          this.applyOdds(horses, winData);
+          const sample = horses.find(h => h.odds > 0);
+          if (sample) {
+            console.log(`  オッズ取得成功: ${sample.name} ${sample.odds}倍`);
+          }
         }
-      }
 
-      return {
-        ...raceInfo,
-        horses,
-        fetchedAt: new Date().toISOString(),
-      };
+        return {
+          ...raceInfo,
+          horses,
+          fetchedAt: new Date().toISOString(),
+        };
+      } finally {
+        clearTimeout(timeoutId);
+      }
     }, CONFIG.MAX_RETRIES, `出馬表:${raceId}`);
   }
 
@@ -394,13 +416,13 @@ class RaceScraper {
     // 斤量
     const weight = $(cols[5]).text().trim();
 
-    // 馬体重
-    const bwTxt = $(cols[8])?.text().trim() || '';
+    // 馬体重 - 修正: オプショナルチェーンを正しく使用
+    const bwTxt = cols[8] ? $(cols[8]).text().trim() : '';
     const bwm = bwTxt.match(/(\d{3})/);
     const bodyWeight = bwm ? parseInt(bwm[1]) : 0;
 
     // 予想オッズ（HTMLから初期値として取得）
-    const oddsEl = $(cols[9])?.text().trim() || $(cols[10])?.text().trim() || '';
+    const oddsEl = cols[9] ? $(cols[9]).text().trim() : cols[10] ? $(cols[10]).text().trim() : '';
     const odds = parseFloat(oddsEl) || 0;
 
     return {
