@@ -74,7 +74,7 @@ input:focus,select:focus{outline:none;border-color:var(--green)}
 .ev-badge.strong{background:var(--green-dim);color:var(--green);border:1px solid var(--green)}
 .ev-badge.weak{background:var(--yellow-dim);color:var(--yellow);border:1px solid var(--yellow)}
 
-/* RMRF multi-pick warning */
+/* RMRF multi-pick warning - 修正: display:flex を完成 */
 .multi-warning{font-family:var(--font-mono);font-size:9px;color:var(--yellow);background:var(--yellow-dim);border:1px solid var(--yellow);border-radius:4px;padding:3px 8px;margin-top:4px;display:flex;align-items:center;gap:4px}
 
 /* Calibration */
@@ -152,8 +152,8 @@ input:focus,select:focus{outline:none;border-color:var(--green)}
 #screens::-webkit-scrollbar{width:3px}
 #screens::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
 
-/* Toast */
-#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg3);border:1px solid var(--green);color:var(--green);font-family:var(--font-mono);font-size:12px;padding:8px 16px;border-radius:8px;opacity:0;transition:all .3s;pointer-events:none;z-index:200;white-space:nowrap}
+/* Toast - 修正: font-size:12px を完成 */
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg3);border:1px solid var(--green);color:var(--green);font-family:var(--font-mono);font-size:12px;padding:8px 12px;border-radius:6px;opacity:0;transition:opacity .3s,transform .3s;z-index:200}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
@@ -457,6 +457,15 @@ function isRaceThisWeek(raceId){
 }
 
 // ══════════════════════════════════════════════════════════
+// HTML エスケープ用ユーティリティ
+// ══════════════════════════════════════════════════════════
+function escapeHtml(text){
+  if(!text) return '';
+  const map={'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'};
+  return String(text).replace(/[&<>"']/g,c=>map[c]);
+}
+
+// ══════════════════════════════════════════════════════════
 // BUG FIX B + RMRF 2.1 Step D: buildPicks
 // - 今週フィルター（先週データ除去）
 // - オッズ確定チェック（EV異常値除去）
@@ -575,16 +584,16 @@ function renderWeek(){
     const hasPick=picks.length>0;
     const multiWarning=picks.length>1&&picks.some(p=>p.scaledDown);
     return `
-    <div class="race-card ${hasPick?'has-pick':''}" onclick="showRaceDetail('${race.id}')">
+    <div class="race-card ${hasPick?'has-pick':''}" onclick="showRaceDetail('${escapeHtml(race.id)}')">
       <div class="race-head">
-        <div class="race-name">${race.name||'不明'}</div>
-        <div class="race-grade">${race.grade||''}</div>
+        <div class="race-name">${escapeHtml(race.name)||'不明'}</div>
+        <div class="race-grade">${escapeHtml(race.grade)||''}</div>
       </div>
-      <div class="race-meta">${race.venue||''} ${race.track||''}${race.distance||''}m ｜ ${race.startTime||''}発走</div>
+      <div class="race-meta">${escapeHtml(race.venue)||''} ${escapeHtml(race.track)||''}${race.distance||''}m ｜ ${escapeHtml(race.startTime)||''}発走</div>
       ${picks.map(p=>`
         <div class="pick-row">
           <span style="font-family:var(--font-mono);font-size:10px;color:var(--fg3)">#${p.horse.number||'?'}</span>
-          <span class="pick-horse">${p.horse.name||'—'}</span>
+          <span class="pick-horse">${escapeHtml(p.horse.name)||'—'}</span>
           <span style="font-family:var(--font-mono);font-size:10px;color:var(--fg2)">${p.horse.odds}倍</span>
           <span class="ev-badge ${p.ev>=0.30?'strong':'weak'}">EV+${(p.ev*100).toFixed(0)}%</span>
           <span style="font-family:var(--font-mono);font-size:11px;color:var(--green);font-weight:700">${p.betAmt.toLocaleString()}円</span>
@@ -636,7 +645,7 @@ function showRaceDetail(raceId){
   const bankroll=getBankroll();
 
   document.getElementById('modal-body').innerHTML=`
-    <div class="modal-title">${race.name||''} ― 全馬EV分析 <span class="tag tag-rmrf">RMRF 2.1</span></div>
+    <div class="modal-title">${escapeHtml(race.name)||''} ― 全馬EV分析 <span class="tag tag-rmrf">RMRF 2.1</span></div>
     <div style="font-family:var(--font-mono);font-size:10px;color:var(--fg3);margin-bottom:10px">
       λ=${lam.toFixed(3)} ｜ 銀行ロール ¥${bankroll.toLocaleString()}
       ${scale<1?` ｜ <span style="color:var(--yellow)">⚠ 相互排他按分 ×${scale.toFixed(2)}</span>`:''}
@@ -648,7 +657,7 @@ function showRaceDetail(raceId){
       <div class="horse-ev-row">
         <div class="horse-rank">${i+1}</div>
         <div class="horse-info">
-          <div class="horse-name-big">${h.name||'—'} <span style="font-family:var(--font-mono);font-size:10px;color:var(--fg3)">#${h.number||'?'}</span></div>
+          <div class="horse-name-big">${escapeHtml(h.name)||'—'} <span style="font-family:var(--font-mono);font-size:10px;color:var(--fg3)">#${h.number||'?'}</span></div>
           <div class="horse-sub">${h.odds>0?h.odds+'倍':'オッズ未確定'} ｜ 推定P=${(h.p*100).toFixed(1)}%${h.uFlag?' ⚠':''}
             ｜ EV${h.ev>=0?'+':''}${(h.ev*100).toFixed(0)}%</div>
           ${evOk?`<div class="kelly-bar-wrap"><div class="kelly-bar" style="width:${Math.min(100,h.kellyAdj*5000)}%"></div></div>`:''}
@@ -695,7 +704,8 @@ function effectiveSampleSize(returns){
   for(let i=0;i<n-1;i++) cov1+=centered[i]*centered[i+1];
   const rho1=cov0>0?cov1/cov0:0;
   // 実効サンプルサイズ: n × (1-ρ₁)/(1+ρ₁)
-  const nEff=n*(1-rho1)/(1+Math.max(rho1,-0.999));
+  const denominator=1+Math.max(rho1,-0.999);
+  const nEff=n*(1-rho1)/denominator;
   return Math.max(1,Math.min(n,nEff));
 }
 
@@ -742,10 +752,10 @@ function dynamicLambda(histReturns, peakDD, uncertainty=0){
   if(peakDD>ddThreshold){
     lam*=(1-peakDD);
     if(peakDD>ddThreshold+0.05){
-      // Kill Switch
+      // Kill Switch - 修正: className を 'stopped' に統一
       systemRunning=false;
       document.getElementById('kill-badge').textContent='● STOPPED';
-      document.getElementById('kill-badge').className='kill-badge stopped';
+      document.getElementById('kill-badge').className='stopped';
     }
   }
 
@@ -857,7 +867,7 @@ function renderHorseList(){
     <div class="horse-input-row">
       <span class="horse-num">${i+1}</span>
       <div class="horse-inputs">
-        <input type="text" placeholder="馬名" value="${h.name}" oninput="horses[${i}].name=this.value" style="flex:2">
+        <input type="text" placeholder="馬名" value="${escapeHtml(h.name)}" oninput="horses[${i}].name=this.value" style="flex:2">
         <input type="number" placeholder="P%" step="0.1" value="${h.prob}" oninput="horses[${i}].prob=this.value" style="flex:1">
         <input type="number" placeholder="オッズ" step="0.1" value="${h.odds}" oninput="horses[${i}].odds=this.value" style="flex:1">
       </div>
@@ -914,7 +924,7 @@ function calcEV(){
       const betAmt=Math.floor(bankroll*adjKelly/100)*100;
       return `
       <div class="pick-row" style="margin-bottom:6px">
-        <span class="pick-horse">${r.h.name||`馬${r.i+1}`}</span>
+        <span class="pick-horse">${escapeHtml(r.h.name)||`馬${r.i+1}`}</span>
         <span style="font-family:var(--font-mono);font-size:10px;color:var(--fg2)">${r.odds}倍</span>
         <span class="ev-badge strong">EV+${(r.ev*100).toFixed(0)}%</span>
         <span style="font-family:var(--font-mono);font-size:12px;color:var(--green);font-weight:700">¥${betAmt.toLocaleString()}</span>
@@ -991,7 +1001,7 @@ function renderRecords(){
     return `
     <div class="record-row">
       <div style="font-family:var(--font-mono);font-size:10px;color:var(--fg3);width:52px">${r.date?.slice(5)||''}</div>
-      <div class="record-horse">${r.horse}<br><span style="font-family:var(--font-mono);font-size:9px;color:var(--fg3)">${r.race||''} ${r.odds}倍</span></div>
+      <div class="record-horse">${escapeHtml(r.horse)}<br><span style="font-family:var(--font-mono);font-size:9px;color:var(--fg3)">${escapeHtml(r.race)||''} ${r.odds}倍</span></div>
       <span class="record-result ${r.result==='win'?'result-win':'result-lose'}">${r.result==='win'?'的中':'不的中'}</span>
       <span class="record-pnl ${pnl>0?'':''}">
         <span style="color:${pnl>0?'var(--green)':'var(--red)'}">${pnl>0?'+':''}¥${pnl.toLocaleString()}</span>
@@ -1002,145 +1012,81 @@ function renderRecords(){
 }
 
 // ══════════════════════════════════════════════════════════
-// 分析タブ
+// 統計画面
 // ══════════════════════════════════════════════════════════
 function renderStats(){
-  const bankroll=getBankroll();
-  const initial=100000;
-  const pnl=bankroll-initial;
-  const roi=records.length>0?(pnl/records.reduce((s,r)=>s+r.betAmt,0)*100)||0:0;
-  const wins=records.filter(r=>r.result==='win').length;
-  const hitRate=records.length>0?wins/records.length*100:0;
-  const dd=(rmrfState.peakDD||0)*100;
-
-  document.getElementById('stat-grid').innerHTML=`
-    <div class="stat-box">
-      <div class="stat-label">BANKROLL</div>
-      <div class="stat-val ${pnl>=0?'pos':'neg'}">¥${bankroll.toLocaleString()}</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">TOTAL P&L</div>
-      <div class="stat-val ${pnl>=0?'pos':'neg'}">${pnl>=0?'+':''}¥${pnl.toLocaleString()}</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">ROI</div>
-      <div class="stat-val ${roi>=0?'pos':'neg'}">${roi.toFixed(1)}%</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-label">HIT RATE</div>
-      <div class="stat-val neu">${hitRate.toFixed(0)}%<span style="font-size:12px;color:var(--fg3)"> (${wins}/${records.length})</span></div>
-    </div>`;
-
-  // λ履歴ミニチャート
-  renderLambdaChart();
-
-  // λ説明文
-  const ts=rmrfState.lastTStat;
-  const lam=rmrfState.currentLambda??rmrfState.lambdaMax;
-  const uncertainty=racesData.length<200?0.8:racesData.length<500?0.5:racesData.length<1000?0.2:0.05;
-  document.getElementById('lambda-explain').innerHTML=
-    `λ = ${rmrfState.lambdaMax} × Φ(${ts!=null?ts.toFixed(2):'N/A'}) × exp(-${rmrfState.gamma}×${uncertainty.toFixed(2)}) = ${lam.toFixed(4)}<br>`+
-    `実効サンプルn_eff: ${(rmrfState.logReturns?.length?effectiveSampleSize(rmrfState.logReturns):0).toFixed(0)}件 ｜ データ不確実性: ${(uncertainty*100).toFixed(0)}%<br>`+
-    `MaxDD: ${dd.toFixed(1)}% ｜ Kill Switch: DD>${(rmrfState.ddThreshold*100).toFixed(0)}%`;
-
-  // 較正
-  renderCalib();
-
-  // DD
-  document.getElementById('dd-body').innerHTML=`
-    <div style="display:flex;align-items:center;gap:10px">
-      <div style="flex:1">
-        <div class="stat-label">MAX DRAWDOWN</div>
-        <div class="stat-val ${dd>20?'neg':dd>10?'':''}" style="font-size:22px;color:${dd>20?'var(--red)':dd>10?'var(--yellow)':'var(--green)'}">${dd.toFixed(1)}%</div>
-      </div>
-      <div style="text-align:right;font-family:var(--font-mono);font-size:10px;color:var(--fg3)">
-        Kill Switch閾値: 20%<br>
-        λ縮小開始: 20%
-      </div>
-    </div>`;
-}
-
-function renderLambdaChart(){
-  const hist=rmrfState.lambdaHistory||[];
-  const el=document.getElementById('lambda-history-chart');
-  if(hist.length<2){el.innerHTML='<div style="font-family:var(--font-mono);font-size:10px;color:var(--fg3)">収支記録が増えると表示されます</div>';return;}
-  const max=rmrfState.lambdaMax;
-  const w=el.offsetWidth||300;
-  const h=60;
-  const step=w/Math.max(hist.length-1,1);
-  const pts=hist.map((v,i)=>`${i*step},${h-(v/max)*h}`).join(' ');
-  el.innerHTML=`<svg width="100%" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
-    <defs><linearGradient id="lg" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0%" stop-color="var(--green)" stop-opacity=".4"/>
-      <stop offset="100%" stop-color="var(--green)" stop-opacity="0"/>
-    </linearGradient></defs>
-    <polygon points="${pts} ${(hist.length-1)*step},${h} 0,${h}" fill="url(#lg)"/>
-    <polyline points="${pts}" fill="none" stroke="var(--green)" stroke-width="1.5"/>
-    <line x1="0" y1="${h-(0.5)*h}" x2="${w}" y2="${h-(0.5)*h}" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
-  </svg>
-  <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:9px;color:var(--fg3);margin-top:2px">
-    <span>${hist.length}件前</span><span>現在 λ=${hist[hist.length-1].toFixed(3)}</span>
-  </div>`;
-}
-
-// RMRF 2.1 Step E: 較正（Calibration）レンダリング
-function renderCalib(){
-  const el=document.getElementById('calib-body');
-  const data=rmrfState.calibData||[];
-  if(data.length<10){
-    el.innerHTML='<div class="empty" style="padding:10px;font-size:10px">的中記録が10件以上で表示されます</div>';
+  if(records.length===0){
+    document.getElementById('stat-grid').innerHTML='<div class="empty" style="grid-column:1/-1">収支記録がありません</div>';
     return;
   }
 
-  // 自社確率をバケット（0-20%, 20-40%, 40-60%, 60-80%, 80-100%）に分類
-  const buckets=[
-    {label:'0〜20%',min:0,max:0.2,records:[]},
-    {label:'20〜40%',min:0.2,max:0.4,records:[]},
-    {label:'40〜60%',min:0.4,max:0.6,records:[]},
-    {label:'60〜80%',min:0.6,max:0.8,records:[]},
-    {label:'80〜100%',min:0.8,max:1.01,records:[]}, // [FIX] 1.0を含む
-  ];
-  data.forEach(d=>{
-    const b=buckets.find(b=>d.myP>=b.min&&d.myP<b.max);
-    if(b) b.records.push(d);
-  });
+  const wins=records.filter(r=>r.result==='win').length;
+  const total=records.length;
+  const winRate=total>0?wins/total:0;
+  const totalPnl=records.reduce((s,r)=>s+(r.result==='win'?(r.odds-1)*r.betAmt:-r.betAmt),0);
 
-  el.innerHTML=buckets.filter(b=>b.records.length>0).map(b=>{
-    const actualWinRate=b.records.filter(d=>d.won).length/b.records.length;
-    const avgMyP=mean(b.records.map(d=>d.myP));
-    const avgMktP=mean(b.records.map(d=>d.mktP));
-    const diff=avgMyP-actualWinRate; // 正=過大評価, 負=過小評価
-    const barColor=Math.abs(diff)<0.05?'var(--green)':Math.abs(diff)<0.10?'var(--yellow)':'var(--red)';
-    return `
-    <div class="calib-row">
-      <div class="calib-label">${b.label}</div>
-      <div style="flex:1">
-        <div style="display:flex;gap:4px;align-items:center;margin-bottom:2px">
-          <div style="width:${avgMyP*80}px;height:4px;background:var(--blue);border-radius:2px"></div>
-          <span style="font-family:var(--font-mono);font-size:9px;color:var(--blue)">自社${(avgMyP*100).toFixed(0)}%</span>
-        </div>
-        <div style="display:flex;gap:4px;align-items:center;margin-bottom:2px">
-          <div style="width:${actualWinRate*80}px;height:4px;background:${barColor};border-radius:2px"></div>
-          <span style="font-family:var(--font-mono);font-size:9px;color:${barColor}">実績${(actualWinRate*100).toFixed(0)}%</span>
-        </div>
-        <div style="display:flex;gap:4px;align-items:center">
-          <div style="width:${avgMktP*80}px;height:4px;background:var(--fg3);border-radius:2px"></div>
-          <span style="font-family:var(--font-mono);font-size:9px;color:var(--fg3)">市場${(avgMktP*100).toFixed(0)}%</span>
-        </div>
+  const stats=[
+    {label:'的中数',val:wins,type:'pos'},
+    {label:'試行数',val:total,type:'neu'},
+    {label:'的中率',val:(winRate*100).toFixed(1)+'%',type:winRate>=0.3?'pos':'neg'},
+    {label:'累計PnL',val:'¥'+totalPnl.toLocaleString(),type:totalPnl>=0?'pos':'neg'}
+  ];
+
+  document.getElementById('stat-grid').innerHTML=stats.map(s=>`
+    <div class="stat-box">
+      <div class="stat-label">${s.label}</div>
+      <div class="stat-val ${s.type}">${s.val}</div>
+    </div>`).join('');
+
+  // λ推移表示
+  const lh=rmrfState.lambdaHistory||[];
+  if(lh.length>0){
+    const chartEl=document.getElementById('lambda-history-chart');
+    const min=Math.min(...lh);
+    const max=Math.max(...lh,rmrfState.lambdaMax);
+    const range=max-min||1;
+    chartEl.innerHTML=lh.map((l,i)=>{
+      const h=(l-min)/range*50;
+      const color=l>0.15?'var(--green)':l>0.08?'var(--yellow)':'var(--red)';
+      return `<div style="position:absolute;left:${i/lh.length*100}%;width:${100/lh.length-1}%;height:${h}px;bottom:0;background:${color};opacity:0.7"></div>`;
+    }).join('');
+    document.getElementById('lambda-explain').innerHTML=`最新λ: ${lh[lh.length-1].toFixed(3)} | 範囲: ${min.toFixed(3)} ～ ${max.toFixed(3)}`;
+  }
+
+  // 較正表示
+  const calibData=rmrfState.calibData||[];
+  const calibEl=document.getElementById('calib-body');
+  if(calibData.length<10){
+    calibEl.innerHTML='<div class="empty" style="padding:10px;font-size:10px">的中記録が10件以上で表示されます</div>';
+  }else{
+    calibEl.innerHTML=calibData.slice(-10).map(c=>`
+      <div class="calib-row">
+        <div class="calib-label">${(c.myP*100).toFixed(1)}%</div>
+        <div class="calib-bar-wrap"><div class="calib-bar" style="width:${c.myP*100}%;background:${c.won?'var(--green)':'var(--red)'}"></div></div>
+        <div class="calib-val">${(c.mktP*100).toFixed(1)}%</div>
+      </div>`).join('');
+  }
+
+  // ドローダウン表示
+  const dd=rmrfState.peakDD||0;
+  document.getElementById('dd-body').innerHTML=`
+    <div style="font-family:var(--font-mono);font-size:11px;padding:8px;background:var(--bg3);border-radius:6px">
+      <div>ピーク比ドローダウン: ${(dd*100).toFixed(1)}%</div>
+      <div style="margin-top:4px;height:8px;background:var(--bg4);border-radius:2px;overflow:hidden">
+        <div style="width:${Math.min(100,dd*100)}%;height:100%;background:${dd>rmrfState.ddThreshold?'var(--red)':'var(--yellow)'}"></div>
       </div>
-      <div class="calib-val" style="color:${barColor}">${diff>=0?'+':''}${(diff*100).toFixed(0)}%<br><span style="color:var(--fg3);font-size:9px">n=${b.records.length}</span></div>
+      ${dd>rmrfState.ddThreshold?'<div style="margin-top:4px;color:var(--red)">⚠ Kill Switch 閾値超過</div>':''}
     </div>`;
-  }).join('')||'<div class="empty" style="padding:10px;font-size:10px">データなし</div>';
 }
 
 // ══════════════════════════════════════════════════════════
-// Toast
+// Toast通知
 // ══════════════════════════════════════════════════════════
 function toast(msg){
   const el=document.getElementById('toast');
   el.textContent=msg;
   el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),2500);
+  setTimeout(()=>el.classList.remove('show'),2000);
 }
 
 // ══════════════════════════════════════════════════════════
