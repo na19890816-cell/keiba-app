@@ -8197,92 +8197,6 @@
     "fetchedAt": "2026-05-20T22:18:32.198Z"
   },
   {
-    "id": "202608030901",
-    "name": "3歳未勝利",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1200",
-    "track": "",
-    "dir": "右",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "ダ1200m (右)",
-    "raceData2": "3回 京都 9日目 24頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アドフランマム",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カーリキュー",
-        "jockey": "斎藤",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "グランブリーゼ",
-        "jockey": "加藤",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:34.988Z"
-  },
-  {
-    "id": "202608030902",
-    "name": "3歳未勝利",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1800",
-    "track": "",
-    "dir": "右",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "ダ1800m (右)",
-    "raceData2": "3回 京都 9日目 19頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アルジェンタム",
-        "jockey": "高杉",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アルメーリス",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウォーターエクラン",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:35.073Z"
-  },
-  {
     "id": "202605020911",
     "name": "欅S",
     "venue": "東京",
@@ -8556,2149 +8470,6 @@
       }
     ],
     "fetchedAt": "2026-05-20T22:18:35.657Z"
-  },
-  {
-    "id": "202608030903",
-    "name": "3歳未勝利",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1200",
-    "track": "芝",
-    "dir": "右",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "芝1200m (右 D)",
-    "raceData2": "3回 京都 9日目 22頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アンコ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヴィゴラスガイア",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カルロット",
-        "jockey": "武豊",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:35.758Z"
-  },
-  {
-    "id": "202608030904",
-    "name": "3歳未勝利",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1800",
-    "track": "芝",
-    "dir": "右",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "芝1800m (右 外 D)",
-    "raceData2": "3回 京都 9日目 18頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アサリア",
-        "jockey": "武豊",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アンバーウェイヴス",
-        "jockey": "坂井",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アンビエントポップ",
-        "jockey": "岩田望",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:37.599Z"
-  },
-  {
-    "id": "202608030906",
-    "name": "3歳1勝クラス",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1400",
-    "track": "",
-    "dir": "右",
-    "grade": "1勝",
-    "startTime": "",
-    "raceData1": "ダ1400m (右)",
-    "raceData2": "3回 京都 9日目 19頭 本賞金:820,330,210,120,82万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カフジクロミエ",
-        "jockey": "池添",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "キーンセンス",
-        "jockey": "北村友",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "クリノセーラーマン",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:37.897Z"
-  },
-  {
-    "id": "202608030905",
-    "name": "3歳未勝利",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "2200",
-    "track": "芝",
-    "dir": "右",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "芝2200m (右 外 D)",
-    "raceData2": "3回 京都 9日目 13頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アメジストブリエ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カデナボニータ",
-        "jockey": "高杉",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "キーテーマ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:38.115Z"
-  },
-  {
-    "id": "202608030907",
-    "name": "4歳以上1勝クラス",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1800",
-    "track": "",
-    "dir": "右",
-    "grade": "1勝",
-    "startTime": "",
-    "raceData1": "ダ1800m (右)",
-    "raceData2": "3回 京都 9日目 19頭 本賞金:820,330,210,120,82万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ガーデンカメリア",
-        "jockey": "川端",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "サマーナイト",
-        "jockey": "小崎",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "サンディエゴ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:38.982Z"
-  },
-  {
-    "id": "202608030908",
-    "name": "4歳以上1勝クラス",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1800",
-    "track": "芝",
-    "dir": "右",
-    "grade": "1勝",
-    "startTime": "",
-    "raceData1": "芝1800m (右 外 D)",
-    "raceData2": "3回 京都 9日目 12頭 本賞金:820,330,210,120,82万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アンビアンス",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウインリベラシオン",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヴェストラン",
-        "jockey": "太宰",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:39.071Z"
-  },
-  {
-    "id": "202608030909",
-    "name": "メルボルンT",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1600",
-    "track": "芝",
-    "dir": "右",
-    "grade": "",
-    "startTime": "14:30",
-    "raceData1": "14:30発走 / 芝1600m (右 D)",
-    "raceData2": "3回 京都 9日目 サラ系３歳 １勝クラス (混)(特指) 馬齢 16頭 本賞金:1140,460,290,170,114万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エイシンティザー",
-        "jockey": "武豊",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "オックスアイ",
-        "jockey": "鮫島駿",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "サンセットゴールド",
-        "jockey": "○○",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジャスティンルマン",
-        "jockey": "団野",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "スウィッチインラヴ",
-        "jockey": "北村友",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ストームゲイル",
-        "jockey": "吉村",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "テイエムアイラン",
-        "jockey": "松山",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ナムラヒナギク",
-        "jockey": "田口",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ナルキッソス",
-        "jockey": "高杉",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "パーシャングレー",
-        "jockey": "西村淳",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ファンクション",
-        "jockey": "鮫島駿",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "フレイムスター",
-        "jockey": "団野",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ペイシャシス",
-        "jockey": "酒井",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ポペット",
-        "jockey": "松若",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ラヴリーティアラ",
-        "jockey": "戸崎圭",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "リアンマヒナ",
-        "jockey": "岩田望",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:40.307Z"
-  },
-  {
-    "id": "202608030911",
-    "name": "平安S",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1900",
-    "track": "",
-    "dir": "右",
-    "grade": "",
-    "startTime": "15:45",
-    "raceData1": "15:45発走 / ダ1900m (右)",
-    "raceData2": "3回 京都 9日目 サラ系４歳以上 オープン (国際)(指) 別定 19頭 本賞金:4000,1600,1000,600,400万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アクションプラン",
-        "jockey": "松山",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヴァルツァーシャル",
-        "jockey": "斎藤",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヴァンヤール",
-        "jockey": "角田和",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "キョウキランブ",
-        "jockey": "菅原明",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "サイモンザナドゥ",
-        "jockey": "池添",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シュラザック",
-        "jockey": "幸",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジューンアヲニヨシ",
-        "jockey": "浜中",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ゼットリアン",
-        "jockey": "団野",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "タイトニット",
-        "jockey": "川田",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "チュウワクリスエス",
-        "jockey": "武豊",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ナルカミ",
-        "jockey": "戸崎圭",
-        "weight": "59.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ハグ",
-        "jockey": "高杉",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ポッドロゴ",
-        "jockey": "岩田望",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マーブルロック",
-        "jockey": "酒井",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "メイショウズイウン",
-        "jockey": "松若",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "メリークリスマス",
-        "jockey": "三浦",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "リアライズカミオン",
-        "jockey": "坂井",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "レヴォントゥレット",
-        "jockey": "鮫島駿",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ロードクロンヌ",
-        "jockey": "横山和",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:41.116Z"
-  },
-  {
-    "id": "202608030910",
-    "name": "シドニーT",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "2000",
-    "track": "芝",
-    "dir": "右",
-    "grade": "",
-    "startTime": "15:05",
-    "raceData1": "15:05発走 / 芝2000m (右 D)",
-    "raceData2": "3回 京都 9日目 サラ系４歳以上 ３勝クラス (混) 牝(特指) 定量 18頭 本賞金:1870,750,470,280,187万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アラベラ",
-        "jockey": "北村友",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アレナリア",
-        "jockey": "鮫島駿",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エルフストラック",
-        "jockey": "坂井",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "キュクヌス",
-        "jockey": "高杉",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "キーパフォーマー",
-        "jockey": "浜中",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "コンドゥイア",
-        "jockey": "Ｍデムーロ",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "サクソンジェンヌ",
-        "jockey": "武豊",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シャドウメテオ",
-        "jockey": "戸崎圭",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "タイセイフェリーク",
-        "jockey": "松若",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "タガノアビー",
-        "jockey": "岩田望",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "テリオスサラ",
-        "jockey": "吉村",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ノーランサンライズ",
-        "jockey": "小崎",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ハニーコム",
-        "jockey": "酒井",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マカナ",
-        "jockey": "菅原明",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マトラコーニッシュ",
-        "jockey": "池添",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ミッキーツインクル",
-        "jockey": "○○",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ラブリージャブリー",
-        "jockey": "松山",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "リンクスティップ",
-        "jockey": "西村淳",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:41.393Z"
-  },
-  {
-    "id": "202608030912",
-    "name": "オーストラリアT",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1400",
-    "track": "",
-    "dir": "右",
-    "grade": "",
-    "startTime": "16:30",
-    "raceData1": "16:30発走 / ダ1400m (右)",
-    "raceData2": "3回 京都 9日目 サラ系４歳以上 ２勝クラス (混)[指] 定量 18頭 本賞金:1580,630,400,240,158万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アスゴッド",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウィップスティッチ",
-        "jockey": "北村友",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヴリトラハン",
-        "jockey": "川田",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジョウゲンノツキ",
-        "jockey": "松若",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ズバットマサムネ",
-        "jockey": "川又",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ダイヤモンドハンズ",
-        "jockey": "岩田望",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ダノンキラウェア",
-        "jockey": "西村淳",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ツーネサーン",
-        "jockey": "菅原明",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "テセラリアン",
-        "jockey": "○○",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ハリウッドブルース",
-        "jockey": "藤懸",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "バンディート",
-        "jockey": "西塚",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "プリンスノット",
-        "jockey": "菱田",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ホウオウフロイト",
-        "jockey": "田山",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マイティマイティー",
-        "jockey": "坂井",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ユウトザレン",
-        "jockey": "吉村",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヨリノレジェンド",
-        "jockey": "団野",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "リアルスター",
-        "jockey": "田口",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "レッドセニョール",
-        "jockey": "鮫島駿",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:41.538Z"
-  },
-  {
-    "id": "202604010701",
-    "name": "4歳以上障害未勝利",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "2890",
-    "track": "障害",
-    "dir": "左",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "芝2890m (左)",
-    "raceData2": "1回 新潟 7日目 20頭 本賞金:840,340,210,130,84万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヴァルトバーデン",
-        "jockey": "鷲頭",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エターナルシルバー",
-        "jockey": "草野",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "キャネル",
-        "jockey": "坂口",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:41.733Z"
-  },
-  {
-    "id": "202604010702",
-    "name": "3歳未勝利",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1800",
-    "track": "",
-    "dir": "左",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "ダ1800m (左)",
-    "raceData2": "1回 新潟 7日目 12頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アジャイブ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エレーデサンライズ",
-        "jockey": "永島",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エロイーズ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:43.149Z"
-  },
-  {
-    "id": "202604010703",
-    "name": "3歳未勝利",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1200",
-    "track": "",
-    "dir": "左",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "ダ1200m (左)",
-    "raceData2": "1回 新潟 7日目 19頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アイアンナックル",
-        "jockey": "森田",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アクシズ",
-        "jockey": "横山琉",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エコロデュラン",
-        "jockey": "古川奈",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:43.745Z"
-  },
-  {
-    "id": "202604010705",
-    "name": "3歳未勝利",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1400",
-    "track": "芝",
-    "dir": "左",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "芝1400m (左 B)",
-    "raceData2": "1回 新潟 7日目 26頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヴィゴラスガイア",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "グランフォワイエ",
-        "jockey": "上里",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "グリュイエール",
-        "jockey": "森田",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:44.135Z"
-  },
-  {
-    "id": "202604010704",
-    "name": "4歳以上障害OP",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "3290",
-    "track": "障害",
-    "dir": "左",
-    "grade": "OP",
-    "startTime": "",
-    "raceData1": "芝3290m (左)",
-    "raceData2": "1回 新潟 7日目 12頭 本賞金:1430,570,360,210,143万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウイングランブルー",
-        "jockey": "大江圭",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "グアラニア",
-        "jockey": "伴",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ケイテンアイジン",
-        "jockey": "小坂",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:44.459Z"
-  },
-  {
-    "id": "202604010706",
-    "name": "3歳未勝利",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1800",
-    "track": "",
-    "dir": "左",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "ダ1800m (左)",
-    "raceData2": "1回 新潟 7日目 7頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エトワールブルー",
-        "jockey": "遠藤",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ソフィア",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ドリームゴーズオン",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:44.760Z"
-  },
-  {
-    "id": "202604010707",
-    "name": "3歳未勝利",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "2400",
-    "track": "芝",
-    "dir": "左",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "芝2400m (左 B)",
-    "raceData2": "1回 新潟 7日目 23頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アデルバローズ",
-        "jockey": "石神道",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アメジストブリエ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウィズアバウンス",
-        "jockey": "上里",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:45.845Z"
-  },
-  {
-    "id": "202604010708",
-    "name": "4歳以上1勝クラス",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1800",
-    "track": "",
-    "dir": "左",
-    "grade": "1勝",
-    "startTime": "",
-    "raceData1": "ダ1800m (左)",
-    "raceData2": "1回 新潟 7日目 18頭 本賞金:820,330,210,120,82万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "イフリーティア",
-        "jockey": "小林美",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エウテルペ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エレガンシア",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:46.597Z"
-  },
-  {
-    "id": "202604010709",
-    "name": "はやぶさ賞",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1000",
-    "track": "芝",
-    "dir": "直線",
-    "grade": "",
-    "startTime": "14:10",
-    "raceData1": "14:10発走 / 芝1000m (直線 B)",
-    "raceData2": "1回 新潟 7日目 サラ系３歳 １勝クラス (混)(特指) 馬齢 20頭 本賞金:1140,460,290,170,114万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アースコーリング",
-        "jockey": "井上瑛",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "イルダメリーノ",
-        "jockey": "斎藤",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウィングブルー",
-        "jockey": "ゴンサルベ",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エムティリオ",
-        "jockey": "上里",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エレクトロン",
-        "jockey": "嶋田",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "オタルイーグル",
-        "jockey": "亀田",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カシノリアーナ",
-        "jockey": "○○",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カレンデュラ",
-        "jockey": "嶋田",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "クイーンレグナント",
-        "jockey": "杉原",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "クワイエットアイ",
-        "jockey": "柴田裕",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "コウジハラ",
-        "jockey": "木幡初",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "コパノトーマス",
-        "jockey": "菊沢",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シュテルン",
-        "jockey": "○○",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シーグルロス",
-        "jockey": "丹内",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "セイウンアインス",
-        "jockey": "武藤",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ダブルチャレンジ",
-        "jockey": "長浜",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "トモジャオーリー",
-        "jockey": "小林美",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ブレイヴソルジャー",
-        "jockey": "石田",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "フローラルツッキー",
-        "jockey": "河原田",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ミヤフロント",
-        "jockey": "森田",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:46.722Z"
-  },
-  {
-    "id": "202604010710",
-    "name": "尖閣湾特別",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "2000",
-    "track": "芝",
-    "dir": "左",
-    "grade": "",
-    "startTime": "14:45",
-    "raceData1": "14:45発走 / 芝2000m (左 外 B)",
-    "raceData2": "1回 新潟 7日目 サラ系４歳以上 １勝クラス [指] 定量 35頭 本賞金:1140,460,290,170,114万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アンビアンス",
-        "jockey": "吉村",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウィンスタンリー",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウインドラート",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウインリベラシオン",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エコログロス",
-        "jockey": "野中",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エテルニータ",
-        "jockey": "丹内",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エレガンシア",
-        "jockey": "松山",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "オプレントジュエル",
-        "jockey": "○○",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ガンバルマン",
-        "jockey": "原田和",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カーメルタザイト",
-        "jockey": "岩田望",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "クラウディアイ",
-        "jockey": "小沢",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ケイツークローン",
-        "jockey": "菊沢",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "サイレントグルーヴ",
-        "jockey": "松本",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジェゼロ",
-        "jockey": "団野",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジェロニモス",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シンドリームシン",
-        "jockey": "吉田隼",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ストレートブラック",
-        "jockey": "石神道",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "タマモランプ",
-        "jockey": "舟山",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "チャイボーグ",
-        "jockey": "○○",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "テンドリームガール",
-        "jockey": "石川",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "トゥルーサクセサー",
-        "jockey": "西塚",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ドーギッド",
-        "jockey": "古川奈",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ハギノコラソン",
-        "jockey": "坂井",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "フォーグッド",
-        "jockey": "菊沢",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヘルツアス",
-        "jockey": "○○",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ポッポノフェスタ",
-        "jockey": "西村太",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マイネルアウルム",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マイネルアズーロ",
-        "jockey": "杉原",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マイネルモメンタム",
-        "jockey": "横山琉",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ミッドセンチュリー",
-        "jockey": "嶋田",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ムーンストラック",
-        "jockey": "菊沢",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ライジングハース",
-        "jockey": "丸田",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "レゼールドラペ",
-        "jockey": "石神道",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ローンウルフ",
-        "jockey": "大江圭",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ワイドモヒート",
-        "jockey": "横山琉",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:47.981Z"
-  },
-  {
-    "id": "202604010712",
-    "name": "4歳以上1勝クラス",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1200",
-    "track": "",
-    "dir": "左",
-    "grade": "1勝",
-    "startTime": "",
-    "raceData1": "ダ1200m (左)",
-    "raceData2": "1回 新潟 7日目 25頭 本賞金:820,330,210,120,82万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アメリカンランナー",
-        "jockey": "西塚",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヴィヴァシャス",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヴェントインコーダ",
-        "jockey": "丸山",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:48.399Z"
-  },
-  {
-    "id": "202604010711",
-    "name": "大日岳特別",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1200",
-    "track": "芝",
-    "dir": "左",
-    "grade": "",
-    "startTime": "15:20",
-    "raceData1": "15:20発走 / 芝1200m (左 B)",
-    "raceData2": "1回 新潟 7日目 サラ系４歳以上 ２勝クラス (混)(特指) 定量 28頭 本賞金:1580,630,400,240,158万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "イグニション",
-        "jockey": "川須",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヴァンヴィーヴ",
-        "jockey": "舟山",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カワキタマナレア",
-        "jockey": "○○",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "キョウエイボニータ",
-        "jockey": "松岡",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジョヴィアン",
-        "jockey": "丸山",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "スネーフリンガ",
-        "jockey": "○○",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "スペルキャスター",
-        "jockey": "小林凌",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ソレントフレイバー",
-        "jockey": "野中",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "タマカヅラ",
-        "jockey": "小林美",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "バシレウスシチー",
-        "jockey": "柴田裕",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ハニーローリエ",
-        "jockey": "菊沢",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "パルティクラール",
-        "jockey": "西塚",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "バンディート",
-        "jockey": "西塚",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "バンブルビー",
-        "jockey": "石田",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ビービーエフォート",
-        "jockey": "丹内",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヒーローインチーフ",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "フォティック",
-        "jockey": "吉田隼",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ブルボンクイーン",
-        "jockey": "松本",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ペイドラロワール",
-        "jockey": "吉村",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ホウオウブースター",
-        "jockey": "丸田",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マリノトニトゥルス",
-        "jockey": "○○",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ミスエル",
-        "jockey": "菊沢",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "メイショウミリオレ",
-        "jockey": "永島",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "モズトキキ",
-        "jockey": "亀田",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ライクアフラワー",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ラトルシェ",
-        "jockey": "杉原",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ラブディーヴァ",
-        "jockey": "丸山",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "レッドセニョール",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:48.544Z"
   },
   {
     "id": "202605021002",
@@ -11946,854 +9717,23 @@
     "fetchedAt": "2026-05-20T22:18:55.557Z"
   },
   {
-    "id": "202608031001",
+    "id": "202605021101",
     "name": "3歳未勝利",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1800",
-    "track": "",
-    "dir": "右",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "ダ1800m (右)",
-    "raceData2": "3回 京都 10日目 18頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アリディプラチノ",
-        "jockey": "国分優",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エアリアルグレース",
-        "jockey": "川又",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エルヴ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:56.261Z"
-  },
-  {
-    "id": "202608031002",
-    "name": "3歳未勝利",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1900",
-    "track": "",
-    "dir": "右",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "ダ1900m (右)",
-    "raceData2": "3回 京都 10日目 10頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カセノコンコルド",
-        "jockey": "国分優",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ガラード",
-        "jockey": "鮫島駿",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "グランワールド",
-        "jockey": "田山",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:57.298Z"
-  },
-  {
-    "id": "202608031004",
-    "name": "3歳未勝利",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "2000",
-    "track": "芝",
-    "dir": "右",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "芝2000m (右 D)",
-    "raceData2": "3回 京都 10日目 11頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シャイニングスター",
-        "jockey": "吉村",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シャリキモン",
-        "jockey": "角田和",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "スノースケープ",
-        "jockey": "川田",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:57.982Z"
-  },
-  {
-    "id": "202608031003",
-    "name": "3歳未勝利",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1600",
-    "track": "芝",
-    "dir": "右",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "芝1600m (右 D)",
-    "raceData2": "3回 京都 10日目 14頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アスクウルトラモア",
-        "jockey": "長浜",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アズライトアスール",
-        "jockey": "幸",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "イニシオ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:58.025Z"
-  },
-  {
-    "id": "202608031005",
-    "name": "3歳1勝クラス",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1200",
-    "track": "芝",
-    "dir": "右",
-    "grade": "1勝",
-    "startTime": "",
-    "raceData1": "芝1200m (右 D)",
-    "raceData2": "3回 京都 10日目 7頭 本賞金:820,330,210,120,82万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウォーターサグラダ",
-        "jockey": "菱田",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "フィラーエ",
-        "jockey": "国分恭",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ベネサルート",
-        "jockey": "北村友",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:58.183Z"
-  },
-  {
-    "id": "202608031006",
-    "name": "3歳1勝クラス",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1900",
-    "track": "",
-    "dir": "右",
-    "grade": "1勝",
-    "startTime": "",
-    "raceData1": "ダ1900m (右)",
-    "raceData2": "3回 京都 10日目 22頭 本賞金:820,330,210,120,82万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アイアムジャイアン",
-        "jockey": "長浜",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アスクドゥチャンプ",
-        "jockey": "荻野琢",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アミラル",
-        "jockey": "国分優",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:59.266Z"
-  },
-  {
-    "id": "202608031007",
-    "name": "4歳以上1勝クラス",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1400",
-    "track": "芝",
-    "dir": "右",
-    "grade": "1勝",
-    "startTime": "",
-    "raceData1": "芝1400m (右 外 D)",
-    "raceData2": "3回 京都 10日目 14頭 本賞金:820,330,210,120,82万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アーニャワクワク",
-        "jockey": "国分恭",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウインラウダ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウォーターエアリー",
-        "jockey": "松若",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:18:59.888Z"
-  },
-  {
-    "id": "202608031009",
-    "name": "聖護院特別",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1800",
-    "track": "芝",
-    "dir": "右",
-    "grade": "",
-    "startTime": "14:15",
-    "raceData1": "14:15発走 / 芝1800m (右 外 D)",
-    "raceData2": "3回 京都 10日目 サラ系４歳以上 ２勝クラス (混)(特指) 定量 15頭 本賞金:1580,630,400,240,158万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アラタマフェーヴル",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "キーウェーブ",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "クスクス",
-        "jockey": "池添",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "コスタデラルス",
-        "jockey": "柴田大",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジャズ",
-        "jockey": "吉田隼",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジョイエッロ",
-        "jockey": "川田",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ショウナンバルドル",
-        "jockey": "田山",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ツーエムクロノス",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ナイトスラッガー",
-        "jockey": "鮫島駿",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "バガン",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "パーサヴィアランス",
-        "jockey": "角田和",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マテンロウギフト",
-        "jockey": "吉村",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "メイショウヤシマ",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ヤマメキング",
-        "jockey": "川須",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ロゼル",
-        "jockey": "幸",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:19:00.627Z"
-  },
-  {
-    "id": "202608031008",
-    "name": "4歳以上2勝クラス",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1800",
-    "track": "",
-    "dir": "右",
-    "grade": "2勝",
-    "startTime": "",
-    "raceData1": "ダ1800m (右)",
-    "raceData2": "3回 京都 10日目 10頭 本賞金:1190,480,300,180,119万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カレンワッツアップ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "クリノフィガロ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "サパテアール",
-        "jockey": "国分優",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:19:01.034Z"
-  },
-  {
-    "id": "202608031010",
-    "name": "高瀬川S",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1200",
-    "track": "",
-    "dir": "右",
-    "grade": "",
-    "startTime": "14:50",
-    "raceData1": "14:50発走 / ダ1200m (右)",
-    "raceData2": "3回 京都 10日目 サラ系４歳以上 ３勝クラス (混)(特指) 定量 15頭 本賞金:1870,750,470,280,187万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アンズアメ",
-        "jockey": "鮫島駿",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "イミュータブル",
-        "jockey": "長浜",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エンヤラヴフェイス",
-        "jockey": "北村友",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "クアトロジャック",
-        "jockey": "吉村",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ゲイルライダー",
-        "jockey": "Ｍデムーロ",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "サザンエルフ",
-        "jockey": "田口",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シャカシャカシー",
-        "jockey": "松若",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジャーヴィス",
-        "jockey": "藤懸",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "スノーサイレンス",
-        "jockey": "田山",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "トーアジョウトウ",
-        "jockey": "幸",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ナスノカンゲツ",
-        "jockey": "国分恭",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ハクサンアイリス",
-        "jockey": "川田",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "メイショウヤーキス",
-        "jockey": "菱田",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ルクスデイジー",
-        "jockey": "団野",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ワンダラー",
-        "jockey": "酒井",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:19:01.821Z"
-  },
-  {
-    "id": "202608031011",
-    "name": "都大路S",
-    "venue": "京都",
-    "year": "2026",
-    "distance": "1800",
-    "track": "芝",
-    "dir": "右",
-    "grade": "",
-    "startTime": "15:25",
-    "raceData1": "15:25発走 / 芝1800m (右 外 D)",
-    "raceData2": "3回 京都 10日目 サラ系４歳以上 オープン (国際)(特指) ハンデ 14頭 本賞金:2800,1100,700,420,280万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アサヒ",
-        "jockey": "田山",
-        "weight": "53.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アンリーロード",
-        "jockey": "田口",
-        "weight": "51.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "オーロラエックス",
-        "jockey": "吉村",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ガイアメンテ",
-        "jockey": "団野",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "コパノサントス",
-        "jockey": "○○",
-        "weight": "54.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ゴンバデカーブース",
-        "jockey": "菱田",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ショウナンザナドゥ",
-        "jockey": "池添",
-        "weight": "54.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ショウナンマグマ",
-        "jockey": "Ｍデムーロ",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジーティーアダマン",
-        "jockey": "川田",
-        "weight": "57.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "スズカダブル",
-        "jockey": "松若",
-        "weight": "52.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "セットアップ",
-        "jockey": "上野",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "チェルビアット",
-        "jockey": "北村友",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ナムラエイハブ",
-        "jockey": "幸",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "メリオーレム",
-        "jockey": "鮫島駿",
-        "weight": "55.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:19:02.263Z"
-  },
-  {
-    "id": "202608031012",
-    "name": "4歳以上1勝クラス",
-    "venue": "京都",
+    "venue": "東京",
     "year": "2026",
     "distance": "1400",
     "track": "",
-    "dir": "右",
-    "grade": "1勝",
-    "startTime": "",
-    "raceData1": "ダ1400m (右)",
-    "raceData2": "3回 京都 10日目 24頭 本賞金:820,330,210,120,82万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アメリカンビーチ",
-        "jockey": "団野",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "インディゴ",
-        "jockey": "幸",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "インピッシュ",
-        "jockey": "池添",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:19:02.746Z"
-  },
-  {
-    "id": "202604010801",
-    "name": "3歳未勝利",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1200",
-    "track": "芝",
     "dir": "左",
     "grade": "未勝利",
     "startTime": "",
-    "raceData1": "芝1200m (左 B)",
-    "raceData2": "1回 新潟 8日目 35頭 本賞金:590,240,150,89,59万円",
+    "raceData1": "ダ1400m (左)",
+    "raceData2": "2回 東京 11日目 26頭 本賞金:590,240,150,89,59万円",
     "horses": [
       {
         "gate": 0,
         "number": 0,
-        "name": "アクアホワイト",
-        "jockey": "○○",
+        "name": "イデアジュアンイハ",
+        "jockey": "石橋脩",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
@@ -12801,8 +9741,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "アゲンストオッズ",
-        "jockey": "斎藤",
+        "name": "ヴィビーム",
+        "jockey": "佐藤",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
@@ -12810,127 +9750,32 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "アンコ",
+        "name": "エリンフレーム",
         "jockey": "○○",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
       }
     ],
-    "fetchedAt": "2026-05-20T22:19:03.515Z"
+    "fetchedAt": "2026-05-27T22:25:51.710Z"
   },
   {
-    "id": "202604010802",
-    "name": "3歳未勝利",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1200",
-    "track": "",
-    "dir": "左",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "ダ1200m (左)",
-    "raceData2": "1回 新潟 8日目 26頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アドミ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アルウラメファ",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アーガイルショア",
-        "jockey": "斎藤",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:19:03.969Z"
-  },
-  {
-    "id": "202604010803",
-    "name": "3歳未勝利",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1800",
-    "track": "",
-    "dir": "左",
-    "grade": "未勝利",
-    "startTime": "",
-    "raceData1": "ダ1800m (左)",
-    "raceData2": "1回 新潟 8日目 16頭 本賞金:590,240,150,89,59万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アイビーチーキー",
-        "jockey": "ゴンサルベ",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アルメーリス",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "インスウィング",
-        "jockey": "○○",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:19:04.548Z"
-  },
-  {
-    "id": "202604010804",
+    "id": "202605021104",
     "name": "4歳以上障害未勝利",
-    "venue": "新潟",
+    "venue": "東京",
     "year": "2026",
-    "distance": "2890",
+    "distance": "3000",
     "track": "障害",
     "dir": "左",
     "grade": "未勝利",
     "startTime": "",
-    "raceData1": "芝2890m (左)",
-    "raceData2": "1回 新潟 8日目 14頭 本賞金:840,340,210,130,84万円",
+    "raceData1": "ダ3000m (左)",
+    "raceData2": "2回 東京 11日目 12頭 本賞金:840,340,210,130,84万円",
     "horses": [
       {
         "gate": 0,
         "number": 0,
-        "name": "アウスヴァール",
-        "jockey": "森一",
-        "weight": "未定",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "イェルマーク",
+        "name": "アウルムレガリア",
         "jockey": "大江圭",
         "weight": "未定",
         "bodyWeight": 0,
@@ -12939,33 +9784,85 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ヴォルスター",
-        "jockey": "黒岩",
+        "name": "インターステラ",
+        "jockey": "江田勇",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "カイコウ",
+        "jockey": "五十嵐",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
       }
     ],
-    "fetchedAt": "2026-05-20T22:19:04.869Z"
+    "fetchedAt": "2026-05-27T22:25:51.826Z"
   },
   {
-    "id": "202604010805",
+    "id": "202605021102",
     "name": "3歳未勝利",
-    "venue": "新潟",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "2400",
+    "track": "芝",
+    "dir": "左",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "芝2400m (左 C)",
+    "raceData2": "2回 東京 11日目 11頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "インタノン",
+        "jockey": "レーン",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エコロゼット",
+        "jockey": "菊沢",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "クリスタルドレス",
+        "jockey": "江田照",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:25:51.895Z"
+  },
+  {
+    "id": "202605021105",
+    "name": "3歳未勝利",
+    "venue": "東京",
     "year": "2026",
     "distance": "2000",
     "track": "芝",
     "dir": "左",
     "grade": "未勝利",
     "startTime": "",
-    "raceData1": "芝2000m (左 B)",
-    "raceData2": "1回 新潟 8日目 31頭 本賞金:590,240,150,89,59万円",
+    "raceData1": "芝2000m (左 C)",
+    "raceData2": "2回 東京 11日目 23頭 本賞金:590,240,150,89,59万円",
     "horses": [
       {
         "gate": 0,
         "number": 0,
-        "name": "アテナガール",
-        "jockey": "○○",
+        "name": "アッシズオブローズ",
+        "jockey": "レーン",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
@@ -12973,8 +9870,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "アースアクシス",
-        "jockey": "○○",
+        "name": "アニゴザントス",
+        "jockey": "木幡巧",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
@@ -12982,32 +9879,32 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "インドミタビリティ",
-        "jockey": "○○",
+        "name": "ウインスターリング",
+        "jockey": "松岡",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
       }
     ],
-    "fetchedAt": "2026-05-20T22:19:05.314Z"
+    "fetchedAt": "2026-05-27T22:25:51.969Z"
   },
   {
-    "id": "202604010806",
+    "id": "202605021103",
     "name": "3歳未勝利",
-    "venue": "新潟",
+    "venue": "東京",
     "year": "2026",
-    "distance": "1800",
-    "track": "",
+    "distance": "1400",
+    "track": "芝",
     "dir": "左",
     "grade": "未勝利",
     "startTime": "",
-    "raceData1": "ダ1800m (左)",
-    "raceData2": "1回 新潟 8日目 13頭 本賞金:590,240,150,89,59万円",
+    "raceData1": "芝1400m (左 C)",
+    "raceData2": "2回 東京 11日目 15頭 本賞金:590,240,150,89,59万円",
     "horses": [
       {
         "gate": 0,
         "number": 0,
-        "name": "ウォーターエクラン",
+        "name": "エレクトロン",
         "jockey": "○○",
         "weight": "未定",
         "bodyWeight": 0,
@@ -13016,8 +9913,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ウルトラハート",
-        "jockey": "丸山",
+        "name": "グローリアスダンス",
+        "jockey": "○○",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
@@ -13025,33 +9922,33 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "キタノハイテイル",
+        "name": "ケイツーキップ",
         "jockey": "○○",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
       }
     ],
-    "fetchedAt": "2026-05-20T22:19:06.092Z"
+    "fetchedAt": "2026-05-27T22:25:52.166Z"
   },
   {
-    "id": "202604010807",
-    "name": "4歳以上1勝クラス",
-    "venue": "新潟",
+    "id": "202605021106",
+    "name": "3歳1勝クラス",
+    "venue": "東京",
     "year": "2026",
-    "distance": "1200",
+    "distance": "1600",
     "track": "",
     "dir": "左",
     "grade": "1勝",
     "startTime": "",
-    "raceData1": "ダ1200m (左)",
-    "raceData2": "1回 新潟 8日目 15頭 本賞金:820,330,210,120,82万円",
+    "raceData1": "ダ1600m (左)",
+    "raceData2": "2回 東京 11日目 11頭 本賞金:820,330,210,120,82万円",
     "horses": [
       {
         "gate": 0,
         "number": 0,
-        "name": "アイアンソリッド",
-        "jockey": "上里",
+        "name": "エイシンニラク",
+        "jockey": "○○",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
@@ -13059,8 +9956,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "アルマーレシチー",
-        "jockey": "河原田",
+        "name": "エスシービクトリア",
+        "jockey": "横山和",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
@@ -13068,33 +9965,33 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "オンサイト",
-        "jockey": "大久保",
+        "name": "オクトーバーナイン",
+        "jockey": "○○",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
       }
     ],
-    "fetchedAt": "2026-05-20T22:19:06.549Z"
+    "fetchedAt": "2026-05-27T22:25:54.798Z"
   },
   {
-    "id": "202604010808",
-    "name": "4歳以上1勝クラス",
-    "venue": "新潟",
+    "id": "202605021107",
+    "name": "3歳1勝クラス",
+    "venue": "東京",
     "year": "2026",
-    "distance": "1200",
+    "distance": "1400",
     "track": "芝",
     "dir": "左",
     "grade": "1勝",
     "startTime": "",
-    "raceData1": "芝1200m (左 B)",
-    "raceData2": "1回 新潟 8日目 18頭 本賞金:820,330,210,120,82万円",
+    "raceData1": "芝1400m (左 C)",
+    "raceData2": "2回 東京 11日目 13頭 本賞金:820,330,210,120,82万円",
     "horses": [
       {
         "gate": 0,
         "number": 0,
-        "name": "アーサーズウェイン",
-        "jockey": "横山琉",
+        "name": "アイアムアヒーロー",
+        "jockey": "石川",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
@@ -13102,8 +9999,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "インターポーザー",
-        "jockey": "小沢",
+        "name": "イヌボウノウタゴエ",
+        "jockey": "横山武",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
@@ -13111,86 +10008,75 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "エコロハート",
-        "jockey": "亀田",
+        "name": "エルハーベン",
+        "jockey": "津村",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
       }
     ],
-    "fetchedAt": "2026-05-20T22:19:07.565Z"
+    "fetchedAt": "2026-05-27T22:25:55.022Z"
   },
   {
-    "id": "202604010809",
-    "name": "二王子特別",
-    "venue": "新潟",
+    "id": "202605021108",
+    "name": "4歳以上1勝クラス",
+    "venue": "東京",
     "year": "2026",
-    "distance": "1800",
-    "track": "芝",
+    "distance": "1600",
+    "track": "",
     "dir": "左",
-    "grade": "",
-    "startTime": "14:05",
-    "raceData1": "14:05発走 / 芝1800m (左 外 B)",
-    "raceData2": "1回 新潟 8日目 サラ系４歳以上 １勝クラス (混)[指] 定量 38頭 本賞金:1140,460,290,170,114万円",
+    "grade": "1勝",
+    "startTime": "",
+    "raceData1": "ダ1600m (左)",
+    "raceData2": "2回 東京 11日目 14頭 本賞金:820,330,210,120,82万円",
     "horses": [
       {
         "gate": 0,
         "number": 0,
-        "name": "アウローラシエル",
-        "jockey": "○○",
-        "weight": "58.0",
+        "name": "インヴェスター",
+        "jockey": "菅原隆",
+        "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
       },
       {
         "gate": 0,
         "number": 0,
-        "name": "アンビアンス",
-        "jockey": "吉村",
-        "weight": "56.0",
+        "name": "キタノブレイク",
+        "jockey": "長浜",
+        "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
       },
       {
         "gate": 0,
         "number": 0,
-        "name": "ウィンスタンリー",
-        "jockey": "横山武",
-        "weight": "58.0",
+        "name": "キングプロフィット",
+        "jockey": "石田",
+        "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
-      },
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:25:55.239Z"
+  },
+  {
+    "id": "202605021109",
+    "name": "富嶽賞",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1400",
+    "track": "",
+    "dir": "左",
+    "grade": "",
+    "startTime": "14:15",
+    "raceData1": "14:15発走 / ダ1400m (左)",
+    "raceData2": "2回 東京 11日目 サラ系４歳以上 ２勝クラス (混)[指] 定量 25頭 本賞金:1580,630,400,240,158万円",
+    "horses": [
       {
         "gate": 0,
         "number": 0,
-        "name": "ウインドラート",
-        "jockey": "小林美",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ウインリベラシオン",
-        "jockey": "岩田望",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エコログロス",
-        "jockey": "嶋田",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エレガンシア",
+        "name": "アクアマリーナ",
         "jockey": "松山",
         "weight": "56.0",
         "bodyWeight": 0,
@@ -13199,43 +10085,7 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "オプレントジュエル",
-        "jockey": "三浦",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "オーバースタンド",
-        "jockey": "小崎",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カーメルタザイト",
-        "jockey": "斎藤",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ケイツークローン",
-        "jockey": "菊沢",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "コスモアチーブ",
+        "name": "アグラード",
         "jockey": "○○",
         "weight": "58.0",
         "bodyWeight": 0,
@@ -13244,8 +10094,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "サイコウダネ",
-        "jockey": "河原田",
+        "name": "ウインアルドーレ",
+        "jockey": "松岡",
         "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13253,266 +10103,7 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "サトノラポール",
-        "jockey": "ゴンサルベ",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シアブリス",
-        "jockey": "石川",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジェゼロ",
-        "jockey": "団野",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ジェロニモス",
-        "jockey": "岩田望",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シャインバオバブ",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シンドリームシン",
-        "jockey": "鮫島駿",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "スイッチビスケット",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ストレートブラック",
-        "jockey": "石神道",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "チャイボーグ",
-        "jockey": "木幡巧",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "テンドリームガール",
-        "jockey": "○○",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "トゥルーサクセサー",
-        "jockey": "西塚",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ドーギッド",
-        "jockey": "古川奈",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ナムラブーニン",
-        "jockey": "舟山",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ハギノコラソン",
-        "jockey": "坂井",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "フェルシナ",
-        "jockey": "○○",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ポッポノフェスタ",
-        "jockey": "西村太",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マイネルアウルム",
-        "jockey": "石神道",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "マイネルアレス",
-        "jockey": "丹内",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ムーンストラック",
-        "jockey": "菊沢",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "メイショウタクボク",
-        "jockey": "○○",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "メイショウビストロ",
-        "jockey": "荻野極",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ライジングハース",
-        "jockey": "向山牧",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "レゼールドラペ",
-        "jockey": "石神道",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ローンウルフ",
-        "jockey": "大江圭",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "ワイドモヒート",
-        "jockey": "横山琉",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      }
-    ],
-    "fetchedAt": "2026-05-20T22:19:07.930Z"
-  },
-  {
-    "id": "202604010810",
-    "name": "火打山特別",
-    "venue": "新潟",
-    "year": "2026",
-    "distance": "1200",
-    "track": "",
-    "dir": "左",
-    "grade": "",
-    "startTime": "14:40",
-    "raceData1": "14:40発走 / ダ1200m (左)",
-    "raceData2": "1回 新潟 8日目 サラ系４歳以上 ２勝クラス (混)[指] 定量 25頭 本賞金:1580,630,400,240,158万円",
-    "horses": [
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アイアムイチバン",
-        "jockey": "石川",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アクアマリーナ",
-        "jockey": "佐々木",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "アスゴッド",
+        "name": "エンファサイズ",
         "jockey": "○○",
         "weight": "58.0",
         "bodyWeight": 0,
@@ -13522,7 +10113,7 @@
         "gate": 0,
         "number": 0,
         "name": "カワキタマナレア",
-        "jockey": "鮫島駿",
+        "jockey": "○○",
         "weight": "56.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13531,7 +10122,7 @@
         "gate": 0,
         "number": 0,
         "name": "キミハスコール",
-        "jockey": "岩田望",
+        "jockey": "ルメール",
         "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13539,8 +10130,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "キングクー",
-        "jockey": "江田照",
+        "name": "キョウエイスレーヴ",
+        "jockey": "長浜",
         "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13548,26 +10139,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ゲーベル",
-        "jockey": "西塚",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シュバルツガイスト",
-        "jockey": "横山琉",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "シルフズミスチーフ",
-        "jockey": "荻野極",
+        "name": "クインズシフォン",
+        "jockey": "津村",
         "weight": "56.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13575,8 +10148,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ストリンジェンド",
-        "jockey": "小沢",
+        "name": "サトノアルペジオ",
+        "jockey": "ゴンサルベ",
         "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13584,18 +10157,36 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "セルヴァンス",
-        "jockey": "長岡",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "セレジェイラ",
-        "jockey": "亀田",
+        "name": "サマースイートピー",
+        "jockey": "原田和",
         "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "サンドブラスト",
+        "jockey": "菊沢",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジェミート",
+        "jockey": "横山和",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ダイシンリンク",
+        "jockey": "○○",
+        "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
       },
@@ -13611,17 +10202,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ダズリングダンス",
-        "jockey": "川須",
-        "weight": "58.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "タッカージーティー",
-        "jockey": "○○",
+        "name": "ドナカルナバル",
+        "jockey": "江田照",
         "weight": "56.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13629,17 +10211,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "テセラリアン",
-        "jockey": "丹内",
-        "weight": "56.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "バンディート",
-        "jockey": "杉原",
+        "name": "ドントゥザムーン",
+        "jockey": "菅原明",
         "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13647,17 +10220,17 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ピコテンダー",
-        "jockey": "舟山",
-        "weight": "55.0",
+        "name": "ノルドヴェスト",
+        "jockey": "ディー",
+        "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
       },
       {
         "gate": 0,
         "number": 0,
-        "name": "ビッグドリーム",
-        "jockey": "斎藤",
+        "name": "ビーコング",
+        "jockey": "横山武",
         "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13674,8 +10247,17 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ベンダバール",
-        "jockey": "国分恭",
+        "name": "ベルブリエ",
+        "jockey": "岩田康",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "マクミランテソーロ",
+        "jockey": "木幡巧",
         "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13683,7 +10265,7 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ミスエル",
+        "name": "マーゴットゲイン",
         "jockey": "菊沢",
         "weight": "58.0",
         "bodyWeight": 0,
@@ -13692,8 +10274,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "レイアポポ",
-        "jockey": "武藤",
+        "name": "マーゴットレーヴ",
+        "jockey": "○○",
         "weight": "56.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13701,8 +10283,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "レッドセニョール",
-        "jockey": "鮫島駿",
+        "name": "レッドレナート",
+        "jockey": "横山和",
         "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13710,69 +10292,33 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ロッカバイベイビー",
-        "jockey": "佐藤",
+        "name": "ワイノナオミ",
+        "jockey": "荻野極",
         "weight": "56.0",
         "bodyWeight": 0,
         "odds": 0
       }
     ],
-    "fetchedAt": "2026-05-20T22:19:08.341Z"
+    "fetchedAt": "2026-05-27T22:25:55.307Z"
   },
   {
-    "id": "202604010811",
-    "name": "韋駄天S",
-    "venue": "新潟",
+    "id": "202605021110",
+    "name": "葉山特別",
+    "venue": "東京",
     "year": "2026",
-    "distance": "1000",
+    "distance": "1600",
     "track": "芝",
-    "dir": "直線",
+    "dir": "左",
     "grade": "",
-    "startTime": "15:15",
-    "raceData1": "15:15発走 / 芝1000m (直線 B)",
-    "raceData2": "1回 新潟 8日目 サラ系４歳以上 オープン (国際)(特指) ハンデ 17頭 本賞金:2300,920,580,350,230万円",
+    "startTime": "14:50",
+    "raceData1": "14:50発走 / 芝1600m (左 C)",
+    "raceData2": "2回 東京 11日目 サラ系４歳以上 ２勝クラス (混)[指] 定量 13頭 本賞金:1580,630,400,240,158万円",
     "horses": [
       {
         "gate": 0,
         "number": 0,
-        "name": "アメリカンステージ",
-        "jockey": "富田",
-        "weight": "57.5",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "エコロレジーナ",
-        "jockey": "菊沢",
-        "weight": "54.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "オーブルクール",
-        "jockey": "丹内",
-        "weight": "53.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "カンパニョーラ",
-        "jockey": "嶋田",
-        "weight": "53.0",
-        "bodyWeight": 0,
-        "odds": 0
-      },
-      {
-        "gate": 0,
-        "number": 0,
-        "name": "クムシラコ",
-        "jockey": "黛",
+        "name": "エイヨーアメジスト",
+        "jockey": "酒井",
         "weight": "56.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13780,17 +10326,294 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "シュラフ",
-        "jockey": "嶋田",
-        "weight": "53.0",
+        "name": "クライスレリアーナ",
+        "jockey": "ルメール",
+        "weight": "56.0",
         "bodyWeight": 0,
         "odds": 0
       },
       {
         "gate": 0,
         "number": 0,
-        "name": "シークレットヴァウ",
-        "jockey": "武藤",
+        "name": "ケイケイ",
+        "jockey": "木幡巧",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジーティーマン",
+        "jockey": "横山武",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "スナークピカソ",
+        "jockey": "松山",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ダガーリング",
+        "jockey": "戸崎圭",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ツルマウカタチ",
+        "jockey": "嶋田",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "テーオーシュタイン",
+        "jockey": "藤懸",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "トレサフィール",
+        "jockey": "横山和",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ビッグデイメイク",
+        "jockey": "○○",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "マーゴットゲイン",
+        "jockey": "○○",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ミッキーソルジャー",
+        "jockey": "菊沢",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "レッドレナート",
+        "jockey": "長浜",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:25:55.366Z"
+  },
+  {
+    "id": "202605021111",
+    "name": "アハルテケS",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1600",
+    "track": "",
+    "dir": "左",
+    "grade": "",
+    "startTime": "15:30",
+    "raceData1": "15:30発走 / ダ1600m (左)",
+    "raceData2": "2回 東京 11日目 サラ系４歳以上 オープン (国際)(特指) 別定 22頭 本賞金:2200,880,550,330,220万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アッチャゴーラ",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アマンテビアンコ",
+        "jockey": "ルメール",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴィヴァン",
+        "jockey": "戸崎圭",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エコロブルーム",
+        "jockey": "横山武",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "キタノズエッジ",
+        "jockey": "古川吉",
+        "weight": "59.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ケイアイシェルビー",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゴートゥファースト",
+        "jockey": "ディー",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "サクラトップリアル",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジェイパームス",
+        "jockey": "レーン",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ショウナンライシン",
+        "jockey": "ゴンサルベ",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジンセイ",
+        "jockey": "舟山",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "スナークラファエロ",
+        "jockey": "小崎",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "テーオーパスワード",
+        "jockey": "松山",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ナイトアクアリウム",
+        "jockey": "長岡",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ハビレ",
+        "jockey": "菅原明",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "フリームファクシ",
+        "jockey": "佐々木",
+        "weight": "60.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "マーズオデッセイ",
+        "jockey": "三浦",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "マーブルロック",
+        "jockey": "吉田豊",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ルージュスタニング",
+        "jockey": "石川",
         "weight": "55.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13798,16 +10621,890 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "タツダイヤモンド",
-        "jockey": "丸田",
-        "weight": "51.0",
+        "name": "レヴォントゥレット",
+        "jockey": "菅原明",
+        "weight": "58.0",
         "bodyWeight": 0,
         "odds": 0
       },
       {
         "gate": 0,
         "number": 0,
-        "name": "ディヴィナシオン",
+        "name": "レディントン",
+        "jockey": "横山琉",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ロジアデレード",
+        "jockey": "津村",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:25:57.492Z"
+  },
+  {
+    "id": "202605021112",
+    "name": "4歳以上2勝クラス",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "2100",
+    "track": "",
+    "dir": "左",
+    "grade": "2勝",
+    "startTime": "",
+    "raceData1": "ダ2100m (左)",
+    "raceData2": "2回 東京 11日目 21頭 本賞金:1190,480,300,180,119万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴァズレーヌ",
+        "jockey": "小崎",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エイカイソウル",
+        "jockey": "戸崎圭",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "オウケンボルト",
+        "jockey": "吉田豊",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:25:57.527Z"
+  },
+  {
+    "id": "202608031102",
+    "name": "3歳未勝利",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1800",
+    "track": "",
+    "dir": "右",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "ダ1800m (右)",
+    "raceData2": "3回 京都 11日目 24頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アメリカンイズム",
+        "jockey": "川田",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アライブテーラー",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アルファローバ",
+        "jockey": "酒井",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:25:57.794Z"
+  },
+  {
+    "id": "202608031103",
+    "name": "3歳未勝利",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1400",
+    "track": "芝",
+    "dir": "右",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "芝1400m (右 D)",
+    "raceData2": "3回 京都 11日目 28頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アラビアンジョイ",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ウインハルフォード",
+        "jockey": "団野",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴェネラブル",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:25:58.140Z"
+  },
+  {
+    "id": "202608031101",
+    "name": "3歳未勝利",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1400",
+    "track": "",
+    "dir": "右",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "ダ1400m (右)",
+    "raceData2": "3回 京都 11日目 28頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アリハム",
+        "jockey": "武豊",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "インディクイーン",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エナジーアユ",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:25:58.651Z"
+  },
+  {
+    "id": "202608031105",
+    "name": "3歳未勝利",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1800",
+    "track": "芝",
+    "dir": "右",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "芝1800m (右 外 D)",
+    "raceData2": "3回 京都 11日目 13頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アメジストロード",
+        "jockey": "田山",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アンタレス",
+        "jockey": "和田陽",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "イクオクコウネン",
+        "jockey": "団野",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:00.458Z"
+  },
+  {
+    "id": "202608031104",
+    "name": "3歳未勝利",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "2400",
+    "track": "芝",
+    "dir": "右",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "芝2400m (右 外 D)",
+    "raceData2": "3回 京都 11日目 17頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アウラニ",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴィラジョヴィス",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ウインアトム",
+        "jockey": "高杉",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:00.616Z"
+  },
+  {
+    "id": "202608031106",
+    "name": "4歳以上1勝クラス",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1800",
+    "track": "",
+    "dir": "右",
+    "grade": "1勝",
+    "startTime": "",
+    "raceData1": "ダ1800m (右)",
+    "raceData2": "3回 京都 11日目 12頭 本賞金:820,330,210,120,82万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アリュールテーラー",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "インディゴ",
+        "jockey": "幸",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "オーラエグザート",
+        "jockey": "高杉",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:00.678Z"
+  },
+  {
+    "id": "202608031107",
+    "name": "4歳以上1勝クラス",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1600",
+    "track": "芝",
+    "dir": "右",
+    "grade": "1勝",
+    "startTime": "",
+    "raceData1": "芝1600m (右 外 D)",
+    "raceData2": "3回 京都 11日目 14頭 本賞金:820,330,210,120,82万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴェストラン",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エイカイカッシーナ",
+        "jockey": "北村友",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エイヘンハールト",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:00.746Z"
+  },
+  {
+    "id": "202608031108",
+    "name": "4歳以上2勝クラス",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1400",
+    "track": "芝",
+    "dir": "右",
+    "grade": "2勝",
+    "startTime": "",
+    "raceData1": "芝1400m (右 外 D)",
+    "raceData2": "3回 京都 11日目 12頭 本賞金:1190,480,300,180,119万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アジュマン",
+        "jockey": "菱田",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アムールリーベ",
+        "jockey": "荻野琢",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "インフローレ",
+        "jockey": "今村",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:01.154Z"
+  },
+  {
+    "id": "202608031112",
+    "name": "4歳以上2勝クラス",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1200",
+    "track": "",
+    "dir": "右",
+    "grade": "2勝",
+    "startTime": "",
+    "raceData1": "ダ1200m (右)",
+    "raceData2": "3回 京都 11日目 16頭 本賞金:1190,480,300,180,119万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アスタールフナ",
+        "jockey": "鮫島駿",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ウルスクローム",
+        "jockey": "田口",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "サマースイートピー",
+        "jockey": "原田和",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:03.256Z"
+  },
+  {
+    "id": "202608031110",
+    "name": "桃山S",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1800",
+    "track": "",
+    "dir": "右",
+    "grade": "",
+    "startTime": "15:05",
+    "raceData1": "15:05発走 / ダ1800m (右)",
+    "raceData2": "3回 京都 11日目 サラ系４歳以上 ３勝クラス (混)[指] ハンデ 29頭 本賞金:1870,750,470,280,187万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アレナパラシオ",
+        "jockey": "角田和",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "オリーブグリーン",
+        "jockey": "北村友",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "オレデイイノカ",
+        "jockey": "○○",
+        "weight": "53.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "カミノレアル",
+        "jockey": "田口",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "キングブルー",
+        "jockey": "吉村",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "グレイテストソング",
+        "jockey": "国分恭",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゴールドアローン",
+        "jockey": "○○",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "サノノワンダー",
+        "jockey": "高杉",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "スマートケープ",
+        "jockey": "菱田",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "タイゲン",
+        "jockey": "幸",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "テーオーマルコーニ",
+        "jockey": "団野",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ドラゴン",
+        "jockey": "武豊",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "パシアンジャン",
+        "jockey": "丹内",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "バッケンレコード",
+        "jockey": "太宰",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヒロノラメール",
+        "jockey": "○○",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ファリーザ",
+        "jockey": "丸山",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ブルーワール",
+        "jockey": "○○",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ペイシャモノノフ",
+        "jockey": "酒井",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ベルダイナフェロー",
+        "jockey": "松若",
+        "weight": "52.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ペンナヴェローチェ",
+        "jockey": "川田",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "マテンロウブレイブ",
+        "jockey": "横山典",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "マンオブザマッチ",
+        "jockey": "荻野極",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "メイショウオーロラ",
+        "jockey": "○○",
+        "weight": "52.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "メイショウシナノ",
+        "jockey": "浜中",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "メイプルタピット",
+        "jockey": "藤懸",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "モズマーヴェリック",
+        "jockey": "○○",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ラオラシオン",
+        "jockey": "斎藤",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "レッドラパルマ",
+        "jockey": "柴田善",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ロードヴォイジャー",
+        "jockey": "西村淳",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:03.269Z"
+  },
+  {
+    "id": "202608031109",
+    "name": "鳳雛S",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1800",
+    "track": "",
+    "dir": "右",
+    "grade": "",
+    "startTime": "14:30",
+    "raceData1": "14:30発走 / ダ1800m (右)",
+    "raceData2": "3回 京都 11日目 サラ系３歳 オープン (国際)(特指) 別定 10頭 本賞金:2000,800,500,300,200万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "イッテラッシャイ",
+        "jockey": "斎藤",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エスシービクトリア",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ケンタッキーホーム",
+        "jockey": "田口",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ケンフィールド",
+        "jockey": "高杉",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "サイモンゼスト",
+        "jockey": "酒井",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "スターシップ",
+        "jockey": "松若",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ソルチェリア",
+        "jockey": "幸",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "タガノアバンドーネ",
+        "jockey": "川田",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ビズロード",
+        "jockey": "菱田",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ビービークローサー",
+        "jockey": "坂井",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:03.354Z"
+  },
+  {
+    "id": "202608031111",
+    "name": "葵S",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1200",
+    "track": "芝",
+    "dir": "右",
+    "grade": "",
+    "startTime": "15:45",
+    "raceData1": "15:45発走 / 芝1200m (右 D)",
+    "raceData2": "3回 京都 11日目 サラ系３歳 オープン (国際)(特指) 馬齢 22頭 本賞金:4100,1600,1000,620,410万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アンジュプロミス",
+        "jockey": "古川奈",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ウチュウノセカイ",
+        "jockey": "原",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エイシンディード",
+        "jockey": "川又",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ガラベイヤ",
         "jockey": "丸山",
         "weight": "55.0",
         "bodyWeight": 0,
@@ -13816,7 +11513,97 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "テイエムスパーダ",
+        "name": "クリエープキー",
+        "jockey": "幸",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "コックピットサイト",
+        "jockey": "浜中",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ショウナンカリス",
+        "jockey": "池添",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "シラヌイ",
+        "jockey": "吉村",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "タガノアラリア",
+        "jockey": "鮫島駿",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "タマモイカロス",
+        "jockey": "高杉",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "デアヴェローチェ",
+        "jockey": "北村友",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "テーオーグレーザー",
+        "jockey": "酒井",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "トップアタック",
+        "jockey": "小沢",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ハイヤーマーク",
+        "jockey": "西塚",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヒシアイラ",
         "jockey": "荻野極",
         "weight": "57.0",
         "bodyWeight": 0,
@@ -13825,8 +11612,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "テイエムリステット",
-        "jockey": "川須",
+        "name": "ファムマルキーズ",
+        "jockey": "西村淳",
         "weight": "55.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13834,8 +11621,8 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "デュガ",
-        "jockey": "江田照",
+        "name": "フィオラーノ",
+        "jockey": "松本",
         "weight": "57.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13843,17 +11630,17 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ナスノカンゲツ",
-        "jockey": "小崎",
-        "weight": "51.0",
+        "name": "フォーゲル",
+        "jockey": "坂井",
+        "weight": "57.0",
         "bodyWeight": 0,
         "odds": 0
       },
       {
         "gate": 0,
         "number": 0,
-        "name": "バグラダス",
-        "jockey": "杉原",
+        "name": "マジェステラ",
+        "jockey": "○○",
         "weight": "55.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13861,17 +11648,656 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "ハートホイップ",
-        "jockey": "石田",
-        "weight": "50.0",
+        "name": "メランコリニスタ",
+        "jockey": "団野",
+        "weight": "55.0",
         "bodyWeight": 0,
         "odds": 0
       },
       {
         "gate": 0,
         "number": 0,
-        "name": "ベイビーキッス",
+        "name": "ルージュサウダージ",
+        "jockey": "斎藤",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ロジケープ",
+        "jockey": "丹内",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:03.384Z"
+  },
+  {
+    "id": "202605021201",
+    "name": "3歳未勝利",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1600",
+    "track": "",
+    "dir": "左",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "ダ1600m (左)",
+    "raceData2": "2回 東京 12日目 20頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アーティラリー",
+        "jockey": "ゴンサルベ",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エフハリスト",
+        "jockey": "横山和",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エリカビアリッツ",
+        "jockey": "レーン",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:03.623Z"
+  },
+  {
+    "id": "202605021204",
+    "name": "3歳未勝利",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1600",
+    "track": "芝",
+    "dir": "左",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "芝1600m (左 C)",
+    "raceData2": "2回 東京 12日目 14頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アラムベイ",
+        "jockey": "荻野極",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ウインアプローチ",
+        "jockey": "松岡",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ウッケン",
+        "jockey": "上里",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:06.189Z"
+  },
+  {
+    "id": "202605021202",
+    "name": "3歳未勝利",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1400",
+    "track": "",
+    "dir": "左",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "ダ1400m (左)",
+    "raceData2": "2回 東京 12日目 9頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "キリミツ",
+        "jockey": "石橋脩",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジュピターテソーロ",
+        "jockey": "菅原明",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ショウナンタヅナ",
+        "jockey": "津村",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:06.371Z"
+  },
+  {
+    "id": "202605021203",
+    "name": "3歳未勝利",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1600",
+    "track": "",
+    "dir": "左",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "ダ1600m (左)",
+    "raceData2": "2回 東京 12日目 18頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アドマイヤウルトラ",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴァンデスペランス",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エッチェレンテ",
+        "jockey": "三浦",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:06.408Z"
+  },
+  {
+    "id": "202605021205",
+    "name": "3歳1勝クラス",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1400",
+    "track": "",
+    "dir": "左",
+    "grade": "1勝",
+    "startTime": "",
+    "raceData1": "ダ1400m (左)",
+    "raceData2": "2回 東京 12日目 11頭 本賞金:820,330,210,120,82万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴェネチアンキング",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エコロバロン",
+        "jockey": "菊沢",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エコロボルト",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:06.469Z"
+  },
+  {
+    "id": "202605021206",
+    "name": "4歳以上1勝クラス",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1800",
+    "track": "芝",
+    "dir": "左",
+    "grade": "1勝",
+    "startTime": "",
+    "raceData1": "芝1800m (左 C)",
+    "raceData2": "2回 東京 12日目 7頭 本賞金:820,330,210,120,82万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゴガツノアマノガワ",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "コスモグラニット",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゴーゴータカシ",
+        "jockey": "石神道",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:06.783Z"
+  },
+  {
+    "id": "202605021207",
+    "name": "4歳以上1勝クラス",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1400",
+    "track": "",
+    "dir": "左",
+    "grade": "1勝",
+    "startTime": "",
+    "raceData1": "ダ1400m (左)",
+    "raceData2": "2回 東京 12日目 28頭 本賞金:820,330,210,120,82万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アイアンソリッド",
+        "jockey": "上里",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アイファーシャドー",
+        "jockey": "松岡",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アルプスオジョー",
         "jockey": "横山琉",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:08.882Z"
+  },
+  {
+    "id": "202605021208",
+    "name": "青嵐賞",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "2400",
+    "track": "芝",
+    "dir": "左",
+    "grade": "",
+    "startTime": "13:45",
+    "raceData1": "13:45発走 / 芝2400m (左 C)",
+    "raceData2": "2回 東京 12日目 サラ系４歳以上 ２勝クラス (混)[指] 定量 15頭 本賞金:1580,630,400,240,158万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アスクデッドヒート",
+        "jockey": "古川奈",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アバンデル",
+        "jockey": "佐々木",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アロンズロッド",
+        "jockey": "ルメール",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "オールマイデイズ",
+        "jockey": "荻野極",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "サトノパトリオット",
+        "jockey": "川田",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジオセントリック",
+        "jockey": "レーン",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ショウナンガチ",
+        "jockey": "ゴンサルベ",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "スピンザブラッド",
+        "jockey": "舟山",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ダノンカゼルタ",
+        "jockey": "西村淳",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ティムール",
+        "jockey": "三浦",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ノラリクラリ",
+        "jockey": "松山",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "バンフィエルド",
+        "jockey": "○○",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ビップチェイス",
+        "jockey": "杉原",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "プリズマジコ",
+        "jockey": "横山琉",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ホウオウレイヴン",
+        "jockey": "坂井",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:08.923Z"
+  },
+  {
+    "id": "202605021210",
+    "name": "むらさき賞",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "1800",
+    "track": "芝",
+    "dir": "左",
+    "grade": "",
+    "startTime": "14:55",
+    "raceData1": "14:55発走 / 芝1800m (左 C)",
+    "raceData2": "2回 東京 12日目 サラ系４歳以上 ３勝クラス (混)[指] ハンデ 23頭 本賞金:1870,750,470,280,187万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ガジュノリ",
+        "jockey": "丹内",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "キュクヌス",
+        "jockey": "荻野極",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "キングメーカー",
+        "jockey": "横山武",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "クリニクラウン",
+        "jockey": "大野",
+        "weight": "53.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゲンパチムサシ",
+        "jockey": "丸山",
+        "weight": "53.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "コルレオニス",
+        "jockey": "ディー",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジャサルディア",
+        "jockey": "○○",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "スパークリシャール",
+        "jockey": "横山和",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ソルトブリーズ",
+        "jockey": "横山琉",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ダンツファイター",
+        "jockey": "佐々木",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "テウメッサ",
+        "jockey": "○○",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "テンミラクルスター",
+        "jockey": "武豊",
+        "weight": "53.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "テーオーダグラス",
+        "jockey": "ゴンサルベ",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ドットクルー",
+        "jockey": "戸崎圭",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ハギノアルデバラン",
+        "jockey": "○○",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "マイネルフルムーン",
+        "jockey": "○○",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "マルチャン",
+        "jockey": "丸田",
+        "weight": "53.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ミカッテヨンデイイ",
+        "jockey": "小林脩",
         "weight": "51.0",
         "bodyWeight": 0,
         "odds": 0
@@ -13879,33 +12305,533 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "モズナナスター",
+        "name": "ミスタージーティー",
+        "jockey": "坂井",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "レイニング",
         "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "レディーミコノス",
+        "jockey": "松山",
         "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ロジマンボ",
+        "jockey": "松岡",
+        "weight": "52.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ワイドアラジン",
+        "jockey": "泉谷",
+        "weight": "56.0",
         "bodyWeight": 0,
         "odds": 0
       }
     ],
-    "fetchedAt": "2026-05-20T22:19:08.676Z"
+    "fetchedAt": "2026-05-27T22:26:09.024Z"
   },
   {
-    "id": "202604010812",
-    "name": "4歳以上1勝クラス",
-    "venue": "新潟",
+    "id": "202605021209",
+    "name": "薫風S",
+    "venue": "東京",
     "year": "2026",
-    "distance": "1800",
+    "distance": "1600",
     "track": "",
     "dir": "左",
-    "grade": "1勝",
-    "startTime": "",
-    "raceData1": "ダ1800m (左)",
-    "raceData2": "1回 新潟 8日目 22頭 本賞金:820,330,210,120,82万円",
+    "grade": "",
+    "startTime": "14:20",
+    "raceData1": "14:20発走 / ダ1600m (左)",
+    "raceData2": "2回 東京 12日目 サラ系４歳以上 ３勝クラス (混)[指] 定量 28頭 本賞金:1870,750,470,280,187万円",
     "horses": [
       {
         "gate": 0,
         "number": 0,
-        "name": "アバレリュウ",
-        "jockey": "野中",
+        "name": "アデランテ",
+        "jockey": "佐々木",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アルゴナヴィス",
+        "jockey": "津村",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴァンドーム",
+        "jockey": "大野",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "オリーブグリーン",
+        "jockey": "西村淳",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "オレデイイノカ",
+        "jockey": "松岡",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ガンウルフ",
+        "jockey": "丹内",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "クァンタムウェーブ",
+        "jockey": "西村淳",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "コブラ",
+        "jockey": "横山典",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "コーカサスゴールド",
+        "jockey": "幸",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゴールデンオスカー",
+        "jockey": "松若",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゴールドアローン",
+        "jockey": "菊沢",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "サムシャイン",
+        "jockey": "横山和",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジョディーズマロン",
+        "jockey": "○○",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "セギレエルビエント",
+        "jockey": "荻野極",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ダノンスウィッチ",
+        "jockey": "浜中",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ピエマンソン",
+        "jockey": "戸崎圭",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヒロノラメール",
+        "jockey": "○○",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ファリーザ",
+        "jockey": "○○",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヘルモーズ",
+        "jockey": "北村友",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ホルトバージ",
+        "jockey": "菅原明",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ミカッテヨンデイイ",
+        "jockey": "小林脩",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "メイショウカシワデ",
+        "jockey": "原",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "メイショウシナノ",
+        "jockey": "田口",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "メイショウハチロー",
+        "jockey": "川田",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "モズマーヴェリック",
+        "jockey": "○○",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ユキノロイヤル",
+        "jockey": "石橋脩",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "レッドラパルマ",
+        "jockey": "ゴンサルベ",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ロードヴォイジャー",
+        "jockey": "西村淳",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:09.316Z"
+  },
+  {
+    "id": "202605021211",
+    "name": "日本ダービー",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "2400",
+    "track": "芝",
+    "dir": "左",
+    "grade": "",
+    "startTime": "15:40",
+    "raceData1": "15:40発走 / 芝2400m (左 C)",
+    "raceData2": "2回 東京 12日目 サラ系３歳 オープン (国際) 牡・牝(指) 馬齢 20頭 本賞金:30000,12000,7500,4500,3000万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アウダーシア",
+        "jockey": "レーン",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アスクエジンバラ",
+        "jockey": "岩田康",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アルトラムス",
+        "jockey": "横山武",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エムズビギン",
+        "jockey": "ゴンサルベ",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "カフジエメンタール",
+        "jockey": "幸",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "グリーンエナジー",
+        "jockey": "戸崎圭",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ケントン",
+        "jockey": "丹内",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "コンジェスタス",
+        "jockey": "西村淳",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゴーイントゥスカイ",
+        "jockey": "武豊",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジャスティンビスタ",
+        "jockey": "坂井",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ショウナンガルフ",
+        "jockey": "浜中",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "バステール",
+        "jockey": "川田",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "パントルナイーフ",
+        "jockey": "ルメール",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "フォルテアンジェロ",
+        "jockey": "荻野極",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ベレシート",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "マテンロウゲイル",
+        "jockey": "横山和",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "メイショウハチコウ",
+        "jockey": "ディー",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ライヒスアドラー",
+        "jockey": "佐々木",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "リアライズシリウス",
+        "jockey": "津村",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ロブチェン",
+        "jockey": "松山",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:09.802Z"
+  },
+  {
+    "id": "202608031202",
+    "name": "3歳未勝利",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1200",
+    "track": "",
+    "dir": "右",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "ダ1200m (右)",
+    "raceData2": "3回 京都 12日目 19頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アイビーミャーオ",
+        "jockey": "角田和",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
@@ -13913,7 +12839,7 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "イエローブリック",
+        "name": "アドフランマム",
         "jockey": "○○",
         "weight": "未定",
         "bodyWeight": 0,
@@ -13922,13 +12848,1150 @@
       {
         "gate": 0,
         "number": 0,
-        "name": "イリュストル",
-        "jockey": "杉原",
+        "name": "カーリキュー",
+        "jockey": "斎藤",
         "weight": "未定",
         "bodyWeight": 0,
         "odds": 0
       }
     ],
-    "fetchedAt": "2026-05-20T22:19:09.402Z"
+    "fetchedAt": "2026-05-27T22:26:11.498Z"
+  },
+  {
+    "id": "202605021212",
+    "name": "目黒記念",
+    "venue": "東京",
+    "year": "2026",
+    "distance": "2500",
+    "track": "芝",
+    "dir": "左",
+    "grade": "",
+    "startTime": "17:00",
+    "raceData1": "17:00発走 / 芝2500m (左 C)",
+    "raceData2": "2回 東京 12日目 サラ系４歳以上 オープン (国際)(特指) ハンデ 16頭 本賞金:5700,2300,1400,860,570万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アスクセクシーモア",
+        "jockey": "北村友",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アマキヒ",
+        "jockey": "武豊",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ウィクトルウェルス",
+        "jockey": "ルメール",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴェルミセル",
+        "jockey": "ゴンサルベ",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ギャンブルルーム",
+        "jockey": "幸",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "キングスコール",
+        "jockey": "坂井",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "キングズパレス",
+        "jockey": "松岡",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ショウナンバシット",
+        "jockey": "浜中",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ダノンシーマ",
+        "jockey": "川田",
+        "weight": "57.5",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ハーツコンチェルト",
+        "jockey": "横山武",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ファイアンクランツ",
+        "jockey": "レーン",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ベトルス",
+        "jockey": "○○",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ボーンディスウェイ",
+        "jockey": "松山",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "マイネルケレリウス",
+        "jockey": "丹内",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ミラージュナイト",
+        "jockey": "西村淳",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "レヴォントゥレット",
+        "jockey": "○○",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:11.624Z"
+  },
+  {
+    "id": "202608031201",
+    "name": "3歳未勝利",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1800",
+    "track": "",
+    "dir": "右",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "ダ1800m (右)",
+    "raceData2": "3回 京都 12日目 23頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ウンナターシャ",
+        "jockey": "鮫島駿",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エレノアサンライズ",
+        "jockey": "川端",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "カフジミモレット",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:11.632Z"
+  },
+  {
+    "id": "202608031203",
+    "name": "3歳未勝利",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1900",
+    "track": "",
+    "dir": "右",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "ダ1900m (右)",
+    "raceData2": "3回 京都 12日目 20頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アスクウルトラモア",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "イコミキマル",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴェインズマン",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:11.883Z"
+  },
+  {
+    "id": "202608031204",
+    "name": "4歳以上障害OP",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "3170",
+    "track": "障害",
+    "dir": "右",
+    "grade": "OP",
+    "startTime": "",
+    "raceData1": "ダ3170m (右)",
+    "raceData2": "3回 京都 12日目 10頭 本賞金:1430,570,360,210,143万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アトラクティーボ",
+        "jockey": "坂口",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アルマーザアミール",
+        "jockey": "小牧加",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エンデュミオン",
+        "jockey": "鷲頭",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:12.273Z"
+  },
+  {
+    "id": "202608031206",
+    "name": "3歳1勝クラス",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1400",
+    "track": "",
+    "dir": "右",
+    "grade": "1勝",
+    "startTime": "",
+    "raceData1": "ダ1400m (右)",
+    "raceData2": "3回 京都 12日目 14頭 本賞金:820,330,210,120,82万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アパレイユ",
+        "jockey": "鮫島駿",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "グランディマージュ",
+        "jockey": "田口",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゲレーロアスール",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:14.113Z"
+  },
+  {
+    "id": "202608031207",
+    "name": "4歳以上1勝クラス",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "2400",
+    "track": "芝",
+    "dir": "右",
+    "grade": "1勝",
+    "startTime": "",
+    "raceData1": "芝2400m (右 外 D)",
+    "raceData2": "3回 京都 12日目 11頭 本賞金:820,330,210,120,82万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ウインリュクス",
+        "jockey": "和田陽",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エンスエーニョ",
+        "jockey": "吉村",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "クラッチプレイヤー",
+        "jockey": "池添",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:14.183Z"
+  },
+  {
+    "id": "202608031205",
+    "name": "3歳未勝利",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1600",
+    "track": "芝",
+    "dir": "右",
+    "grade": "未勝利",
+    "startTime": "",
+    "raceData1": "芝1600m (右 D)",
+    "raceData2": "3回 京都 12日目 17頭 本賞金:590,240,150,89,59万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アイルトン",
+        "jockey": "酒井",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アドバンスモダン",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ウインドオルフェ",
+        "jockey": "○○",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:14.343Z"
+  },
+  {
+    "id": "202608031208",
+    "name": "4歳以上2勝クラス",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "2000",
+    "track": "芝",
+    "dir": "右",
+    "grade": "2勝",
+    "startTime": "",
+    "raceData1": "芝2000m (右 D)",
+    "raceData2": "3回 京都 12日目 10頭 本賞金:1190,480,300,180,119万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "イトカワサクラ",
+        "jockey": "吉村",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヴォワラクテ",
+        "jockey": "角田和",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エコテーラー",
+        "jockey": "太宰",
+        "weight": "未定",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:14.494Z"
+  },
+  {
+    "id": "202608031209",
+    "name": "與杼特別",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1800",
+    "track": "",
+    "dir": "右",
+    "grade": "",
+    "startTime": "14:35",
+    "raceData1": "14:35発走 / ダ1800m (右)",
+    "raceData2": "3回 京都 12日目 サラ系４歳以上 ２勝クラス (混)[指] 定量 16頭 本賞金:1580,630,400,240,158万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アリエスキング",
+        "jockey": "田口",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エンマ",
+        "jockey": "高倉",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "クロノスバレット",
+        "jockey": "鮫島駿",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゴヴェルナーレリコ",
+        "jockey": "長浜",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ゴッドエスパーダ",
+        "jockey": "角田和",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジョータルマエ",
+        "jockey": "鮫島良",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ソウルアンドジャズ",
+        "jockey": "川須",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ドゥラエテルノ",
+        "jockey": "浜中",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ニホンピロデヴィン",
+        "jockey": "高杉",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヒデノレインボー",
+        "jockey": "○○",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヒロノゴウカイ",
+        "jockey": "○○",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "プラニスフェリオ",
+        "jockey": "○○",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ブルックリンダンス",
+        "jockey": "亀田",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "モモンウールー",
+        "jockey": "小沢",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "リアルスター",
+        "jockey": "秋山稔",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ワイドクリーガー",
+        "jockey": "団野",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:14.888Z"
+  },
+  {
+    "id": "202608031210",
+    "name": "安土城S",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1400",
+    "track": "芝",
+    "dir": "右",
+    "grade": "",
+    "startTime": "15:15",
+    "raceData1": "15:15発走 / 芝1400m (右 外 D)",
+    "raceData2": "3回 京都 12日目 サラ系４歳以上 オープン (国際)(特指) ハンデ 20頭 本賞金:2700,1100,680,410,270万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アサカラキング",
+        "jockey": "斎藤",
+        "weight": "57.5",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アスクワンタイム",
+        "jockey": "○○",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "アルテヴェローチェ",
+        "jockey": "田山",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エコロブルーム",
+        "jockey": "丹内",
+        "weight": "57.5",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "カルチャーデイ",
+        "jockey": "酒井",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "グレイイングリーン",
+        "jockey": "吉村",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ジャスティンスカイ",
+        "jockey": "池添",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "シュタールヴィント",
+        "jockey": "西塚",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "シンフォーエバー",
+        "jockey": "松若",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "スリールミニョン",
+        "jockey": "永島",
+        "weight": "53.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ソウテン",
+        "jockey": "Ｍデムーロ",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "タガノエルピーダ",
+        "jockey": "団野",
+        "weight": "54.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ダンツエラン",
+        "jockey": "太宰",
+        "weight": "53.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ビーアストニッシド",
+        "jockey": "西村太",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "フリームファクシ",
+        "jockey": "佐々木",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ムイ",
+        "jockey": "川須",
+        "weight": "53.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "メイショウシンタケ",
+        "jockey": "○○",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヤブサメ",
+        "jockey": "高杉",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヨシノイースター",
+        "jockey": "田辺",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "レイベリング",
+        "jockey": "国分恭",
+        "weight": "57.5",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:16.600Z"
+  },
+  {
+    "id": "202608031211",
+    "name": "白百合S",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1800",
+    "track": "芝",
+    "dir": "右",
+    "grade": "",
+    "startTime": "16:05",
+    "raceData1": "16:05発走 / 芝1800m (右 外 D)",
+    "raceData2": "3回 京都 12日目 サラ系３歳 オープン (国際)(特指) 別定 11頭 本賞金:2100,840,530,320,210万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "オルフセン",
+        "jockey": "斎藤",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "カフジエメンタール",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ケントン",
+        "jockey": "木幡巧",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "シーミハットク",
+        "jockey": "高杉",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ダイチノナポリ",
+        "jockey": "高倉",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "テーオーアルアイン",
+        "jockey": "団野",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "バークシャーシチー",
+        "jockey": "藤懸",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "バースデイフライト",
+        "jockey": "田口",
+        "weight": "55.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ブライトフレア",
+        "jockey": "○○",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ムスクレスト",
+        "jockey": "鮫島駿",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ロサルゴサ",
+        "jockey": "池添",
+        "weight": "57.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:16.741Z"
+  },
+  {
+    "id": "202608031212",
+    "name": "渡月橋S",
+    "venue": "京都",
+    "year": "2026",
+    "distance": "1400",
+    "track": "芝",
+    "dir": "右",
+    "grade": "",
+    "startTime": "16:40",
+    "raceData1": "16:40発走 / 芝1400m (右 外 D)",
+    "raceData2": "3回 京都 12日目 サラ系４歳以上 ３勝クラス (混)(特指) 定量 21頭 本賞金:1870,750,470,280,187万円",
+    "horses": [
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エスペシャリー",
+        "jockey": "小崎",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "エマヌエーレ",
+        "jockey": "鮫島駿",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ガンマジーティーピ",
+        "jockey": "松若",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "キタサンダムール",
+        "jockey": "田山",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "コブラ",
+        "jockey": "横山典",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "サヴォンリンナ",
+        "jockey": "亀田",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "サクセスアイ",
+        "jockey": "池添",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "スマートワイス",
+        "jockey": "高杉",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ディアドコス",
+        "jockey": "吉村",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "テーオーダヴィンチ",
+        "jockey": "菱田",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "トラペジスト",
+        "jockey": "国分優",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ノクナレア",
+        "jockey": "吉田隼",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ビップジーニー",
+        "jockey": "田口",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ブリックワーク",
+        "jockey": "秋山稔",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ブリュットミレジメ",
+        "jockey": "○○",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ブルクトーア",
+        "jockey": "斎藤",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ミカッテヨンデイイ",
+        "jockey": "小林脩",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "メイショウセイロウ",
+        "jockey": "団野",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ヨウシタンレイ",
+        "jockey": "Ｍデムーロ",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ルミノメテオール",
+        "jockey": "酒井",
+        "weight": "56.0",
+        "bodyWeight": 0,
+        "odds": 0
+      },
+      {
+        "gate": 0,
+        "number": 0,
+        "name": "ワイドアラジン",
+        "jockey": "泉谷",
+        "weight": "58.0",
+        "bodyWeight": 0,
+        "odds": 0
+      }
+    ],
+    "fetchedAt": "2026-05-27T22:26:17.232Z"
   }
 ]
